@@ -22,7 +22,7 @@ namespace Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Manage {
+    public class Manage {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Manage", typeof(Manage).Assembly);
@@ -51,7 +51,7 @@ namespace Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Change Password.
         /// </summary>
-        internal static string ChangePassword_ButtonChangePassword {
+        public static string ChangePassword_ButtonChangePassword {
             get {
                 return ResourceManager.GetString("ChangePassword_ButtonChangePassword", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Change Password Form.
         /// </summary>
-        internal static string ChangePassword_FormTitle {
+        public static string ChangePassword_FormTitle {
             get {
                 return ResourceManager.GetString("ChangePassword_FormTitle", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Change Password.
         /// </summary>
-        internal static string ChangePassword_Title {
+        public static string ChangePassword_Title {
             get {
                 return ResourceManager.GetString("ChangePassword_Title", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Change your account settings.
         /// </summary>
-        internal static string Index_ChangeYourAccountSettings {
+        public static string Index_ChangeYourAccountSettings {
             get {
                 return ResourceManager.GetString("Index_ChangeYourAccountSettings", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Change your password.
         /// </summary>
-        internal static string Index_ChangeYourPassword {
+        public static string Index_ChangeYourPassword {
             get {
                 return ResourceManager.GetString("Index_ChangeYourPassword", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Create.
         /// </summary>
-        internal static string Index_Create {
+        public static string Index_Create {
             get {
                 return ResourceManager.GetString("Index_Create", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to External Logins:.
         /// </summary>
-        internal static string Index_ExternalLogins {
+        public static string Index_ExternalLogins {
             get {
                 return ResourceManager.GetString("Index_ExternalLogins", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Manage.
         /// </summary>
-        internal static string Index_Manage {
+        public static string Index_Manage {
             get {
                 return ResourceManager.GetString("Index_Manage", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to There are no two-factor authentication providers configured..
         /// </summary>
-        internal static string Index_NoTwoFactorAuthenticationConfigured {
+        public static string Index_NoTwoFactorAuthenticationConfigured {
             get {
                 return ResourceManager.GetString("Index_NoTwoFactorAuthenticationConfigured", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Password:.
         /// </summary>
-        internal static string Index_Password {
+        public static string Index_Password {
             get {
                 return ResourceManager.GetString("Index_Password", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Manage.
         /// </summary>
-        internal static string Index_Title {
+        public static string Index_Title {
             get {
                 return ResourceManager.GetString("Index_Title", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Two-Factor Authentication:.
         /// </summary>
-        internal static string Index_TwoFactorAuthentication {
+        public static string Index_TwoFactorAuthentication {
             get {
                 return ResourceManager.GetString("Index_TwoFactorAuthentication", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to There are no external authentication services configured..
         /// </summary>
-        internal static string ManageLogins_NoExternalLogins {
+        public static string ManageLogins_NoExternalLogins {
             get {
                 return ResourceManager.GetString("ManageLogins_NoExternalLogins", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Manage your external logins.
         /// </summary>
-        internal static string ManageLogins_Title {
+        public static string ManageLogins_Title {
             get {
                 return ResourceManager.GetString("ManageLogins_Title", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Your phone number was added..
         /// </summary>
-        internal static string ManageMessage_AddPhoneSuccess {
+        public static string ManageMessage_AddPhoneSuccess {
             get {
                 return ResourceManager.GetString("ManageMessage_AddPhoneSuccess", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Your password has been changed..
         /// </summary>
-        internal static string ManageMessage_ChangePasswordSuccess {
+        public static string ManageMessage_ChangePasswordSuccess {
             get {
                 return ResourceManager.GetString("ManageMessage_ChangePasswordSuccess", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to An error has occurred..
         /// </summary>
-        internal static string ManageMessage_Error {
+        public static string ManageMessage_Error {
             get {
                 return ResourceManager.GetString("ManageMessage_Error", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Your phone number was removed..
         /// </summary>
-        internal static string ManageMessage_RemovePhoneSuccess {
+        public static string ManageMessage_RemovePhoneSuccess {
             get {
                 return ResourceManager.GetString("ManageMessage_RemovePhoneSuccess", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Your password has been set..
         /// </summary>
-        internal static string ManageMessage_SetPasswordSuccess {
+        public static string ManageMessage_SetPasswordSuccess {
             get {
                 return ResourceManager.GetString("ManageMessage_SetPasswordSuccess", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Your two-factor authentication provider has been set..
         /// </summary>
-        internal static string ManageMessage_SetTwoFactorSuccess {
+        public static string ManageMessage_SetTwoFactorSuccess {
             get {
                 return ResourceManager.GetString("ManageMessage_SetTwoFactorSuccess", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Code.
         /// </summary>
-        internal static string ViewModel_Code {
+        public static string ViewModel_Code {
             get {
                 return ResourceManager.GetString("ViewModel_Code", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Code is required..
         /// </summary>
-        internal static string ViewModel_CodeRequired {
+        public static string ViewModel_CodeRequired {
             get {
                 return ResourceManager.GetString("ViewModel_CodeRequired", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Confirm new password.
         /// </summary>
-        internal static string ViewModel_ConfirmPassword {
+        public static string ViewModel_ConfirmPassword {
             get {
                 return ResourceManager.GetString("ViewModel_ConfirmPassword", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to The new password and confirmation password do not match..
         /// </summary>
-        internal static string ViewModel_ConfirmPasswordNoMatch {
+        public static string ViewModel_ConfirmPasswordNoMatch {
             get {
                 return ResourceManager.GetString("ViewModel_ConfirmPasswordNoMatch", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to New password.
         /// </summary>
-        internal static string ViewModel_NewPassword {
+        public static string ViewModel_NewPassword {
             get {
                 return ResourceManager.GetString("ViewModel_NewPassword", resourceCulture);
             }
@@ -288,7 +288,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to New password is required..
         /// </summary>
-        internal static string ViewModel_NewPasswordRequired {
+        public static string ViewModel_NewPasswordRequired {
             get {
                 return ResourceManager.GetString("ViewModel_NewPasswordRequired", resourceCulture);
             }
@@ -297,7 +297,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Current password.
         /// </summary>
-        internal static string ViewModel_OldPassword {
+        public static string ViewModel_OldPassword {
             get {
                 return ResourceManager.GetString("ViewModel_OldPassword", resourceCulture);
             }
@@ -306,7 +306,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Old password is required..
         /// </summary>
-        internal static string ViewModel_OldPasswordRequired {
+        public static string ViewModel_OldPasswordRequired {
             get {
                 return ResourceManager.GetString("ViewModel_OldPasswordRequired", resourceCulture);
             }
@@ -315,7 +315,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to The {0} must be at least {2} characters long..
         /// </summary>
-        internal static string ViewModel_PasswordLengthError {
+        public static string ViewModel_PasswordLengthError {
             get {
                 return ResourceManager.GetString("ViewModel_PasswordLengthError", resourceCulture);
             }
@@ -324,7 +324,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Phone Number.
         /// </summary>
-        internal static string ViewModel_PhoneNumber {
+        public static string ViewModel_PhoneNumber {
             get {
                 return ResourceManager.GetString("ViewModel_PhoneNumber", resourceCulture);
             }
@@ -333,7 +333,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Phone number is required..
         /// </summary>
-        internal static string ViewModel_PhoneNumberRequired {
+        public static string ViewModel_PhoneNumberRequired {
             get {
                 return ResourceManager.GetString("ViewModel_PhoneNumberRequired", resourceCulture);
             }

@@ -8,11 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Resources
-{
+namespace Resources {
     using System;
-
-
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,235 +22,193 @@ namespace Resources
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Common
-    {
-
+    public class Common {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Common()
-        {
+        internal Common() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if (object.ReferenceEquals(resourceMan, null))
-                {
+        public static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Common", typeof(Common).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        public static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to MyApplication.
         /// </summary>
-        public static string ApplicationName
-        {
-            get
-            {
+        public static string ApplicationName {
+            get {
                 return ResourceManager.GetString("ApplicationName", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        public static string Cancel
-        {
-            get
-            {
+        public static string Cancel {
+            get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The {0} field is required..
         /// </summary>
-        public static string FieldIsRequired
-        {
-            get
-            {
+        public static string FieldIsRequired {
+            get {
                 return ResourceManager.GetString("FieldIsRequired", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The field {0} must be a string or array type with a maximum length of &amp;#39;{1}&amp;#39;..
         /// </summary>
-        public static string FieldMaxLength
-        {
-            get
-            {
+        public static string FieldMaxLength {
+            get {
                 return ResourceManager.GetString("FieldMaxLength", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The field {0} must be a string or array type with a minimum length of &amp;#39;{1}&amp;#39;..
         /// </summary>
-        public static string FieldMinLength
-        {
-            get
-            {
+        public static string FieldMinLength {
+            get {
                 return ResourceManager.GetString("FieldMinLength", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The field {0} must be a date..
         /// </summary>
-        public static string FieldMustBeDataTypeDate
-        {
-            get
-            {
+        public static string FieldMustBeDataTypeDate {
+            get {
                 return ResourceManager.GetString("FieldMustBeDataTypeDate", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The field {0} must be a datetime..
         /// </summary>
-        public static string FieldMustBeDataTypeDateTime
-        {
-            get
-            {
+        public static string FieldMustBeDataTypeDateTime {
+            get {
                 return ResourceManager.GetString("FieldMustBeDataTypeDateTime", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The field {0} must be a time..
         /// </summary>
-        public static string FieldMustBeDataTypeTime
-        {
-            get
-            {
+        public static string FieldMustBeDataTypeTime {
+            get {
                 return ResourceManager.GetString("FieldMustBeDataTypeTime", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
-        public static string Login
-        {
-            get
-            {
+        public static string Login {
+            get {
                 return ResourceManager.GetString("Login", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Logg off.
         /// </summary>
-        public static string LogOff
-        {
-            get
-            {
+        public static string LogOff {
+            get {
                 return ResourceManager.GetString("LogOff", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Manage account.
         /// </summary>
-        public static string ManageAccount
-        {
-            get
-            {
+        public static string ManageAccount {
+            get {
                 return ResourceManager.GetString("ManageAccount", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
-        public static string Next
-        {
-            get
-            {
+        public static string Next {
+            get {
                 return ResourceManager.GetString("Next", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
-        public static string OK
-        {
-            get
-            {
+        public static string OK {
+            get {
                 return ResourceManager.GetString("OK", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Previous.
         /// </summary>
-        public static string Previous
-        {
-            get
-            {
+        public static string Previous {
+            get {
                 return ResourceManager.GetString("Previous", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
-        public static string Register
-        {
-            get
-            {
+        public static string Register {
+            get {
                 return ResourceManager.GetString("Register", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to --- Select! ---.
         /// </summary>
-        public static string SelectOptionLabel
-        {
-            get
-            {
+        public static string SelectOptionLabel {
+            get {
                 return ResourceManager.GetString("SelectOptionLabel", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
-        public static string Submit
-        {
-            get
-            {
+        public static string Submit {
+            get {
                 return ResourceManager.GetString("Submit", resourceCulture);
             }
         }

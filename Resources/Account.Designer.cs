@@ -22,7 +22,7 @@ namespace Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Account {
+    public class Account {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Account", typeof(Account).Assembly);
@@ -51,7 +51,7 @@ namespace Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Log in.
         /// </summary>
-        internal static string Login_ButtonLogin {
+        public static string Login_ButtonLogin {
             get {
                 return ResourceManager.GetString("Login_ButtonLogin", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Log in.
         /// </summary>
-        internal static string Login_Title {
+        public static string Login_Title {
             get {
                 return ResourceManager.GetString("Login_Title", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Use a local account to log in..
         /// </summary>
-        internal static string Login_UseLocalAccountToLogin {
+        public static string Login_UseLocalAccountToLogin {
             get {
                 return ResourceManager.GetString("Login_UseLocalAccountToLogin", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
-        internal static string RegisterButtonRegister {
+        public static string RegisterButtonRegister {
             get {
                 return ResourceManager.GetString("RegisterButtonRegister", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Create a new account..
         /// </summary>
-        internal static string RegisterCreateNewAccount {
+        public static string RegisterCreateNewAccount {
             get {
                 return ResourceManager.GetString("RegisterCreateNewAccount", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
-        internal static string RegisterTitle {
+        public static string RegisterTitle {
             get {
                 return ResourceManager.GetString("RegisterTitle", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Code.
         /// </summary>
-        internal static string VerifyCodeViewModel_Code {
+        public static string VerifyCodeViewModel_Code {
             get {
                 return ResourceManager.GetString("VerifyCodeViewModel_Code", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Remember this browser?.
         /// </summary>
-        internal static string VerifyCodeViewModel_RememberBrowser {
+        public static string VerifyCodeViewModel_RememberBrowser {
             get {
                 return ResourceManager.GetString("VerifyCodeViewModel_RememberBrowser", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Confirm password.
         /// </summary>
-        internal static string ViewModel_ConfirmPassword {
+        public static string ViewModel_ConfirmPassword {
             get {
                 return ResourceManager.GetString("ViewModel_ConfirmPassword", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to The password and confirmation password do not match..
         /// </summary>
-        internal static string ViewModel_ConfirmPasswordNoMatch {
+        public static string ViewModel_ConfirmPasswordNoMatch {
             get {
                 return ResourceManager.GetString("ViewModel_ConfirmPasswordNoMatch", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
-        internal static string ViewModel_Email {
+        public static string ViewModel_Email {
             get {
                 return ResourceManager.GetString("ViewModel_Email", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Email invalid..
         /// </summary>
-        internal static string ViewModel_EmailInvalid {
+        public static string ViewModel_EmailInvalid {
             get {
                 return ResourceManager.GetString("ViewModel_EmailInvalid", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Email is required..
         /// </summary>
-        internal static string ViewModel_EmailRequired {
+        public static string ViewModel_EmailRequired {
             get {
                 return ResourceManager.GetString("ViewModel_EmailRequired", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
-        internal static string ViewModel_Password {
+        public static string ViewModel_Password {
             get {
                 return ResourceManager.GetString("ViewModel_Password", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to The {0} must be at least {2} characters long..
         /// </summary>
-        internal static string ViewModel_PasswordLengthError {
+        public static string ViewModel_PasswordLengthError {
             get {
                 return ResourceManager.GetString("ViewModel_PasswordLengthError", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Password is required..
         /// </summary>
-        internal static string ViewModel_PasswordRequired {
+        public static string ViewModel_PasswordRequired {
             get {
                 return ResourceManager.GetString("ViewModel_PasswordRequired", resourceCulture);
             }
@@ -207,9 +207,27 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Remember me?.
         /// </summary>
-        internal static string ViewModel_RememberMe {
+        public static string ViewModel_RememberMe {
             get {
                 return ResourceManager.GetString("ViewModel_RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        public static string ViewModel_UserName {
+            get {
+                return ResourceManager.GetString("ViewModel_UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username is required..
+        /// </summary>
+        public static string ViewModel_UserNameRequired {
+            get {
+                return ResourceManager.GetString("ViewModel_UserNameRequired", resourceCulture);
             }
         }
     }

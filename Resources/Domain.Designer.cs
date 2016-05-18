@@ -8,11 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Resources
-{
+namespace Resources {
     using System;
-
-
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,202 +22,166 @@ namespace Resources
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Domain
-    {
-
+    public class Domain {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Domain()
-        {
+        internal Domain() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if (object.ReferenceEquals(resourceMan, null))
-                {
+        public static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Domain", typeof(Domain).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        public static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Body.
         /// </summary>
-        public static string ArticleBody
-        {
-            get
-            {
+        public static string ArticleBody {
+            get {
                 return ResourceManager.GetString("ArticleBody", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Headline.
         /// </summary>
-        public static string ArticleHeadline
-        {
-            get
-            {
+        public static string ArticleHeadline {
+            get {
                 return ResourceManager.GetString("ArticleHeadline", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Contact type name too long..
         /// </summary>
-        public static string ContactTypeNameLengthError
-        {
-            get
-            {
+        public static string ContactTypeNameLengthError {
+            get {
                 return ResourceManager.GetString("ContactTypeNameLengthError", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Contact too long..
         /// </summary>
-        public static string ContactValueLengthError
-        {
-            get
-            {
+        public static string ContactValueLengthError {
+            get {
                 return ResourceManager.GetString("ContactValueLengthError", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Id.
         /// </summary>
-        public static string EntityPrimaryKey
-        {
-            get
-            {
+        public static string EntityPrimaryKey {
+            get {
                 return ResourceManager.GetString("EntityPrimaryKey", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to First, Lastname.
         /// </summary>
-        public static string FirstLastname
-        {
-            get
-            {
+        public static string FirstLastname {
+            get {
                 return ResourceManager.GetString("FirstLastname", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to First name.
         /// </summary>
-        public static string Firstname
-        {
-            get
-            {
+        public static string Firstname {
+            get {
                 return ResourceManager.GetString("Firstname", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to First name too long..
         /// </summary>
-        public static string FirstnameLengthError
-        {
-            get
-            {
+        public static string FirstnameLengthError {
+            get {
                 return ResourceManager.GetString("FirstnameLengthError", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Last, Firstname.
         /// </summary>
-        public static string LastFirstname
-        {
-            get
-            {
+        public static string LastFirstname {
+            get {
                 return ResourceManager.GetString("LastFirstname", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Last name.
         /// </summary>
-        public static string Lastname
-        {
-            get
-            {
+        public static string Lastname {
+            get {
                 return ResourceManager.GetString("Lastname", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Last name too long..
         /// </summary>
-        public static string LastnameLengthError
-        {
-            get
-            {
+        public static string LastnameLengthError {
+            get {
                 return ResourceManager.GetString("LastnameLengthError", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
-        public static string Person_Date2
-        {
-            get
-            {
+        public static string Person_Date2 {
+            get {
                 return ResourceManager.GetString("Person_Date2", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Date and Time.
         /// </summary>
-        public static string Person_DateTime2
-        {
-            get
-            {
+        public static string Person_DateTime2 {
+            get {
                 return ResourceManager.GetString("Person_DateTime2", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Time.
         /// </summary>
-        public static string Person_Time2
-        {
-            get
-            {
+        public static string Person_Time2 {
+            get {
                 return ResourceManager.GetString("Person_Time2", resourceCulture);
             }
         }
