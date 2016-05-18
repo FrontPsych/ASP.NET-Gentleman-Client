@@ -56,6 +56,7 @@ namespace DAL
         //public IRoleRepository Roles => GetRepo<IRoleRepository>();
         //public IUserClaimRepository UserClaims => GetRepo<IUserClaimRepository>();
         //public IUserLoginRepository UserLogins => GetRepo<IUserLoginRepository>();
+
         public IArticleRepository Articles => GetRepo<IArticleRepository>();
         public IUserIntRepository UsersInt => GetRepo<IUserIntRepository>();
         public IUserRoleIntRepository UserRolesInt => GetRepo<IUserRoleIntRepository>();
