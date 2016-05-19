@@ -248,6 +248,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -259,6 +260,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AccountBindingViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1837,11 +1839,13 @@
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Language\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
