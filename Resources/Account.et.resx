@@ -135,6 +135,9 @@
   <data name="RegisterTitle" xml:space="preserve">
     <value>Registreeru</value>
   </data>
+  <data name="User_Panel" xml:space="preserve">
+    <value>Kasutajapaneel</value>
+  </data>
   <data name="VerifyCodeViewModel_Code" xml:space="preserve">
     <value>Kood</value>
   </data>

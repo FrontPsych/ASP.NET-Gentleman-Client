@@ -160,6 +160,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to G.
+        /// </summary>
+        public static string G {
+            get {
+                return ResourceManager.GetString("G", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gentle.
+        /// </summary>
+        public static string Gentle {
+            get {
+                return ResourceManager.GetString("Gentle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Home {
@@ -187,11 +205,29 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logg off.
+        ///   Looks up a localized string similar to Log off.
         /// </summary>
         public static string LogOff {
             get {
                 return ResourceManager.GetString("LogOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M.
+        /// </summary>
+        public static string M {
+            get {
+                return ResourceManager.GetString("M", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to man.
+        /// </summary>
+        public static string Man {
+            get {
+                return ResourceManager.GetString("Man", resourceCulture);
             }
         }
         

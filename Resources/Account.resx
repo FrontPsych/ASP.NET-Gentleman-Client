@@ -135,6 +135,9 @@
   <data name="RegisterTitle" xml:space="preserve">
     <value>Register</value>
   </data>
+  <data name="User_Panel" xml:space="preserve">
+    <value>User panel</value>
+  </data>
   <data name="VerifyCodeViewModel_Code" xml:space="preserve">
     <value>Code</value>
   </data>

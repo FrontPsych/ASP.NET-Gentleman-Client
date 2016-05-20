@@ -115,6 +115,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User panel.
+        /// </summary>
+        public static string User_Panel {
+            get {
+                return ResourceManager.GetString("User_Panel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Code.
         /// </summary>
         public static string VerifyCodeViewModel_Code {
