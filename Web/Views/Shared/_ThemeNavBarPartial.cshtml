@@ -1,0 +1,38 @@
+﻿<div class="container-header">
+
+    <!-- ===== Sticky Navigation ===== -->
+    <div class="navbar navbar-inverse bs-docs-nav navbar-fixed-top sticky-navigation bgc-two">
+        <div class="container">
+            <div class="navbar-header">
+
+                <!-- ===== Logo on Sticky Navigation Bar ===== -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#onepage-navigation">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">@Resources.Common.ApplicationName</a>
+
+            </div>
+
+            <!-- ===== Navigation Menu ===== -->
+            <div class="navbar-collapse collapse" id="onepage-navigation">
+                <ul class="nav navbar-nav navbar-right main-navigation">
+                    <li><a href="#home">@Resources.Common.Home</a></li>
+                    <li><a href="#section-about">@Resources.Common.About</a></li>
+                    <li><a href="#section-features">@Resources.Common.Features</a></li>
+                    <li><a href="#section-contact">@Resources.Common.Contact</a></li>
+
+
+                    @Html.Partial("_LoginPartial")
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== End Sticky Navigation ===== -->
+
+</div>

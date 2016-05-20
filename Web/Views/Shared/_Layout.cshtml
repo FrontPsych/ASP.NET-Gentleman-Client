@@ -2,6 +2,9 @@
 @{
     var titleTag = (string.IsNullOrWhiteSpace(ViewBag.Title) ? "" : ViewBag.Title + " - ") + Resources.Common.ApplicationName;
 
+
+    var asd = ViewBag.asd;
+
     // set up global js variable, to hold culture code
     // it is later used for globalize, cldr and moment
     var currentCultureCode = "root";
@@ -44,8 +47,8 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
             </div>
+            @Html.Partial("_LoginPartial")
         </div>
     </div>
     <div class="container body-content">
@@ -55,7 +58,7 @@
             <p>
                 &copy; @DateTime.Now.Year - @Resources.Common.ApplicationName
                 @if (Request.IsAuthenticated)
-            {
+                {
                     <text>(<a href="javascript:document.getElementById('logoutForm').submit()">@Resources.Common.LogOff</a>)</text>
                 }
                 else
@@ -69,6 +72,6 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

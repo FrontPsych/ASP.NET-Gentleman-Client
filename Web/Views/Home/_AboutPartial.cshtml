@@ -1,0 +1,81 @@
+﻿@model Web.ViewModels.HomeSinglePageViewModel
+@{
+    ViewBag.Title = Resources.Common.ApplicationName;
+}
+
+<!-- ===== Section About ===== -->
+<section class="section-about bgc-one" id="section-about">
+
+    <div class="container">
+
+        <h2>@Resources.Common.About</h2>
+        <div class="underline"></div>
+
+        <p>
+            @Model.AboutArticle.ArticleBody
+        </p>
+
+        <div class="row">
+            <div class="col-md-6">
+                <!-- ===== Images ===== -->
+                <div class="side-images pull-left">
+                    <img src="images/pro.jpg" alt="Feature" class="img-responsive">
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <div class="about text-left">
+
+                    <!-- ===== Features List ===== -->
+                    <ul class="feature-list">
+
+                        <li>
+                            <!-- ===== Icons ===== -->
+                            <div class="icon-custom pull-left">
+                                <i class="fa fa-laptop"></i>
+                            </div>
+                            <!-- ===== Detailt Post===== -->
+                            <div class="details pull-left">
+                                <h6>@Model.AboutArticleColumnOne.ArticleHeadline</h6>
+                                <p>
+                                    @Model.AboutArticleColumnOne.ArticleBody
+                                </p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <!-- ===== Icons ===== -->
+                            <div class="icon-custom pull-left">
+                                <i class="fa fa-cog"></i>
+                            </div>
+                            <!-- ===== Details Post ===== -->
+                            <div class="details pull-left">
+                                <h6>Eesy edit</h6>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet error cum, aut beatae officiis doloribus vel odit a quia veritatis illum ad minima vitae unde, mollitia sapiente placeat id fuga?
+                                </p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <!-- ===== Icons ===== -->
+                            <div class="icon-custom pull-left">
+                                <i class="fa fa-photo"></i>
+                            </div>
+                            <!-- ===== Detail Post ===== -->
+                            <div class="details pull-left">
+                                <h6>Photo</h6>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. At cumque, dignissimos perspiciatis veritatis pariatur! Cupiditate minus sunt ex delectus possimus, adipisci et at animi eos soluta, ipsam, molestias facere dignissimos!
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

@@ -61,7 +61,16 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MyApplication.
+        ///   Looks up a localized string similar to Gentleman score saver.
+        /// </summary>
+        public static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GENTLEMAN.
         /// </summary>
         public static string ApplicationName {
             get {
@@ -75,6 +84,24 @@ namespace Resources {
         public static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        public static string Contact {
+            get {
+                return ResourceManager.GetString("Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Features.
+        /// </summary>
+        public static string Features {
+            get {
+                return ResourceManager.GetString("Features", resourceCulture);
             }
         }
         
@@ -129,6 +156,24 @@ namespace Resources {
         public static string FieldMustBeDataTypeTime {
             get {
                 return ResourceManager.GetString("FieldMustBeDataTypeTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
             }
         }
         
@@ -201,6 +246,15 @@ namespace Resources {
         public static string SelectOptionLabel {
             get {
                 return ResourceManager.GetString("SelectOptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to save scores and see statistics.
+        /// </summary>
+        public static string ShortDescription {
+            get {
+                return ResourceManager.GetString("ShortDescription", resourceCulture);
             }
         }
         

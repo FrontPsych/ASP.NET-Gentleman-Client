@@ -1,0 +1,98 @@
+﻿@using System.Threading
+@{
+    var titleTag = (string.IsNullOrWhiteSpace(ViewBag.Title) ? "" : ViewBag.Title + " - ") + Resources.Common.ApplicationName;
+
+    // set up global js variable, to hold culture code
+    // it is later used for globalize, cldr and moment
+    var currentCultureCode = "root";
+    switch (Thread.CurrentThread.CurrentCulture.ToString())
+    {
+        case "et-EE":
+            currentCultureCode = "et";
+            break;
+        case "en-US":
+            currentCultureCode = "en";
+            break;
+        default:
+            currentCultureCode = Thread.CurrentThread.CurrentCulture.ToString();
+            break;
+    }
+
+    //ToDo: Fix all theme image references.
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- ===== Site Title===== -->
+    <title>@titleTag</title>
+
+    <!-- ===== Google Fonts ===== -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic|Raleway:500,600,700">
+
+    <!-- ===== CSS ===== -->
+    @Styles.Render("~/Content/Theme")
+    @Styles.Render("~/Content/Theme/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @RenderSection("Styles", required: false)
+
+</head>
+
+<body>
+    <!-- ===== preloader ===== -->
+    <div class="preloaders">
+        <div class="preloaders-gif">&nbsp;</div>
+    </div>
+
+
+    <!-- ===== Header ===== -->
+    <header id="home">
+        <!-- ===== Over color Image ===== -->
+        <div class="background-overlay">
+            @Html.Partial("_ThemeNavBarPartial")
+            <!-- ===== Welcome ===== -->
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-10 col-md-offset-1 distance-header">
+                        <h1>
+                            <strong>@Resources.Common.About</strong>
+                        </h1>
+                        <div class="underline"></div>
+                        <h1>
+                            @Resources.Common.ShortDescription
+                        </h1>
+
+                        <!-- ===== Call To Action Button ===== -->
+                        <div id="call_to_action-5" class="distance-button">
+                            <a href="#section-about" class="btn standard-button">()</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- ===== End Welcome ===== -->
+        </div>
+    </header>
+
+    @RenderBody()
+
+    <!-- ===== Footer ===== -->
+    @Html.Partial("_FooterPartial")
+
+    <!-- ===== Script Javascript ===== -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryExtra")
+    @Scripts.Render("~/bundles/Theme")
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

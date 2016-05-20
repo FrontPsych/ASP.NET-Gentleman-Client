@@ -1,9 +1,19 @@
-﻿@model Web.ViewModels.HomeIndexViewModel
+﻿@model Web.ViewModels.HomeSinglePageViewModel
 @{
-    ViewBag.Title = Resources.Common.ApplicationName;
+ViewBag.Title = Resources.Common.ApplicationName;
 }
 
-<div class="jumbotron">
-    @Html.Raw(Model.Article.ArticleHeadline)
-    @Html.Raw(Model.Article.ArticleBody)
-</div>
+
+@Html.Partial("_AboutPartial")
+
+@Html.Partial("_FeaturesPartial")
+
+@Html.Partial("_ContactPartial")
+
+
+
+
+
+
+
+

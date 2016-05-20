@@ -69,8 +69,8 @@ namespace Web
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
                 // In production mode set AllowInsecureHttp = false
-                AllowInsecureHttp = false
-            };
+                AllowInsecureHttp = false 
+            }; //ALLOW INSECURE HTTP TRUEKS ET LUBADA TAVALISE HTTP PEALT
 
             // Enable the application to use bearer tokens to authenticate users
             app.UseOAuthBearerTokens(OAuthOptions);

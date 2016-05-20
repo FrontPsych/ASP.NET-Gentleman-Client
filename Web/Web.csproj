@@ -1228,6 +1228,43 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Theme\assets\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\Theme\assets\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\Theme\assets\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Theme\css\bootstrap.css" />
+    <Content Include="Content\Theme\css\bootstrap.min.css" />
+    <Content Include="Content\Theme\css\colors\color.css" />
+    <Content Include="Content\Theme\css\nivo-lightbox.css" />
+    <Content Include="Content\Theme\css\owl.carousel.css" />
+    <Content Include="Content\Theme\css\owl.theme.css" />
+    <Content Include="Content\Theme\css\preloader.css" />
+    <Content Include="Content\Theme\css\responsive.css" />
+    <Content Include="Content\Theme\css\responsive.min.css" />
+    <Content Include="Content\Theme\css\style.css" />
+    <Content Include="Content\Theme\css\style.min.css" />
+    <Content Include="Content\Theme\css\themes\default\close%402x.png" />
+    <Content Include="Content\Theme\css\themes\default\close.png" />
+    <Content Include="Content\Theme\css\themes\default\default.css" />
+    <Content Include="Content\Theme\css\themes\default\loading%402x.gif" />
+    <Content Include="Content\Theme\css\themes\default\loading.gif" />
+    <Content Include="Content\Theme\css\themes\default\next%402x.png" />
+    <Content Include="Content\Theme\css\themes\default\next.png" />
+    <Content Include="Content\Theme\css\themes\default\prev%402x.png" />
+    <Content Include="Content\Theme\css\themes\default\prev.png" />
+    <Content Include="Content\Theme\images\bg-testimonial.jpg" />
+    <Content Include="Content\Theme\images\bg.jpg" />
+    <Content Include="Content\Theme\images\bgheader.jpg" />
+    <Content Include="Content\Theme\images\magic-pixel.png" />
+    <Content Include="Content\Theme\images\portfolio\1.jpg" />
+    <Content Include="Content\Theme\images\portfolio\2.png" />
+    <Content Include="Content\Theme\images\portfolio\3.jpg" />
+    <Content Include="Content\Theme\images\portfolio\4.jpg" />
+    <Content Include="Content\Theme\images\preloader.gif" />
+    <Content Include="Content\Theme\images\pro.jpg" />
+    <Content Include="Content\Theme\images\rec.png" />
+    <Content Include="Content\Theme\images\testimonials\doe1.jpg" />
+    <Content Include="Content\Theme\images\testimonials\doe2.jpg" />
+    <Content Include="Content\Theme\images\testimonials\doe3.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1620,6 +1657,11 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Theme\assets\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Theme\assets\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Theme\assets\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Theme\assets\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Theme\assets\font-awesome\fonts\FontAwesome.otf" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1638,6 +1680,29 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Theme\custom.js" />
+    <Content Include="Scripts\Theme\custom.min.js" />
+    <Content Include="Scripts\Theme\html5shiv.js" />
+    <Content Include="Scripts\Theme\html5shiv.min.js" />
+    <Content Include="Scripts\Theme\jquery.fitvids.js" />
+    <Content Include="Scripts\Theme\jquery.localScroll.js" />
+    <Content Include="Scripts\Theme\jquery.localScroll.min.js" />
+    <Content Include="Scripts\Theme\jquery.nav.js" />
+    <Content Include="Scripts\Theme\jquery.nav.min.js" />
+    <Content Include="Scripts\Theme\jquery.scrollTo.js" />
+    <Content Include="Scripts\Theme\jquery.scrollTo.min.js" />
+    <Content Include="Scripts\Theme\matchMedia.js" />
+    <Content Include="Scripts\Theme\matchMedia.min.js" />
+    <Content Include="Scripts\Theme\nivo-lightbox.js" />
+    <Content Include="Scripts\Theme\nivo-lightbox.min.js" />
+    <Content Include="Scripts\Theme\owl.carousel.js" />
+    <Content Include="Scripts\Theme\owl.carousel.min.js" />
+    <Content Include="Scripts\Theme\preloader.js" />
+    <Content Include="Scripts\Theme\preloader.min.js" />
+    <Content Include="Scripts\Theme\respond.min.js" />
+    <Content Include="Scripts\Theme\retina.js" />
+    <Content Include="Scripts\Theme\retina.min.js" />
+    <Content Include="Scripts\Theme\SmoothScroll.js" />
     <Content Include="Scripts\tinymce\jquery.tinymce.min.js" />
     <Content Include="Scripts\tinymce\license.txt" />
     <Content Include="Scripts\tinymce\plugins\advlist\plugin.js" />
@@ -1808,8 +1873,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
@@ -1840,6 +1903,14 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_ThemeLayout.cshtml" />
+    <Content Include="Views\Shared\_ThemeNavBarPartial.cshtml" />
+    <Content Include="Views\Home\_AboutPartial.cshtml" />
+    <Content Include="Views\Home\_FeaturesPartial.cshtml" />
+    <Content Include="Views\Home\_ContactPartial.cshtml" />
+    <Content Include="Views\Shared\_ThemeLayoutAccountSpecific.cshtml" />
+    <Content Include="Views\Shared\_ThemeNavBarPartialAccountSpecific.cshtml" />
+    <Content Include="Views\Shared\_FooterPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
