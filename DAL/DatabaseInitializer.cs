@@ -142,7 +142,10 @@ namespace DAL
                 FirstName = "Das",
                 LastName = "User",
                 PasswordHash = pwdHasher.HashPassword("admin"),
-                SecurityStamp = Guid.NewGuid().ToString()
+                SecurityStamp = Guid.NewGuid().ToString(),
+
+                PersonName = "fakingtestjuuser",
+                RegisterDate = DateTime.Now.Date
             });
 
             context.SaveChanges();
@@ -155,6 +158,18 @@ namespace DAL
             });
 
             context.SaveChanges();
+
+
+            //Person for that Identity User
+            //context.Persons.Add(new Person()
+            //{
+            //    PersonName = "Peeter",
+            //    Nickname = "Pets",
+            //    User = context.UsersInt.FirstOrDefault(a => a.UserName == "lebo@lebo.ee")
+            //});
+
+            //context.SaveChanges();
+
         }
     }
 }

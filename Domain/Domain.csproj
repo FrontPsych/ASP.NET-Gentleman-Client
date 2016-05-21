@@ -63,7 +63,7 @@
     <Compile Include="Models\MultiLangString.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Translation.cs" />
-    <Compile Include="Models\PersonGameRow.cs" />
+    <Compile Include="Models\UserGameRow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

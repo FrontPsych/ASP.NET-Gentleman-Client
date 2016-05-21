@@ -58,12 +58,12 @@ namespace DAL
         public IDbSet<Article> Articles { get; set; }
         public IDbSet<MultiLangString> MultiLangStrings { get; set; }
         public IDbSet<Translation> Translations { get; set; }
-        public IDbSet<Person> Persons { get; set; }
+        //public IDbSet<Person> Persons { get; set; }
         public IDbSet<GameType> GameTypes { get; set; }
         public IDbSet<GameRowType> GameRowTypes { get; set; }
         public IDbSet<Game> Games { get; set; }
         public IDbSet<GameRow> GameRows { get; set; }
-        public IDbSet<PersonGameRow> PersonGameRows { get; set; }
+        public IDbSet<UserGameRow> PersonGameRows { get; set; }
 
 
         // Identity tables, PK - string

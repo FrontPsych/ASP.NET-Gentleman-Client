@@ -117,82 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ArticleBody" xml:space="preserve">
-    <value>Body</value>
+  <data name="ClientDataTypeModelValidatorProvider_FieldMustBeDate" xml:space="preserve">
+    <value>The field {0} must be a date.</value>
   </data>
-  <data name="ArticleHeadline" xml:space="preserve">
-    <value>Headline</value>
+  <data name="ClientDataTypeModelValidatorProvider_FieldMustBeDateTime" xml:space="preserve">
+    <value>The field {0} must be a datetime.</value>
   </data>
-  <data name="ContactTypeNameLengthError" xml:space="preserve">
-    <value>Contact type name too long.</value>
-  </data>
-  <data name="ContactValueLengthError" xml:space="preserve">
-    <value>Contact too long.</value>
-  </data>
-  <data name="EndBet" xml:space="preserve">
-    <value>End bet</value>
-  </data>
-  <data name="EntityPrimaryKey" xml:space="preserve">
-    <value>Id</value>
-  </data>
-  <data name="FirstLastname" xml:space="preserve">
-    <value>First, Lastname</value>
-  </data>
-  <data name="Firstname" xml:space="preserve">
-    <value>First name</value>
-  </data>
-  <data name="FirstnameLengthError" xml:space="preserve">
-    <value>First name too long.</value>
-  </data>
-  <data name="GameName" xml:space="preserve">
-    <value>Game name</value>
-  </data>
-  <data name="GameRowTypeDescription" xml:space="preserve">
-    <value>Gamerow description</value>
-  </data>
-  <data name="GameTypeName" xml:space="preserve">
-    <value>Game type name</value>
-  </data>
-  <data name="LastFirstname" xml:space="preserve">
-    <value>Last, Firstname</value>
-  </data>
-  <data name="Lastname" xml:space="preserve">
-    <value>Last name</value>
-  </data>
-  <data name="LastnameLengthError" xml:space="preserve">
-    <value>Last name too long.</value>
-  </data>
-  <data name="Nickname" xml:space="preserve">
-    <value>Nickname</value>
-  </data>
-  <data name="PersonGameRowComment" xml:space="preserve">
-    <value>Comment about person's gamerow</value>
-  </data>
-  <data name="PersonName" xml:space="preserve">
-    <value>Person name</value>
-  </data>
-  <data name="Person_Date2" xml:space="preserve">
-    <value>Date</value>
-  </data>
-  <data name="Person_DateTime2" xml:space="preserve">
-    <value>Date and Time</value>
-  </data>
-  <data name="Person_Time2" xml:space="preserve">
-    <value>Time</value>
-  </data>
-  <data name="RegisterDate" xml:space="preserve">
-    <value>Register date</value>
-  </data>
-  <data name="SortOrder" xml:space="preserve">
-    <value>Sort order</value>
-  </data>
-  <data name="StartBet" xml:space="preserve">
-    <value>Start bet</value>
-  </data>
-  <data name="StartedAt" xml:space="preserve">
-    <value>Started at</value>
-  </data>
-  <data name="StoppedAt" xml:space="preserve">
-    <value>Stopped at</value>
+  <data name="ClientDataTypeModelValidatorProvider_FieldMustBeTime" xml:space="preserve">
+    <value>The field {0} must be a time.</value>
   </data>
 </root>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Domain.Models;
@@ -49,8 +50,33 @@ namespace Domain.Identity
 
 
         //Additional (custom) properties
-        //////////public virtual List<Person> Persons { get; set; }
-        public virtual List<Person> Persons { get; set; }
+
+        //ToDo: What to do with random users
+        [Required(ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Resources.Common))]
+        [MinLength(3, ErrorMessageResourceName = "FieldMinLength", ErrorMessageResourceType = typeof(Resources.Common))]
+        [MaxLength(18, ErrorMessageResourceName = "FieldMaxLength", ErrorMessageResourceType = typeof(Resources.Common))]
+        [Display(Name = nameof(Resources.Domain.PersonName), ResourceType = typeof(Resources.Domain))]
+        public string PersonName { get; set; }
+
+        //[Required(ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Resources.Common))]
+        [MaxLength(12, ErrorMessageResourceName = "FieldMaxLength", ErrorMessageResourceType = typeof(Resources.Common))]
+        [Display(Name = nameof(Resources.Domain.Nickname), ResourceType = typeof(Resources.Domain))]
+        public string Nickname { get; set; }
+
+        [Required(ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Resources.Common))]
+        [DataType(DataType.Date, ErrorMessageResourceName = "FieldMustBeDataTypeDate", ErrorMessageResourceType = typeof(Resources.Common))]
+        [Display(Name = nameof(Resources.Domain.RegisterDate), ResourceType = typeof(Resources.Domain))]
+        public DateTime RegisterDate { get; set; }
+
+        #region Foreign Keys
+
+        public virtual ICollection<UserGameRow> PersonGameRows { get; set; }
+
+        public virtual ICollection<Game> Games { get; set; }
+
+        #endregion
+
+        //custom properties end
 
     }
 

@@ -1,5 +1,7 @@
 ﻿@using System.Threading
+@using Domain.Identity
 @using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
 @using Web.Helpers
 @{
     var culture = CultureHelper.GetCurrentUICulture().ToLower();
@@ -9,6 +11,15 @@
     string returnUrl = Request?.Url?.AbsolutePath + "?" + nameValueCollection;
 
     //var returnUrl = Request.Url?.PathAndQuery ?? "";
+    var str = User.Identity.GetUserId();
+    var personName = "";
+
+    if (!string.IsNullOrWhiteSpace(str))
+    {
+        UserInt user = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(int.Parse(str));
+        personName = user.PersonName;
+    }
+
 }
 
 
@@ -22,7 +33,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                    @User.Identity.GetUserName() <b class="caret"></b>
+                    @personName<b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                     <li>@Html.ActionLink(@Resources.Account.User_Panel, "Index", new {area = "", controller = "Admin"})</li>
@@ -34,7 +45,7 @@
 
             <li class="dropdown">
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                    @Resources.Common.Language
+                    @Resources.Common.Language<b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                     <li>

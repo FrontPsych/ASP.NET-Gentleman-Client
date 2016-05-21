@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Identity;
 
 namespace Domain.Models
 {
@@ -31,8 +32,8 @@ namespace Domain.Models
         public int GameTypeId { get; set; }
         public virtual GameType GameType { get; set; }
 
-        public int PersonId { get; set; }
-        public virtual Person Person { get; set; }
+        public int UserIntId { get; set; }
+        public virtual UserInt UserInt { get; set; }
 
         public virtual ICollection<GameRow> GameRows { get; set; }
 

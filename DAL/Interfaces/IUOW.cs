@@ -22,10 +22,8 @@ namespace DAL.Interfaces
         IEFRepository<MultiLangString> MultiLangStrings { get; }
         IEFRepository<Translation> Translations { get; }
 
-
        
         IArticleRepository Articles { get; }
-
 
         // Identity, PK - string
         //IUserRepository Users { get; }

@@ -250,6 +250,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Register date.
+        /// </summary>
+        public static string RegisterDate {
+            get {
+                return ResourceManager.GetString("RegisterDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sort order.
         /// </summary>
         public static string SortOrder {

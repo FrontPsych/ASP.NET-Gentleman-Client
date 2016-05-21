@@ -4,12 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Identity;
 
 namespace Domain.Models
 {
-    public class PersonGameRow
+    public class UserGameRow
     {
-        public int PersonGameRowId { get; set; }
+        public int UserGameRowId { get; set; }
 
         [Required(ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Resources.Common))]
         [Range(0, int.MaxValue, ErrorMessageResourceType = typeof(Resources.Common), ErrorMessageResourceName = "RangeError")]
@@ -26,8 +27,8 @@ namespace Domain.Models
 
         #region Foreign Keys
 
-        public int PersonId { get; set; }
-        public virtual Person Person { get; set; }
+        public int UserIntId { get; set; }
+        public virtual UserInt UserInt { get; set; }
         
         public int GameRowId { get; set; }
         public virtual GameRow GameRow { get; set; }
