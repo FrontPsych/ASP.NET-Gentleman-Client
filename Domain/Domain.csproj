@@ -56,8 +56,14 @@
     <Compile Include="Identity\UserRole.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\GameRow.cs" />
+    <Compile Include="Models\GameRowType.cs" />
+    <Compile Include="Models\GameType.cs" />
     <Compile Include="Models\MultiLangString.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Translation.cs" />
+    <Compile Include="Models\PersonGameRow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

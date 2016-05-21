@@ -183,4 +183,7 @@
   <data name="ShortDescription" xml:space="preserve">
     <value>salvesta punkte ja vaata statistikat</value>
   </data>
+  <data name="RangeError" xml:space="preserve">
+    <value>Väärtus peab jääma vahemikku {0} ja {1}</value>
+  </data>
 </root>

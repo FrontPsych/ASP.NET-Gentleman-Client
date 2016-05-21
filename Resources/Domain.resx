@@ -129,6 +129,9 @@
   <data name="ContactValueLengthError" xml:space="preserve">
     <value>Contact too long.</value>
   </data>
+  <data name="EndBet" xml:space="preserve">
+    <value>End bet</value>
+  </data>
   <data name="EntityPrimaryKey" xml:space="preserve">
     <value>Id</value>
   </data>
@@ -141,6 +144,15 @@
   <data name="FirstnameLengthError" xml:space="preserve">
     <value>First name too long.</value>
   </data>
+  <data name="GameName" xml:space="preserve">
+    <value>Game name</value>
+  </data>
+  <data name="GameRowTypeDescription" xml:space="preserve">
+    <value>Gamerow description</value>
+  </data>
+  <data name="GameTypeName" xml:space="preserve">
+    <value>Game type name</value>
+  </data>
   <data name="LastFirstname" xml:space="preserve">
     <value>Last, Firstname</value>
   </data>
@@ -150,6 +162,15 @@
   <data name="LastnameLengthError" xml:space="preserve">
     <value>Last name too long.</value>
   </data>
+  <data name="Nickname" xml:space="preserve">
+    <value>Nickname</value>
+  </data>
+  <data name="PersonGameRowComment" xml:space="preserve">
+    <value>Comment about person's gamerow</value>
+  </data>
+  <data name="PersonName" xml:space="preserve">
+    <value>Person name</value>
+  </data>
   <data name="Person_Date2" xml:space="preserve">
     <value>Date</value>
   </data>
@@ -158,5 +179,17 @@
   </data>
   <data name="Person_Time2" xml:space="preserve">
     <value>Time</value>
+  </data>
+  <data name="SortOrder" xml:space="preserve">
+    <value>Sort order</value>
+  </data>
+  <data name="StartBet" xml:space="preserve">
+    <value>Start bet</value>
+  </data>
+  <data name="StartedAt" xml:space="preserve">
+    <value>Started at</value>
+  </data>
+  <data name="StoppedAt" xml:space="preserve">
+    <value>Stopped at</value>
   </data>
 </root>

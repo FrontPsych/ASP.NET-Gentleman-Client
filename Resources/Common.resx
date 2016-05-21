@@ -198,4 +198,7 @@
   <data name="Man" xml:space="preserve">
     <value>man</value>
   </data>
+  <data name="RangeError" xml:space="preserve">
+    <value>Value must remain between {0} and {1}</value>
+  </data>
 </root>

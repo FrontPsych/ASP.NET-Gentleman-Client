@@ -123,6 +123,9 @@
   <data name="ArticleHeadline" xml:space="preserve">
     <value>Pealkiri</value>
   </data>
+  <data name="EndBet" xml:space="preserve">
+    <value>Lõpetuspakkumine</value>
+  </data>
   <data name="FirstLastName" xml:space="preserve">
     <value>Ees-, perekonnanimi</value>
   </data>
@@ -132,6 +135,15 @@
   <data name="FirstnameLengthError" xml:space="preserve">
     <value>Eesnimi on liiga pikk.</value>
   </data>
+  <data name="GameName" xml:space="preserve">
+    <value>Mängu nimi</value>
+  </data>
+  <data name="GameRowTypeDescription" xml:space="preserve">
+    <value>Mängurea kirjeldus</value>
+  </data>
+  <data name="GameTypeName" xml:space="preserve">
+    <value>Mängu tüübi nimetus</value>
+  </data>
   <data name="LastFirstName" xml:space="preserve">
     <value>Pere-, eesnimi</value>
   </data>
@@ -140,6 +152,15 @@
   </data>
   <data name="LastnameLengthError" xml:space="preserve">
     <value>Perekonnanimi on liiga pikk.</value>
+  </data>
+  <data name="Nickname" xml:space="preserve">
+    <value>Hüüdnimi</value>
+  </data>
+  <data name="PersonGameRowComment" xml:space="preserve">
+    <value>Inimese mängurea kohta kommentaar</value>
+  </data>
+  <data name="PersonName" xml:space="preserve">
+    <value>Inimese nimi</value>
   </data>
   <data name="Person_Date2" xml:space="preserve">
     <value>Kuupäev</value>
@@ -152,5 +173,17 @@
   </data>
   <data name="SelectOptionLabel" xml:space="preserve">
     <value>--- Vali! ---</value>
+  </data>
+  <data name="SortOrder" xml:space="preserve">
+    <value>Sorteerimise järjekord</value>
+  </data>
+  <data name="StartBet" xml:space="preserve">
+    <value>Alguspakkumine</value>
+  </data>
+  <data name="StartedAt" xml:space="preserve">
+    <value>Alustatud</value>
+  </data>
+  <data name="StoppedAt" xml:space="preserve">
+    <value>Lõpetatud</value>
   </data>
 </root>

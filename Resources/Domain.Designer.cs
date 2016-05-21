@@ -97,6 +97,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to End bet.
+        /// </summary>
+        public static string EndBet {
+            get {
+                return ResourceManager.GetString("EndBet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Id.
         /// </summary>
         public static string EntityPrimaryKey {
@@ -133,6 +142,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Game name.
+        /// </summary>
+        public static string GameName {
+            get {
+                return ResourceManager.GetString("GameName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gamerow description.
+        /// </summary>
+        public static string GameRowTypeDescription {
+            get {
+                return ResourceManager.GetString("GameRowTypeDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game type name.
+        /// </summary>
+        public static string GameTypeName {
+            get {
+                return ResourceManager.GetString("GameTypeName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last, Firstname.
         /// </summary>
         public static string LastFirstname {
@@ -160,6 +196,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nickname.
+        /// </summary>
+        public static string Nickname {
+            get {
+                return ResourceManager.GetString("Nickname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
         public static string Person_Date2 {
@@ -183,6 +228,60 @@ namespace Resources {
         public static string Person_Time2 {
             get {
                 return ResourceManager.GetString("Person_Time2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment about person&apos;s gamerow.
+        /// </summary>
+        public static string PersonGameRowComment {
+            get {
+                return ResourceManager.GetString("PersonGameRowComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Person name.
+        /// </summary>
+        public static string PersonName {
+            get {
+                return ResourceManager.GetString("PersonName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sort order.
+        /// </summary>
+        public static string SortOrder {
+            get {
+                return ResourceManager.GetString("SortOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start bet.
+        /// </summary>
+        public static string StartBet {
+            get {
+                return ResourceManager.GetString("StartBet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Started at.
+        /// </summary>
+        public static string StartedAt {
+            get {
+                return ResourceManager.GetString("StartedAt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopped at.
+        /// </summary>
+        public static string StoppedAt {
+            get {
+                return ResourceManager.GetString("StoppedAt", resourceCulture);
             }
         }
     }
