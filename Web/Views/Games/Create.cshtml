@@ -1,0 +1,100 @@
+﻿@using HtmlHelpers
+@model Web.ViewModels.GameCreateViewModel
+
+@{
+    ViewBag.Title = Resources.Common.NewGame;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section AdminStyles {
+    @*<link href="~/Scripts/AdminTheme/plugins/select2/select2.css" rel="stylesheet" />*@
+    <style>
+        #table_tb {
+            width: 50px;
+            text-align:left;
+        }
+    </style>
+}
+
+<div class="row">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">@Resources.Common.GameDetails</h3>
+                </div>
+                <div class="box-body">
+                    @Html.Partial("_CreateGamePartial", Model)
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col (left) -->
+    }
+
+    @*<div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>*@
+</div>
+<div class="row">
+    @if (Model.GameTime)
+    {
+        //"Create", "Games", FormMethod.Post, new { Class = "form inline" })
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="col-xs-12">
+                @Html.Partial("_CreateUserGameRowsPartial", Model)
+            </div>
+        }
+    }
+</div>
+
+
+@section AdminScripts {
+    @*<script src="~/Scripts/AdminTheme/plugins/select2/select2.full.js"></script>
+    <script>
+        $(function() {
+            //Initialize Select2 Elements
+            $(".select2").select2();
+        });
+    </script>*@
+    <script>
+        $('#icol').click(function () {
+            if ($('#name_box').val()) {
+                $('#mtable thead tr').append($("<th>"));
+                $('#mtable tbody tr').append($("<td>"));
+                $('#mtable thead tr>th:last').html($('#name_box').val());
+                $('#mtable tbody tr').each(function() {
+                    $(this).children('td:last').append(
+                        $('<div class="form-group form-inline"><input id="table_tb" type="text" class="form-control pull-center"><input id="table_tb" type="text" class="form-control pull-center" ></div>'));
+                });
+                $('#name_box').val('');
+            } else {
+                alert("@Resources.Common.FieldEmpty");
+            }
+        });
+
+        $(document).ready(function ($) {
+            $('#add-room').on('click', function () {
+                jQuery.get('/Building/AddRoom').done(function (html) {
+                    $('#rooms-list').append(html);
+                });
+            });
+        });
+    </script>
+    @if (Model.GameTime)
+    {
+        <script>
+            $("#dropdown").prop("disabled", true);
+            $("#new-game-btn").hide();
+            $('#Game_GameName').attr('readonly', true);
+            $('#Game_GameName').addClass('input-disabled');
+            $('#NumberOfPlayers').attr('readonly', true);
+            $('#NumberOfPlayers').addClass('input-disabled');
+        </script>
+    }
+}

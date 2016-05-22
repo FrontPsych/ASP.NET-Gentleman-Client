@@ -25,7 +25,7 @@ namespace Web.Controllers
         {
             var vm = new AdminIndexViewModel()
             {
-                //LoggedInPerson = this._uow.Persons.FindPersonByIdentityUser(int.Parse(User.Identity.GetUserId()))
+
             };
 
             return View(vm);

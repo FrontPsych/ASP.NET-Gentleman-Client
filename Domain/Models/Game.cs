@@ -11,6 +11,12 @@ namespace Domain.Models
 {
     public class Game : BaseEntity
     {
+
+        public Game()
+        {
+                StartedAt = DateTime.Now;
+        }
+
         public int GameId { get; set; }
 
         [Required(ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Resources.Common))]
@@ -25,10 +31,9 @@ namespace Domain.Models
         [Display(Name = nameof(Resources.Domain.StoppedAt), ResourceType = typeof(Resources.Domain))]
         public DateTime? StoppedAt { get; set; }
 
-
-
         #region Foreign Keys
 
+        [Required(ErrorMessageResourceName = "SelectionIsRequired", ErrorMessageResourceType = typeof(Resources.Common))]
         public int GameTypeId { get; set; }
         public virtual GameType GameType { get; set; }
 

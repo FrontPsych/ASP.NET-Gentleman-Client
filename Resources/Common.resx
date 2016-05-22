@@ -163,7 +163,7 @@
     <value>Register</value>
   </data>
   <data name="SelectOptionLabel" xml:space="preserve">
-    <value>--- Select! ---</value>
+    <value>--- Select ---</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>
@@ -199,6 +199,81 @@
     <value>man</value>
   </data>
   <data name="RangeError" xml:space="preserve">
-    <value>Value must remain between {0} and {1}</value>
+    <value>Value must remain between {1} and {2}</value>
+  </data>
+  <data name="MainNavigation" xml:space="preserve">
+    <value>Main navigation</value>
+  </data>
+  <data name="UserNavigation" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Estonian" xml:space="preserve">
+    <value>Estonian</value>
+  </data>
+  <data name="MemberSince" xml:space="preserve">
+    <value>Member since</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="BackToHomepage" xml:space="preserve">
+    <value>Back to homepage</value>
+  </data>
+  <data name="AboutGentleman" xml:space="preserve">
+    <value>About Gentleman</value>
+  </data>
+  <data name="AdminLandingPage" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="HighScores" xml:space="preserve">
+    <value>High scores</value>
+  </data>
+  <data name="NewGame" xml:space="preserve">
+    <value>New game</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="UserHistory" xml:space="preserve">
+    <value>User history</value>
+  </data>
+  <data name="UserSettings" xml:space="preserve">
+    <value>User settings</value>
+  </data>
+  <data name="UserStatistics" xml:space="preserve">
+    <value>User statistics</value>
+  </data>
+  <data name="GameDetails" xml:space="preserve">
+    <value>Game details</value>
+  </data>
+  <data name="PlaceholderInsertGameName" xml:space="preserve">
+    <value>Insert game name ...</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="GameTable" xml:space="preserve">
+    <value>Game table</value>
+  </data>
+  <data name="SelectionIsRequired" xml:space="preserve">
+    <value>Selection is required</value>
+  </data>
+  <data name="NewPlayerPlaceholder" xml:space="preserve">
+    <value>New player ...</value>
+  </data>
+  <data name="FieldEmpty" xml:space="preserve">
+    <value>Field is empty</value>
+  </data>
+  <data name="FieldError" xml:space="preserve">
+    <value>Something went wrong inserting {0} field.</value>
+  </data>
+  <data name="NumberOfPlayers" xml:space="preserve">
+    <value>Number of players</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
   </data>
 </root>

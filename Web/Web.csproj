@@ -248,6 +248,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -262,6 +263,7 @@
     <Compile Include="ViewModels\AccountBindingViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
+    <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModel.cs" />
   </ItemGroup>
@@ -1285,6 +1287,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\flags.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Theme\assets\font-awesome\css\font-awesome.css" />
     <Content Include="Content\Theme\assets\font-awesome\css\font-awesome.min.css" />
@@ -1713,6 +1716,8 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Images\DefaultProfile.png" />
+    <Content Include="Images\flags.png" />
+    <Content Include="Images\landingpagePic1.jpg" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -2806,6 +2811,15 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_AdminNavBarPartial.cshtml" />
     <Content Include="Views\Shared\_AdminLeftSideBarPartial.cshtml" />
+    <Content Include="Views\Games\Create.cshtml" />
+    <Content Include="Views\Games\Delete.cshtml" />
+    <Content Include="Views\Games\Details.cshtml" />
+    <Content Include="Views\Games\Edit.cshtml" />
+    <Content Include="Views\Games\Index.cshtml" />
+    <Content Include="Views\Games\_CreateGamePartial.cshtml" />
+    <Content Include="Views\Games\_CreateUserGameRowsPartial.cshtml" />
+    <Content Include="Views\Games\EditorTemplates\UserGameRow.cshtml" />
+    <Content Include="Views\Games\EditorTemplates\GameRow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

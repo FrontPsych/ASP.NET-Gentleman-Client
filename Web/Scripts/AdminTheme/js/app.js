@@ -242,10 +242,10 @@ function _init() {
       var _this = this;
       _this.fix();
       _this.fixSidebar();
-      $(window, ".wrapper").resize(function () {
-        _this.fix();
-        _this.fixSidebar();
-      });
+      $(window, ".wrapper").resize(_.debounce(function () {
+          _this.fix();
+          _this.fixSidebar();
+      }, 250));
     },
     fix: function () {
       //Get window height and the wrapper height

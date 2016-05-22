@@ -153,6 +153,15 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Gamerow description.
         /// </summary>
+        public static string GameRowDescription {
+            get {
+                return ResourceManager.GetString("GameRowDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gamerow description.
+        /// </summary>
         public static string GameRowTypeDescription {
             get {
                 return ResourceManager.GetString("GameRowTypeDescription", resourceCulture);

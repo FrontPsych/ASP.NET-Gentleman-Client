@@ -174,8 +174,8 @@
   <data name="Features" xml:space="preserve">
     <value>Võimalused</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Algus</value>
+  <data name="BackToHomepage" xml:space="preserve">
+    <value>Tagasi kodulehele</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Keel</value>
@@ -184,6 +184,87 @@
     <value>salvesta punkte ja vaata statistikat</value>
   </data>
   <data name="RangeError" xml:space="preserve">
-    <value>Väärtus peab jääma vahemikku {0} ja {1}</value>
+    <value>Väärtus peab jääma vahemikku {1} ja {2}</value>
+  </data>
+  <data name="MainNavigation" xml:space="preserve">
+    <value>Põhinavigatsioon</value>
+  </data>
+  <data name="UserNavigation" xml:space="preserve">
+    <value>Kasutaja</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>Inglise keel</value>
+  </data>
+  <data name="Estonian" xml:space="preserve">
+    <value>Eesti keel</value>
+  </data>
+  <data name="MemberSince" xml:space="preserve">
+    <value>Kasutaja alates</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Seaded</value>
+  </data>
+  <data name="AboutGentleman" xml:space="preserve">
+    <value>Mis on Gentleman </value>
+  </data>
+  <data name="AdminLandingPage" xml:space="preserve">
+    <value>Algus</value>
+  </data>
+  <data name="HighScores" xml:space="preserve">
+    <value>Edetabelid</value>
+  </data>
+  <data name="MainPage" xml:space="preserve">
+    <value>Pealeht</value>
+  </data>
+  <data name="NewGame" xml:space="preserve">
+    <value>Uus mäng</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>Uudised</value>
+  </data>
+  <data name="UserHistory" xml:space="preserve">
+    <value>Ajalugu</value>
+  </data>
+  <data name="UserSettings" xml:space="preserve">
+    <value>Seaded</value>
+  </data>
+  <data name="UserStatistics" xml:space="preserve">
+    <value>Statistika</value>
+  </data>
+  <data name="GameDetails" xml:space="preserve">
+    <value>Mängu andmed</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Algus</value>
+  </data>
+  <data name="PlaceholderInsertGameName" xml:space="preserve">
+    <value>Sisesta mängu nimi ...</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Loo uus</value>
+  </data>
+  <data name="GameTable" xml:space="preserve">
+    <value>Mängutabel</value>
+  </data>
+  <data name="SelectionIsRequired" xml:space="preserve">
+    <value>Valik on kohustuslik</value>
+  </data>
+  <data name="SelectOptionLabel" xml:space="preserve">
+    <value>--- Vali ---</value>
+  </data>
+  <data name="NewPlayerPlaceholder" xml:space="preserve">
+    <value>Uus mängija</value>
+  </data>
+  <data name="FieldEmpty" xml:space="preserve">
+    <value>Väli on tühi</value>
+  </data>
+  <data name="FieldError" xml:space="preserve">
+    <value>Midagi läks valesti välja {0} sisestamisel.</value>
+  </data>
+  <data name="NumberOfPlayers" xml:space="preserve">
+    <value>Mängijate arv</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Salvesta</value>
   </data>
 </root>

@@ -49,6 +49,11 @@ namespace DAL.Helpers
                 {typeof (IUserClaimIntRepository), dbContext => new UserClaimIntRepository(dbContext)},
                 {typeof (IUserLoginIntRepository), dbContext => new UserLoginIntRepository(dbContext)},
                 {typeof (IRoleIntRepository), dbContext => new RoleIntRepository(dbContext)},
+                {typeof (IGameRepository), dbContext => new GameRepository(dbContext)},
+                {typeof (IGameTypeRepository), dbContext => new GameTypeRepository(dbContext)},
+                {typeof (IGameRowTypesRepository), dbContext => new GameRowTypesRepository(dbContext)},
+                {typeof (IGameRowRepository), dbContext => new GameRowRepository(dbContext)},
+                {typeof (IUserGameRowRepository), dbContext => new UserGameRowRepository(dbContext)},
 
             };
         }

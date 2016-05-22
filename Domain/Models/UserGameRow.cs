@@ -25,6 +25,9 @@ namespace Domain.Models
         [Display(Name = nameof(Resources.Domain.PersonGameRowComment), ResourceType = typeof(Resources.Domain))]
         public string Comment { get; set; }
 
+        public string Index { get; set; } //needed for EditorForMany
+
+
         #region Foreign Keys
 
         public int UserIntId { get; set; }

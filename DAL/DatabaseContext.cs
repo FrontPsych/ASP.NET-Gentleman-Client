@@ -157,6 +157,7 @@ namespace DAL
             _logger.Info("Disposing: " + disposing + " _instanceId: " + _instanceId);
             base.Dispose(disposing);
         }
-
+        
+        // Ettevaatust kui automaatselt kontrollereid luua, siis siia võivad tekkida autogenereeritud Identity DbSetid
     }
 }

@@ -70,11 +70,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About Gentleman.
+        /// </summary>
+        public static string AboutGentleman {
+            get {
+                return ResourceManager.GetString("AboutGentleman", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dashboard.
+        /// </summary>
+        public static string AdminLandingPage {
+            get {
+                return ResourceManager.GetString("AdminLandingPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GENTLEMAN.
         /// </summary>
         public static string ApplicationName {
             get {
                 return ResourceManager.GetString("ApplicationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back to homepage.
+        /// </summary>
+        public static string BackToHomepage {
+            get {
+                return ResourceManager.GetString("BackToHomepage", resourceCulture);
             }
         }
         
@@ -97,11 +124,56 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create.
+        /// </summary>
+        public static string Create {
+            get {
+                return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English.
+        /// </summary>
+        public static string English {
+            get {
+                return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estonian.
+        /// </summary>
+        public static string Estonian {
+            get {
+                return ResourceManager.GetString("Estonian", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Features.
         /// </summary>
         public static string Features {
             get {
                 return ResourceManager.GetString("Features", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field is empty.
+        /// </summary>
+        public static string FieldEmpty {
+            get {
+                return ResourceManager.GetString("FieldEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Something went wrong inserting {0} field..
+        /// </summary>
+        public static string FieldError {
+            get {
+                return ResourceManager.GetString("FieldError", resourceCulture);
             }
         }
         
@@ -169,11 +241,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Game details.
+        /// </summary>
+        public static string GameDetails {
+            get {
+                return ResourceManager.GetString("GameDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game table.
+        /// </summary>
+        public static string GameTable {
+            get {
+                return ResourceManager.GetString("GameTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gentle.
         /// </summary>
         public static string Gentle {
             get {
                 return ResourceManager.GetString("Gentle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to High scores.
+        /// </summary>
+        public static string HighScores {
+            get {
+                return ResourceManager.GetString("HighScores", resourceCulture);
             }
         }
         
@@ -223,6 +322,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Main navigation.
+        /// </summary>
+        public static string MainNavigation {
+            get {
+                return ResourceManager.GetString("MainNavigation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to man.
         /// </summary>
         public static string Man {
@@ -241,11 +349,56 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Member since.
+        /// </summary>
+        public static string MemberSince {
+            get {
+                return ResourceManager.GetString("MemberSince", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New game.
+        /// </summary>
+        public static string NewGame {
+            get {
+                return ResourceManager.GetString("NewGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New player ....
+        /// </summary>
+        public static string NewPlayerPlaceholder {
+            get {
+                return ResourceManager.GetString("NewPlayerPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to News.
+        /// </summary>
+        public static string News {
+            get {
+                return ResourceManager.GetString("News", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
         public static string Next {
             get {
                 return ResourceManager.GetString("Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of players.
+        /// </summary>
+        public static string NumberOfPlayers {
+            get {
+                return ResourceManager.GetString("NumberOfPlayers", resourceCulture);
             }
         }
         
@@ -259,6 +412,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Insert game name ....
+        /// </summary>
+        public static string PlaceholderInsertGameName {
+            get {
+                return ResourceManager.GetString("PlaceholderInsertGameName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Previous.
         /// </summary>
         public static string Previous {
@@ -268,7 +430,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Value must remain between {0} and {1}.
+        ///   Looks up a localized string similar to Value must remain between {1} and {2}.
         /// </summary>
         public static string RangeError {
             get {
@@ -286,11 +448,38 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to --- Select! ---.
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selection is required.
+        /// </summary>
+        public static string SelectionIsRequired {
+            get {
+                return ResourceManager.GetString("SelectionIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --- Select ---.
         /// </summary>
         public static string SelectOptionLabel {
             get {
                 return ResourceManager.GetString("SelectOptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
             }
         }
         
@@ -309,6 +498,42 @@ namespace Resources {
         public static string Submit {
             get {
                 return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User history.
+        /// </summary>
+        public static string UserHistory {
+            get {
+                return ResourceManager.GetString("UserHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        public static string UserNavigation {
+            get {
+                return ResourceManager.GetString("UserNavigation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User settings.
+        /// </summary>
+        public static string UserSettings {
+            get {
+                return ResourceManager.GetString("UserSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User statistics.
+        /// </summary>
+        public static string UserStatistics {
+            get {
+                return ResourceManager.GetString("UserStatistics", resourceCulture);
             }
         }
     }

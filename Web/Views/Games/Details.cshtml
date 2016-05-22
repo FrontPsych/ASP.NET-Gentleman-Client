@@ -1,0 +1,90 @@
+﻿@model Web.ViewModels.GameDetailsViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Game</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Game.GameType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game.GameType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game.UserInt.PersonName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game.UserInt.PersonName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game.GameName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game.GameName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game.StartedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game.StartedAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game.StoppedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game.StoppedAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game.CreatedAtDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game.CreatedAtDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game.ModifiedAtDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game.ModifiedAtDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game.ModifiedBy)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Game.GameId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

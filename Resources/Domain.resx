@@ -147,6 +147,9 @@
   <data name="GameName" xml:space="preserve">
     <value>Game name</value>
   </data>
+  <data name="GameRowDescription" xml:space="preserve">
+    <value>Gamerow description</value>
+  </data>
   <data name="GameRowTypeDescription" xml:space="preserve">
     <value>Gamerow description</value>
   </data>

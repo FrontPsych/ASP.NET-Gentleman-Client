@@ -24,6 +24,12 @@ namespace DAL.Interfaces
 
        
         IArticleRepository Articles { get; }
+        IGameRepository Games { get; }
+        IGameTypeRepository GameTypes { get; }
+        IGameRowTypesRepository GameRowTypes { get; }
+        IGameRowRepository GameRows { get; }
+        IUserGameRowRepository UserGameRows { get; }
+
 
         // Identity, PK - string
         //IUserRepository Users { get; }

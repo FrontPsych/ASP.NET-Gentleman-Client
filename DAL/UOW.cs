@@ -58,6 +58,11 @@ namespace DAL
         //public IUserLoginRepository UserLogins => GetRepo<IUserLoginRepository>();
 
         public IArticleRepository Articles => GetRepo<IArticleRepository>();
+        public IGameRepository Games => GetRepo<IGameRepository>();
+        public IGameTypeRepository GameTypes => GetRepo<IGameTypeRepository>();
+        public IGameRowTypesRepository GameRowTypes => GetRepo<IGameRowTypesRepository>();
+        public IGameRowRepository GameRows => GetRepo<IGameRowRepository>();
+        public IUserGameRowRepository UserGameRows => GetRepo<IUserGameRowRepository>();
         public IUserIntRepository UsersInt => GetRepo<IUserIntRepository>();
         public IUserRoleIntRepository UserRolesInt => GetRepo<IUserRoleIntRepository>();
         public IRoleIntRepository RolesInt => GetRepo<IRoleIntRepository>();

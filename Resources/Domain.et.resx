@@ -138,6 +138,9 @@
   <data name="GameName" xml:space="preserve">
     <value>Mängu nimi</value>
   </data>
+  <data name="GameRowDescription" xml:space="preserve">
+    <value>Mängurea kirjeldus</value>
+  </data>
   <data name="GameRowTypeDescription" xml:space="preserve">
     <value>Mängurea kirjeldus</value>
   </data>

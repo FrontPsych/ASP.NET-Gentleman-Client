@@ -17,11 +17,15 @@ namespace Domain.Models
         [Display(Name = nameof(Resources.Domain.SortOrder), ResourceType = typeof(Resources.Domain))]
         public int SortOrder { get; set; }
 
+        [Required(ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Resources.Common))]
+        [MaxLength(20, ErrorMessageResourceName = "FieldMaxLength", ErrorMessageResourceType = typeof(Resources.Common))]
+        [Display(Name = nameof(Resources.Domain.GameRowDescription), ResourceType = typeof(Resources.Domain))]
+        public string Description { get; set; }
         #region Foreign Keys
 
-        [ForeignKey(nameof(Description))]
-        public int DescriptionId { get; set; }
-        public virtual MultiLangString Description { get; set; }
+        //[ForeignKey(nameof(Description))]
+        //public int DescriptionId { get; set; }
+        //public virtual MultiLangString Description { get; set; }
 
         public int GameTypeId { get; set; } //ToDo, kas see on mõistlik.
         public virtual GameType GameType { get; set; }

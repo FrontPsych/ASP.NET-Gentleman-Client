@@ -1,0 +1,53 @@
+.flag {
+    width: 25px;
+    height: 15px;
+    background: url('../Images/flags.png') no-repeat 
+}
+
+.flag.flag-ad {background-position: -25px 0}
+.flag.flag-al {background-position: -50px 0}
+.flag.flag-at {background-position: -75px 0}
+.flag.flag-ba {background-position: -100px 0}
+.flag.flag-be {background-position: -125px 0}
+.flag.flag-bg {background-position: -150px 0}
+.flag.flag-by {background-position: 0 -15px}
+.flag.flag-ch {background-position: -25px -15px}
+.flag.flag-cz {background-position: -50px -15px}
+.flag.flag-de {background-position: -75px -15px}
+.flag.flag-dk {background-position: -100px -15px}
+.flag.flag-et {background-position: -125px -15px}
+.flag.flag-es {background-position: -150px -15px}
+.flag.flag-fi {background-position: 0 -30px}
+.flag.flag-fo {background-position: -25px -30px}
+.flag.flag-fr {background-position: -50px -30px}
+.flag.flag-en {background-position: -75px -30px}
+.flag.flag-gi {background-position: -100px -30px}
+.flag.flag-gr {background-position: -125px -30px}
+.flag.flag-hr {background-position: -150px -30px}
+.flag.flag-hu {background-position: 0 -45px}
+.flag.flag-ie {background-position: -25px -45px}
+.flag.flag-is {background-position: -50px -45px}
+.flag.flag-it {background-position: -75px -45px}
+.flag.flag-li {background-position: -100px -45px}
+.flag.flag-lt {background-position: -125px -45px}
+.flag.flag-lu {background-position: -150px -45px}
+.flag.flag-lv {background-position: 0 -60px}
+.flag.flag-mc {background-position: -25px -60px}
+.flag.flag-md {background-position: -50px -60px}
+.flag.flag-me {background-position: -75px -60px}
+.flag.flag-mk {background-position: -100px -60px}
+.flag.flag-mt {background-position: -125px -60px}
+.flag.flag-nl {background-position: -150px -60px}
+.flag.flag-no {background-position: 0 -75px}
+.flag.flag-pl {background-position: -25px -75px}
+.flag.flag-pt {background-position: -50px -75px}
+.flag.flag-ro {background-position: -75px -75px}
+.flag.flag-rs {background-position: -100px -75px}
+.flag.flag-ru {background-position: -125px -75px}
+.flag.flag-se {background-position: -150px -75px}
+.flag.flag-si {background-position: 0 -90px}
+.flag.flag-sk {background-position: -25px -90px}
+.flag.flag-sm {background-position: -50px -90px}
+.flag.flag-ua {background-position: -75px -90px}
+.flag.flag-va {background-position: -100px -90px}
+

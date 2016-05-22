@@ -47,7 +47,6 @@
         <div class="preloaders-gif">&nbsp;</div>
     </div>
 
-
     <!-- ===== Header ===== -->
     <header id="home">
         <!-- ===== Over color Image ===== -->
@@ -86,8 +85,14 @@
     <!-- ===== Footer ===== -->
     @Html.Partial("_FooterPartial")
 
-    <!-- ===== Script Javascript ===== -->
+<!-- ===== Script Javascript ===== -->
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/cldr")
+    @Scripts.Render("~/bundles/globalize")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/moment")
+
+    @*@Scripts.Render("~/bundles/jquery")*@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jqueryExtra")
     @Scripts.Render("~/bundles/Theme")

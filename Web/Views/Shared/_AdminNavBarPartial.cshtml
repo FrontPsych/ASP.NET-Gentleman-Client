@@ -1,11 +1,18 @@
-﻿@using System.Globalization
-@using System.Threading
-@using Domain.Identity
-@using Domain.Models
+﻿@using Domain.Identity
 @using Microsoft.AspNet.Identity
 @using Microsoft.AspNet.Identity.Owin
+@using Web.Helpers
 @{
     UserInt user = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(int.Parse(User.Identity.GetUserId()));
+
+    var culture = CultureHelper.GetCurrentUICulture().ToLower();
+
+    var nameValueCollection = HttpUtility.ParseQueryString(Request?.Url?.Query ?? "");
+    nameValueCollection.Remove("culture");
+    string returnUrl = Request?.Url?.AbsolutePath + "?" + nameValueCollection;
+
+    //var returnUrl = Request.Url?.PathAndQuery ?? "";
+
 }
 <nav class="navbar navbar-static-top">
     <!-- Sidebar toggle button-->
@@ -26,10 +33,10 @@
                         <img src="/Images/DefaultProfile.png" class="img-circle" alt="User Image">
                         <p>
                             @user.PersonName
-                            <small>Member since @user.RegisterDate.Date.ToShortDateString()</small>
+                            <small>@Resources.Common.MemberSince @user.RegisterDate.Date.ToShortDateString()</small>
                         </p>
                     </li>
-                    <!-- Menu Body -->
+                    @*<!-- Menu Body -->
                     <li class="user-body">
                         <div class="row">
                             <div class="col-xs-4 text-center">
@@ -43,18 +50,51 @@
                             </div>
                         </div>
                         <!-- /.row -->
-                    </li>
+                    </li>*@
                     <!-- Menu Footer-->
-                    <li class="user-footer">
-                        <div class="pull-left">
-                            <a href="#" class="btn btn-default btn-flat">Profile</a>
-                        </div>
-                        <div class="pull-right">
-                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                        </div>
+                    @using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm"}))
+                    {
+                        @Html.AntiForgeryToken()
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a class="btn btn-default btn-flat" href="#">@Resources.Common.Settings</a>
+                            </div>
+                            <div class="pull-right">
+                                <a class="btn btn-default btn-flat" href="javascript:document.getElementById('logoutForm').submit()">@Resources.Common.LogOff</a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </li>
+
+            <!-- Language Toggle Button -->
+            <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-language"></i></a>
+                <ul class="dropdown-menu">
+
+                    <!-- Menu Footer-->
+                    <li>
+                        <ul class="list-inline">
+                            <li>
+                                <img class="flag flag-et" />
+                            </li>
+                            <li>
+                                @Html.ActionLink(Resources.Common.Estonian, "SetLanguage", new { area = "", controller = "Language", culture = "et", returnUrl }, htmlAttributes: new { id = "langLinkEst" })
+                            </li>
+                        </ul>
+                    <li>
+                    <li>
+                        <ul class="list-inline">
+                            <li>
+                                <img class="flag flag-en" />
+                            </li>
+                            <li>
+                                @Html.ActionLink(Resources.Common.English, "SetLanguage", new { area = "", controller = "Language", culture = "en", returnUrl }, htmlAttributes: new { id = "langLinkEng" })
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </li>
         </ul>
     </div>
-</nav>
+</nav> 

@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DateTimeEditors.cs" />
+    <Compile Include="EditorForMany.cs" />
     <Compile Include="Properties\MvcResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -78,16 +78,17 @@ namespace DAL.Repositories
             return DbSet.Find(id);
         }
 
-        public void Add(T entity)
+        public T Add(T entity)
         {
             DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
             if (dbEntityEntry.State != EntityState.Detached)
             {
                 dbEntityEntry.State = EntityState.Added;
+                return null;
             }
             else
             {
-                DbSet.Add(entity);
+                 return DbSet.Add(entity);
             }
         }
 

@@ -21,12 +21,65 @@ namespace DAL
 
             SeedIdentity(context);
             SeedArticles(context);
-
+            SeedTypes(context);
 
             // restore state
             context.Configuration.AutoDetectChangesEnabled = autoDetectChangesEnabled;
 
             base.Seed(context);
+        }
+
+        private void SeedTypes(DataBaseContext context)
+        {
+            var gameType = new GameType()
+            {
+                Name = "Gentleman classic",
+            };
+
+            context.GameTypes.Add(gameType);
+            context.SaveChanges();
+
+            var gameType2 = new GameType()
+            {
+                Name = "Gentleman with blinds"
+            };
+            context.GameTypes.Add(gameType2);
+            context.SaveChanges();
+
+            //ToDo: Translations gametype nimedele ka?
+            //ToDo: Lisada gametypeidele descriptionid ja translationsid.
+
+            var setValue = 7;
+            var rightWay = false;
+            for (int i = 1; i < 15; i++)
+            {
+                var gamerowtype = new GameRowType()
+                {
+                    GameType = gameType,
+                    SortOrder = i,
+                    Description = setValue.ToString()
+                };
+
+                context.GameRowTypes.Add(gamerowtype);
+                context.SaveChanges();
+
+                var gamerowtype2 = new GameRowType()
+                {
+                    GameType = gameType2,
+                    SortOrder = i,
+                    Description = setValue.ToString()
+                };
+
+                context.GameRowTypes.Add(gamerowtype2);
+                context.SaveChanges();
+
+                if (setValue == 1 && !rightWay)
+                {
+                    rightWay = true;
+                    continue;
+                }
+                setValue = rightWay ? setValue + 1 : setValue - 1;
+            }
         }
 
         private void SeedArticles(DataBaseContext context)
@@ -144,7 +197,7 @@ namespace DAL
                 PasswordHash = pwdHasher.HashPassword("admin"),
                 SecurityStamp = Guid.NewGuid().ToString(),
 
-                PersonName = "fakingtestjuuser",
+                PersonName = "testjuuser",
                 RegisterDate = DateTime.Now.Date
             });
 
