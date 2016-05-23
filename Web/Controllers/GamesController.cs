@@ -61,7 +61,7 @@ namespace Web.Controllers
             var vm = new GameCreateViewModel()
             {
                 //UserMultiSelectList = new MultiSelectList(this._uow.UsersInt.All, nameof(UserInt.Id), nameof(UserInt.PersonName)),
-                GameTypeSelectList = new SelectList(this._uow.GameTypes.All, "GameTypeId", "Name")
+                GameTypeSelectList = new SelectList(this._uow.GameTypes.All, nameof(GameType.GameTypeId), nameof(GameType.Name))
             };
 
             return View(vm);
@@ -76,15 +76,28 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (vm.GameTime)
+                {
+                    vm.UserGameRows.ForEach(x => this._uow.UserGameRows.Add(x));
+                    //vm.Game.StoppedAt = DateTime.Now;
+                    //this._uow.Games.Update(vm.Game);
+                    this._uow.Commit();
+                    return RedirectToAction("Index", "Admin"); //Redirect to current game details?
+                }
+             
                 vm.Game.UserInt = this._uow.UsersInt.GetById(int.Parse(User.Identity.GetUserId()));
+                vm.Game.StartedAt = DateTime.Now;
                 vm.Game = this._uow.Games.Add(vm.Game);
+                vm.Game.GameRows = this._uow.GameRowTypes.GetRowTypesByGameType(this._uow.GameTypes.GetById(vm.Game.GameTypeId)).Select(x => new GameRow(vm.Game, x)).ToList();
+
                 this._uow.Commit();
 
                 vm.GameTime = true;
             }
 
-            vm.GameRows = this._uow.GameRowTypes.GetRowTypesByGameType(this._uow.GameTypes.GetById(vm.Game.GameTypeId)).Select(x => new GameRow(vm.Game, x)).ToList();
-            vm.GameTypeSelectList = new SelectList(this._uow.GameTypes.All, "GameTypeId", "Name");
+            //ToDo: revamp logic
+            vm.UserGameRows = this._uow.UserGameRows.MapUserGameRows(vm.Game.GameRows.ToList(), vm.Game.UserInt);
+            vm.GameTypeSelectList = new SelectList(this._uow.GameTypes.All, nameof(GameType.GameTypeId), nameof(GameType.Name));
 
             return View(vm);
         }

@@ -109,6 +109,7 @@
     <Compile Include="Repositories\UserLoginRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\UserRoleRepository.cs" />
+    <Compile Include="Services\StatisticsService.cs" />
     <Compile Include="UOW.cs" />
     <Compile Include="UserNameResolver.cs" />
   </ItemGroup>

@@ -138,7 +138,7 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new UserInt { UserName = model.Email, Email = model.Email };
+                var user = new UserInt { UserName = model.Email, Email = model.Email, PersonName = model.PersonName};
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

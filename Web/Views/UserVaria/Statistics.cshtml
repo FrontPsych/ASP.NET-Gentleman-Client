@@ -1,0 +1,59 @@
+﻿@using Domain.Models
+@model Web.ViewModels.StatisticsUserVariaViewModel
+
+@{
+    ViewBag.Title = Resources.Common.UserStatistics;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">@Resources.Common.GameStatistics</h3>
+                <div class="box-tools">
+                    <div class="input-group" style="width: 150px;">
+                        @Html.DropDownListFor(model => model.AllGameTypeSelectListId, Model.AllGameTypeSelectList, Resources.Common.SelectOptionLabel, new {@class = "form-control"})
+                    </div>
+                </div>
+            </div><!-- /.box-header -->
+
+            <div class="box-body table-responsive no-padding">
+                <table id="GameTypeTableInfo" class="table table-condensed">
+                    <tr>
+                        <th>@Resources.Domain.GameName</th>
+                        <th>@Resources.Common.NumberOfPlayers</th>
+                        <th>@Resources.Common.YourScore</th>
+                        <th>@Resources.Common.YourPosition</th>
+                        <th>@Resources.Common.Duration</th>
+                    </tr>
+
+                </table>
+            </div><!-- /.box - body-->
+        </div><!-- /.box-->
+    </div>
+</div>
+
+@section AdminScripts {
+    <script>
+        $('#AllGameTypeSelectListId').change(function () {
+            var value = $(this).val();
+            //debugger;
+            $.ajax({
+                url: '@Url.Action("GetStatistics")',
+                type: "POST",
+                data: { gameTypeId: value },
+                success: function(data) {
+                    $("#GameTypeTableInfo tr:gt(0)").remove();
+
+                    $(data).each(function(index, element) {
+                        $('#GameTypeTableInfo').append('<tr><td> ' + element.GameName + ' </td> <td> ' + element.NumberOfPlayers + ' </td><td> ' + element.YourScore + ' </td><td> ' + element.YourPosition + ' </td><td> ' + element.Duration + ' </td></tr>');
+                    });
+                    
+                }
+            });
+        });
+    </script>
+}

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Identity;
+using Domain.Models;
 using Microsoft.AspNet.Identity;
 
 namespace DAL.Interfaces
@@ -19,6 +20,7 @@ namespace DAL.Interfaces
     public interface IUserRepository<in TKey, TUser> : IEFRepository<TUser>
         where TUser : class, IUser<TKey>
     {
+        List<Game> GetGivenTypeGamesUserHasPlayed(int gameTypeId, int userId);
         TUser GetUserByUserName(string userName);
         TUser GetUserByEmail(string email);
         bool IsInRole(TKey userId, string roleName);

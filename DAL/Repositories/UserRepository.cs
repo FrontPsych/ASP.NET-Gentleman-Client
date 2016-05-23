@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL.Interfaces;
 using Domain.Identity;
+using Domain.Models;
 
 namespace DAL.Repositories
 {
@@ -14,12 +15,24 @@ namespace DAL.Repositories
         public UserIntRepository(IDbContext dbContext) : base(dbContext)
         {
         }
+        public List<Game> GetGivenTypeGamesUserHasPlayed(int gameTypeId, int userId)
+        {
+            var games = DbSet.FirstOrDefault(x => x.Id == userId).Games.Where(x => x.GameTypeId == gameTypeId).ToList();
+            //var games = DbSet.S(x => x.GameRow.Game.GameTypeId == gameTypeId && x.UserIntId == userId).Select(x => x.GameRow.Game).ToList();
+            return games;
+        }
+
     }
 
     public class UserRepository : UserRepository<string, Role, User, UserClaim, UserLogin, UserRole>, IUserRepository
     {
         public UserRepository(IDbContext dbContext) : base(dbContext)
         {
+        }
+
+        public List<Game> GetGivenTypeGamesUserHasPlayed(int gameTypeId, int userId)
+        {
+            throw new NotImplementedException();
         }
     }
 
@@ -35,6 +48,7 @@ namespace DAL.Repositories
             : base(dbContext)
         {
         }
+
 
         public TUser GetUserByUserName(string userName)
         {

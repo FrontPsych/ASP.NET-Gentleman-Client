@@ -10,6 +10,6 @@ namespace DAL.Interfaces
    
     public interface IGameRepository : IEFRepository<Game>
     {
-    
+     
     }
 }

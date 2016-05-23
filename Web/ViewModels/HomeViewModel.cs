@@ -5,6 +5,8 @@ namespace Web.ViewModels
 {
     public class HomeSinglePageViewModel
     {
+        //ToDo: Is there a better way?
+
         public Article Article { get; set; }
 
 

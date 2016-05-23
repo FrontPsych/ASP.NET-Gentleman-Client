@@ -133,6 +133,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Duration.
+        /// </summary>
+        public static string Duration {
+            get {
+                return ResourceManager.GetString("Duration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English.
         /// </summary>
         public static string English {
@@ -246,6 +255,15 @@ namespace Resources {
         public static string GameDetails {
             get {
                 return ResourceManager.GetString("GameDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game statistics.
+        /// </summary>
+        public static string GameStatistics {
+            get {
+                return ResourceManager.GetString("GameStatistics", resourceCulture);
             }
         }
         
@@ -534,6 +552,24 @@ namespace Resources {
         public static string UserStatistics {
             get {
                 return ResourceManager.GetString("UserStatistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Place.
+        /// </summary>
+        public static string YourPosition {
+            get {
+                return ResourceManager.GetString("YourPosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End score.
+        /// </summary>
+        public static string YourScore {
+            get {
+                return ResourceManager.GetString("YourScore", resourceCulture);
             }
         }
     }

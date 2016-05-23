@@ -27,19 +27,27 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var row in Model.GameRows)
-                {
-                    <tr>
-                        <td>@row.GameRowType.Description</td>
-                        <td>
-                            <div class="form-group form-inline">
-                                <input id="table_tb" type="text" class="form-control pull-center">
-                                <input id="table_tb" type="text" class="form-control pull-center">
-                            </div>
-                        </td>
-                        @*@Html.EditorForMany(row => row.UserGameRows, x => x.Index)*@
-                    </tr>
-                }
+            @Html.HiddenFor(m => m.GameTime)
+            @*@Html.HiddenFor(m => m.Game.GameId)*@
+
+            @for (var i = 0; i < Model.UserGameRows.Count; i++)
+            {
+                var userGameRow = Model.UserGameRows.ElementAt(i);
+                <tr>
+                    <td>@userGameRow.GameRow.GameRowType.Description</td>
+                    <td>
+                        <div class="form-group form-inline">
+                            @* Validation errors location? Color the box ?*@
+                            @Html.HiddenFor(m => m.UserGameRows[i].GameRowId)
+                            @Html.HiddenFor(m => m.UserGameRows[i].UserIntId)
+
+                            @Html.EditorFor(m => m.UserGameRows[i].StartBet, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.EditorFor(m => m.UserGameRows[i].EndBet, new {htmlAttributes = new {@class = "form-control"}})
+                        </div>
+                    </td>
+                    @*@Html.EditorForMany(row => row.UserGameRows, x => x.Index)*@
+                </tr>
+            }
             </tbody>
 
 

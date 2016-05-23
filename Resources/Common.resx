@@ -276,4 +276,16 @@
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="GameStatistics" xml:space="preserve">
+    <value>Game statistics</value>
+  </data>
+  <data name="YourPosition" xml:space="preserve">
+    <value>Place</value>
+  </data>
+  <data name="YourScore" xml:space="preserve">
+    <value>End score</value>
+  </data>
 </root>

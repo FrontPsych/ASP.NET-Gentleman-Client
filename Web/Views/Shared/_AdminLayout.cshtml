@@ -103,10 +103,10 @@
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="pull-right hidden-xs">
-                <b>Version</b> 2.3.3
+                <b>Culture:</b>@Culture <b>UICulture:</b>@UICulture
             </div>
-            <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-            reserved.
+            @*<strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+            reserved.*@
         </footer>
 
     </div>
@@ -154,12 +154,15 @@
     <!-- AdminLTE for demo purposes -->
 <script src="/Scripts/AdminTheme/js/demo.js"></script>
     <script src="~/Scripts/AdminTheme/plugins/select2/select2.full.js"></script>
-        <script>
-            $(function() {
-                //Initialize Select2 Elements
-                $(".select2").select2();
-            });
-        </script>
+<script>
+    $(function() {
+        //Initialize Select2 Elements
+        $(".select2").select2();
+    });
+</script>
+    
+
+
     @RenderSection("AdminScripts", required: false)
 </body>
 </html>

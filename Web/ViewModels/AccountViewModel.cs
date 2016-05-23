@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Domain.Identity;
 using Resources;
 
 namespace Web.ViewModels
@@ -52,10 +53,7 @@ namespace Web.ViewModels
 
     public class LoginViewModel
     {
-        //[Required(AllowEmptyStrings = false, ErrorMessageResourceType = typeof(Account),
-        //   ErrorMessageResourceName = "ViewModel_UserNameRequired")]
-        //[Display(ResourceType = typeof(Account), Name = "ViewModel_UserName")]
-        //public string Username { get; set; }
+
 
         [Required(AllowEmptyStrings = false, ErrorMessageResourceType = typeof(Account),
             ErrorMessageResourceName = "ViewModel_EmailRequired")]
@@ -75,6 +73,12 @@ namespace Web.ViewModels
 
     public class RegisterViewModel
     {
+
+        [Required(AllowEmptyStrings = false, ErrorMessageResourceType = typeof(Resources.Domain),
+       ErrorMessageResourceName = "PersonName")]
+        [Display(ResourceType = typeof(Resources.Domain), Name = nameof(UserInt.PersonName))]
+        public string PersonName { get; set; }
+
         [Required(AllowEmptyStrings = false, ErrorMessageResourceType = typeof(Account),
             ErrorMessageResourceName = "ViewModel_EmailRequired")]
         [EmailAddress(ErrorMessageResourceType = typeof(Account), ErrorMessageResourceName = "ViewModel_EmailInvalid")]

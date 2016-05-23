@@ -252,6 +252,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UserVariaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -266,6 +267,7 @@
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModel.cs" />
+    <Compile Include="ViewModels\UserVariaViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bower_components\bootstrap\dist\css\bootstrap-theme.css" />
@@ -2820,6 +2822,7 @@
     <Content Include="Views\Games\_CreateUserGameRowsPartial.cshtml" />
     <Content Include="Views\Games\EditorTemplates\UserGameRow.cshtml" />
     <Content Include="Views\Games\EditorTemplates\GameRow.cshtml" />
+    <Content Include="Views\UserVaria\Statistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

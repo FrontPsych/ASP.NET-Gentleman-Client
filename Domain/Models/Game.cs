@@ -12,11 +12,6 @@ namespace Domain.Models
     public class Game : BaseEntity
     {
 
-        public Game()
-        {
-                StartedAt = DateTime.Now;
-        }
-
         public int GameId { get; set; }
 
         [Required(ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Resources.Common))]

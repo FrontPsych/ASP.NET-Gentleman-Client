@@ -13,5 +13,8 @@ namespace DAL.Repositories
         public GameTypeRepository(IDbContext dbContext) : base(dbContext)
         {
         }
+
+
+        
     }
 }

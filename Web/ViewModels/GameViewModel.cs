@@ -10,10 +10,10 @@ namespace Web.ViewModels
 {
     public class GameCreateViewModel
     {
-        [Required(ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Resources.Common))]
-        [Range(1, 7, ErrorMessageResourceType = typeof(Resources.Common), ErrorMessageResourceName = "RangeError")]
-        [Display(Name = nameof(Resources.Common.NumberOfPlayers), ResourceType = typeof(Resources.Common))]
-        public int NumberOfPlayers { get; set; }
+        //[Required(ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Resources.Common))]
+        //[Range(1, 7, ErrorMessageResourceType = typeof(Resources.Common), ErrorMessageResourceName = "RangeError")]
+        //[Display(Name = nameof(Resources.Common.NumberOfPlayers), ResourceType = typeof(Resources.Common))]
+        //public int NumberOfPlayers { get; set; }
         public bool GameTime { get; set; }
         public Game Game { get; set; }
 

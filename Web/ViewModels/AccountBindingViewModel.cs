@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Domain.Identity;
 using Newtonsoft.Json;
 
 namespace Web.ViewModels
@@ -34,6 +35,9 @@ namespace Web.ViewModels
 
     public class RegisterBindingModel
     {
+       
+
+
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }

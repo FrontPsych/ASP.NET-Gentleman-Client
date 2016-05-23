@@ -10,6 +10,10 @@ namespace Domain.Models
 {
     public class GameRow : BaseEntity
     {
+        public GameRow()
+        {
+                
+        }
         public GameRow(Game game, GameRowType x)
         {
             Game = game;
