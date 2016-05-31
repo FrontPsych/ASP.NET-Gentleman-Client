@@ -15,7 +15,7 @@ namespace DAL.Interfaces
     {
     }
 
-    public interface IUserRoleRepository<in TKey, TUserRole> : IEFRepository<TUserRole>
+    public interface IUserRoleRepository<in TKey, TUserRole> : IBaseRepository<TUserRole>
         where TUserRole : class
     {
         TUserRole GetByUserIdAndRoleId(TKey roleId, TKey userId);

@@ -7,7 +7,7 @@ using Domain.Models;
 
 namespace DAL.Interfaces
 {
-    public interface IGameTypeRepository : IBaseRepository<GameType>
+    public interface IMultiLangStringRepository : IBaseRepository<MultiLangString>
     {
     }
 }

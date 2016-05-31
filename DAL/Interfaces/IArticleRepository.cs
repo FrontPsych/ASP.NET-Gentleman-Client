@@ -7,7 +7,7 @@ using Domain.Models;
 
 namespace DAL.Interfaces
 {
-    public interface IArticleRepository : IEFRepository<Article>
+    public interface IArticleRepository : IBaseRepository<Article>
     {
         Article FindArticleByName(string articleName);
 

@@ -16,7 +16,7 @@ namespace DAL.Interfaces
     {
     }
 
-    public interface IRoleRepository<in TKey, TRole> : IEFRepository<TRole>
+    public interface IRoleRepository<in TKey, TRole> : IBaseRepository<TRole>
         where TRole : class, IRole<TKey>
     {
         TRole GetByRoleName(string roleName);

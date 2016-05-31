@@ -8,7 +8,7 @@ using Domain.Identity;
 
 namespace DAL.Interfaces
 {
-    public interface IGameRowRepository : IEFRepository<GameRow>
+    public interface IGameRowRepository : IBaseRepository<GameRow>
     {
         int GetNumberOfPlayersInGame(Game game);
         int GetNumberOfPlayersInGame(int gameId);

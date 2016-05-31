@@ -3,57 +3,33 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Net.Http;
 using DAL.Interfaces;
 using Domain.Identity;
 using Domain.Models;
+using Microsoft.Owin.Security;
 
 namespace DAL.Repositories
 {
-    public class GameRowRepository : EFRepository<GameRow>, IGameRowRepository
+    public class GameRowRepository : WebApiRepository<GameRow>, IGameRowRepository
     {
-        public GameRowRepository(IDbContext dbContext) : base(dbContext)
+        public GameRowRepository(HttpClient httpClient, string endPoint, IAuthenticationManager authenticationManager) : base(httpClient, endPoint, authenticationManager)
         {
         }
 
-
-
         public int GetNumberOfPlayersInGame(Game game)
         {
-
-            var firstOrDefault = DbSet.Include(x => x.GameId).FirstOrDefault(x => x.GameId == game.GameId);
-            if (firstOrDefault != null)
-            {
-                var usersInSpecificRow = firstOrDefault.UserGameRows.Count;
-                return usersInSpecificRow;
-            }
-            return 0;
+            throw new NotImplementedException();
         }
 
         public int GetNumberOfPlayersInGame(int gameId)
         {
-            var firstOrDefaultGameRow = DbSet.Where(x => x.GameId == gameId).FirstOrDefault();
-
-            if (firstOrDefaultGameRow != null)
-            {
-                var usersInSpecificRow = firstOrDefaultGameRow.UserGameRows.Count;
-                return usersInSpecificRow;
-            }
-            return 0;
+            throw new NotImplementedException();
         }
 
         public List<UserInt> GetAllPlayersInGame(int gameId)
         {
-            var firstOrDefaultGameRow = DbSet.FirstOrDefault(x => x.GameId == gameId);
-
-            if (firstOrDefaultGameRow != null)
-            {
-                var users = firstOrDefaultGameRow.UserGameRows.Select(x => x.UserInt).ToList();
-                return users;
-            }
-
-            return new List<UserInt>();
+            throw new NotImplementedException();
         }
-
-
     }
 }

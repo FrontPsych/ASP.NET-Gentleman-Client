@@ -10,9 +10,9 @@ using Microsoft.Owin.Security;
 
 namespace DAL.Repositories
 {
-    public class GameRepository : WebApiRepository<Game>, IGameRepository
+    public class TranslationRepository : WebApiRepository<Translation>, ITranslationRepository
     {
-        public GameRepository(HttpClient httpClient, string endPoint, IAuthenticationManager authenticationManager) : base(httpClient, endPoint, authenticationManager)
+        public TranslationRepository(HttpClient httpClient, string endPoint, IAuthenticationManager authenticationManager) : base(httpClient, endPoint, authenticationManager)
         {
         }
     }

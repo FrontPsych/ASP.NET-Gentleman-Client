@@ -29,7 +29,7 @@ namespace Web.Controllers
         // GET: Games
         public ActionResult Index()
         {
-            
+            var id = User.Identity.GetUserId<int>();
             return View();
         }
 
@@ -87,7 +87,8 @@ namespace Web.Controllers
              
                 vm.Game.UserInt = this._uow.UsersInt.GetById(int.Parse(User.Identity.GetUserId()));
                 vm.Game.StartedAt = DateTime.Now;
-                vm.Game = this._uow.Games.Add(vm.Game);
+                //vm.Game = this._uow.Games.Add(vm.Game); ToDo: Muuta Add returnima seda objekti koos idga.
+
                 vm.Game.GameRows = this._uow.GameRowTypes.GetRowTypesByGameType(this._uow.GameTypes.GetById(vm.Game.GameTypeId)).Select(x => new GameRow(vm.Game, x)).ToList();
 
                 this._uow.Commit();

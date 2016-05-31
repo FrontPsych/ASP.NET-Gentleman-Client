@@ -17,7 +17,7 @@ namespace DAL.Interfaces
     {
     }
 
-    public interface IUserRepository<in TKey, TUser> : IEFRepository<TUser>
+    public interface IUserRepository<in TKey, TUser> : IBaseRepository<TUser>
         where TUser : class, IUser<TKey>
     {
         List<Game> GetGivenTypeGamesUserHasPlayed(int gameTypeId, int userId);

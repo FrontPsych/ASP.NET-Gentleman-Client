@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Interfaces;
+using DAL.Repositories;
 using Domain.Identity;
+using Microsoft.Owin.Security;
 
 namespace DAL.Repositories
 {
     public class UserRoleIntRepository :
         UserRoleRepository<int, RoleInt, UserInt, UserClaimInt, UserLoginInt, UserRoleInt>, IUserRoleIntRepository
     {
-        public UserRoleIntRepository(IDbContext dbContext) : base(dbContext)
+        public UserRoleIntRepository(HttpClient httpClient, string endPoint, IAuthenticationManager authenticationManager) : base(httpClient, endPoint, authenticationManager)
         {
         }
     }
@@ -19,12 +22,12 @@ namespace DAL.Repositories
     public class UserRoleRepository : UserRoleRepository<string, Role, User, UserClaim, UserLogin, UserRole>,
         IUserRoleRepository
     {
-        public UserRoleRepository(IDbContext dbContext) : base(dbContext)
+        public UserRoleRepository(HttpClient httpClient, string endPoint, IAuthenticationManager authenticationManager) : base(httpClient, endPoint, authenticationManager)
         {
         }
     }
 
-    public class UserRoleRepository<TKey, TRole, TUser, TUserClaim, TUserLogin, TUserRole> : EFRepository<TUserRole>
+    public class UserRoleRepository<TKey, TRole, TUser, TUserClaim, TUserLogin, TUserRole> : WebApiRepository<TUserRole>
         where TKey : IEquatable<TKey>
         where TRole : Role<TKey, TRole, TUser, TUserClaim, TUserLogin, TUserRole>
         where TUser : User<TKey, TRole, TUser, TUserClaim, TUserLogin, TUserRole>
@@ -32,14 +35,13 @@ namespace DAL.Repositories
         where TUserLogin : UserLogin<TKey, TRole, TUser, TUserClaim, TUserLogin, TUserRole>
         where TUserRole : UserRole<TKey, TRole, TUser, TUserClaim, TUserLogin, TUserRole>
     {
-        public UserRoleRepository(IDbContext dbContext)
-            : base(dbContext)
+        public UserRoleRepository(HttpClient httpClient, string endPoint, IAuthenticationManager authenticationManager) : base(httpClient, endPoint, authenticationManager)
         {
         }
 
         public TUserRole GetByUserIdAndRoleId(TKey roleId, TKey userId)
         {
-            return DbSet.FirstOrDefault(a => a.RoleId.Equals(roleId) && a.UserId.Equals(userId));
+            throw new NotImplementedException();
         }
     }
 }

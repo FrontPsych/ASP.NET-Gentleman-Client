@@ -11,8 +11,8 @@ namespace Domain.Aggregates
     {
         public Game Game { get; set; }
         public int NumberOfPlayers { get; set; } 
-        public int Position { get; set; } //User Game ROw
-        public int Score { get; set; } // User Game Row
-        public TimeSpan DurationTimeSpan { get; set; } //Game
+        public int Position { get; set; } 
+        public int Score { get; set; } 
+        public TimeSpan DurationTimeSpan { get; set; } 
     }
 }

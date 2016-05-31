@@ -15,7 +15,7 @@ namespace DAL.Interfaces
     {
     }
 
-    public interface IUserLoginRepository<TUserLogin> : IEFRepository<TUserLogin>
+    public interface IUserLoginRepository<TUserLogin> : IBaseRepository<TUserLogin>
         where TUserLogin : class
     {
         List<TUserLogin> GetAllIncludeUser();

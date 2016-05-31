@@ -40,7 +40,6 @@ namespace DAL.Services
             return result;
         }
 
-
         private int CalculatePosition(int gameId, int userId)
         {
             var allPlayersInGame = this._uow.GameRows.GetAllPlayersInGame(gameId);

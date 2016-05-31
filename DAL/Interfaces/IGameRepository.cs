@@ -8,7 +8,7 @@ using Domain.Models;
 namespace DAL.Interfaces
 {
    
-    public interface IGameRepository : IEFRepository<Game>
+    public interface IGameRepository : IBaseRepository<Game>
     {
      
     }

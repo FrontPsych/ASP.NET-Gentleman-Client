@@ -3,74 +3,49 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Linq.Expressions;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Interfaces;
+using Domain;
 using Domain.Models;
+using Microsoft.Owin.Security;
+using NLog;
 
 namespace DAL.Repositories
 {
-    public class ArticleRepository : EFRepository<Article>, IArticleRepository
+    public class ArticleRepository : WebApiRepository<Article>, IArticleRepository
     {
-        public ArticleRepository(IDbContext dbContext) : base(dbContext)
+        private readonly ILogger _logger = NLog.LogManager.GetCurrentClassLogger();
+        public ArticleRepository(HttpClient httpClient, string endPoint, IAuthenticationManager authenticationManager) : base(httpClient, endPoint, authenticationManager)
         {
         }
 
         public Article FindArticleByName(string articleName)
         {
-            var res =
-                DbSet.Include(a => a.ArticleHeadline.Translations)
-                    .Include(a => a.ArticleBody.Translations)
-                    .FirstOrDefault(a => a.ArticleName == articleName) ?? new Article()
-                    {
-                        ArticleName = "NotFound",
-                        ArticleHeadline = new MultiLangString("Article not found!"),
-                        ArticleBody = new MultiLangString("Article not found!")
-                    };
-
-            return res;
+            var response = HttpClient.GetAsync(EndPoint + nameof(FindArticleByName) + "/" + articleName).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var res = response.Content.ReadAsAsync<Article>().Result;
+                return res;
+            }
+            _logger.Debug("Web API statuscode: " + response.StatusCode.ToString() + " Uri:" + response.RequestMessage.RequestUri);
+            return new Article()
+            {
+                ArticleName = "NotFound",
+                ArticleHeadline = new MultiLangString("Article not found!"),
+                ArticleBody = new MultiLangString("Article not found!")
+            };
         }
 
         public List<Article> AllWithTranslations()
         {
-            var res =
-                DbSet.Include(a => a.ArticleHeadline.Translations)
-                    .Include(a => a.ArticleBody.Translations)
-                    .OrderBy(a => a.ArticleName)
-                    .ToList();
-            return res;
+            throw new NotImplementedException();
         }
 
         public void DeleteArticleWithTranslations(params object[] id)
         {
-            var article = DbSet.Find(id);
-            foreach (var translation in article.ArticleHeadline.Translations.ToArray())
-            {
-                DeleteEntity(translation, DbContext.Set<Translation>());
-            }
-            DeleteEntity(article.ArticleHeadline, DbContext.Set<MultiLangString>());
-
-            foreach (var translation in article.ArticleBody.Translations.ToArray())
-            {
-                DeleteEntity(translation, DbContext.Set<Translation>());
-            }
-            DeleteEntity(article.ArticleBody, DbContext.Set<MultiLangString>());
-            Delete(article);
-        }
-
-        private void DeleteEntity(Object entity, DbSet dbSet)
-        {
-            DbEntityEntry dbEntityEntry = DbContext.Entry(entity);
-            if (dbEntityEntry.State != EntityState.Deleted)
-            {
-                dbEntityEntry.State = EntityState.Deleted;
-            }
-            else
-            {
-                dbSet.Attach(entity);
-                dbSet.Remove(entity);
-            }
+            throw new NotImplementedException();
         }
     }
 }

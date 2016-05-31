@@ -7,7 +7,7 @@ using Domain.Models;
 
 namespace DAL.Interfaces
 {
-    public interface IGameRowTypesRepository : IEFRepository<GameRowType>
+    public interface IGameRowTypesRepository : IBaseRepository<GameRowType>
     {
         List<GameRowType> GetRowTypesByGameType(GameType gt);
     }
