@@ -2823,6 +2823,7 @@
     <Content Include="Views\Games\EditorTemplates\UserGameRow.cshtml" />
     <Content Include="Views\Games\EditorTemplates\GameRow.cshtml" />
     <Content Include="Views\UserVaria\Statistics.cshtml" />
+    <Content Include="Views\Shared\_ChooseLanguagePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
