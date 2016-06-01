@@ -16,7 +16,7 @@ namespace DAL.Repositories
 {
     public class ArticleRepository : WebApiRepository<Article>, IArticleRepository
     {
-        private readonly ILogger _logger = NLog.LogManager.GetCurrentClassLogger();
+        private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
         public ArticleRepository(HttpClient httpClient, string endPoint, IAuthenticationManager authenticationManager) : base(httpClient, endPoint, authenticationManager)
         {
         }

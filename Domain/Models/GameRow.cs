@@ -34,7 +34,7 @@ namespace Domain.Models
         public int GameRowTypeId { get; set; }
         public virtual GameRowType GameRowType{ get; set; }
 
-        public virtual ICollection<UserGameRow> UserGameRows { get; set; }
+        public virtual ICollection<UserGameRow> UserGameRows { get; set; } = new List<UserGameRow>();
 
         #endregion
     }

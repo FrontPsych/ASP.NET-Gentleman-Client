@@ -7,18 +7,29 @@ using System.Threading.Tasks;
 using DAL.Interfaces;
 using Domain.Models;
 using Microsoft.Owin.Security;
+using NLog;
 
 namespace DAL.Repositories
 {
     public class GameRowTypesRepository : WebApiRepository<GameRowType>, IGameRowTypesRepository
     {
+        private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
+
         public GameRowTypesRepository(HttpClient httpClient, string endPoint, IAuthenticationManager authenticationManager) : base(httpClient, endPoint, authenticationManager)
         {
         }
 
         public List<GameRowType> GetRowTypesByGameType(GameType gt)
         {
-            throw new NotImplementedException();
+            var response = HttpClient.GetAsync(EndPoint + nameof(GetRowTypesByGameType) + "/" + gt.GameTypeId).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var res = response.Content.ReadAsAsync<List<GameRowType>>().Result;
+                return res;
+            }
+            this._logger.Debug("Web API statuscode: " + response.StatusCode + " Uri:" + response.RequestMessage.RequestUri);
+
+            return new List<GameRowType>();
         }
     }
 }

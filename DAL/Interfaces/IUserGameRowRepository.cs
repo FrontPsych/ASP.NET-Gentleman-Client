@@ -11,6 +11,6 @@ namespace DAL.Interfaces
     public interface IUserGameRowRepository : IBaseRepository<UserGameRow>
     {
         int GetUserScore(int userId, int gameId);
-        List<UserGameRow> MapUserGameRows(List<GameRow> gameRows, UserInt userInt);
+        List<UserGameRow> MapUserGameRows(List<GameRow> gameRows, int userIntId);
     }
 }

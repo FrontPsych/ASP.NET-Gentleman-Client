@@ -24,9 +24,9 @@ namespace Domain.Models
         public int? DescriptionId { get; set; }
         public virtual MultiLangString Description { get; set; }
 
-        public virtual ICollection<Game> Games { get; set; }
+        public virtual ICollection<Game> Games { get; set; } = new List<Game>();
 
-        public virtual ICollection<GameRowType> GameRowTypes { get; set; }
+        public virtual ICollection<GameRowType> GameRowTypes { get; set; } = new List<GameRowType>();
 
         #endregion
     }

@@ -84,12 +84,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\EntityKeyInfo.cs" />
-    <Compile Include="Helpers\FormattedDbEntityValidationException.cs" />
     <Compile Include="Interfaces\IArticleRepository.cs" />
     <Compile Include="Interfaces\IBaseRepository.cs" />
     <Compile Include="Interfaces\IDbContext.cs" />
-    <Compile Include="Interfaces\IEFRepository.cs" />
-    <Compile Include="Interfaces\IEFRepositoryProvider.cs" />
     <Compile Include="Interfaces\IGameRepository.cs" />
     <Compile Include="Interfaces\IGameRowRepository.cs" />
     <Compile Include="Interfaces\IGameRowTypesRepository.cs" />
@@ -107,7 +104,6 @@
     <Compile Include="Interfaces\IWebApiUOW.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ArticleRepository.cs" />
-    <Compile Include="Repositories\EFRepository.cs" />
     <Compile Include="Repositories\GameRepository.cs" />
     <Compile Include="Repositories\GameRowRepository.cs" />
     <Compile Include="Repositories\GameRowTypesRepository.cs" />

@@ -23,7 +23,7 @@
             <thead>
                 <tr>
                     <th style="width: 10px" >#</th>
-                    <th>@Model.Game.UserInt.PersonName</th>
+                    <th>@Model.UserGameRows.FirstOrDefault()?.UserInt.PersonName</th>
                 </tr>
             </thead>
             <tbody>

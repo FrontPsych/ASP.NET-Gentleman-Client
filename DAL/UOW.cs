@@ -97,6 +97,12 @@ namespace DAL
                     {typeof(IRoleIntRepository), (httpClient, authenticationManager) => new RoleIntRepository(httpClient, ConfigurationManager.AppSettings["WebApi_EndPoint_RolesInt"], authenticationManager)},
                     {typeof(IUserClaimIntRepository), (httpClient, authenticationManager) => new UserClaimIntRepository(httpClient, ConfigurationManager.AppSettings["WebApi_EndPoint_UserClaimsInt"], authenticationManager)},
                     {typeof(IUserLoginIntRepository), (httpClient, authenticationManager) => new UserLoginIntRepository(httpClient, ConfigurationManager.AppSettings["WebApi_EndPoint_UserLoginsInt"], authenticationManager)},
+                    {typeof(IGameRepository), (httpClient, authenticationManager) => new GameRepository(httpClient, ConfigurationManager.AppSettings["WebApi_EndPoint_Games"], authenticationManager)},
+                    {typeof(IGameTypeRepository), (httpClient, authenticationManager) => new GameTypeRepository(httpClient, ConfigurationManager.AppSettings["WebApi_EndPoint_GameTypes"], authenticationManager)},
+                    {typeof(IGameRowTypesRepository), (httpClient, authenticationManager) => new GameRowTypesRepository(httpClient, ConfigurationManager.AppSettings["WebApi_EndPoint_GameRowTypes"], authenticationManager)},
+                    {typeof(IUserGameRowRepository), (httpClient, authenticationManager) => new UserGameRowRepository(httpClient, ConfigurationManager.AppSettings["WebApi_EndPoint_UserGameRows"], authenticationManager)},
+                    {typeof(IGameRowRepository), (httpClient, authenticationManager) => new GameRowRepository(httpClient, ConfigurationManager.AppSettings["WebApi_EndPoint_GameRows"], authenticationManager)},
+
             };
         }
 

@@ -81,23 +81,28 @@ namespace Web.Controllers
                     vm.UserGameRows.ForEach(x => this._uow.UserGameRows.Add(x));
                     //vm.Game.StoppedAt = DateTime.Now;
                     //this._uow.Games.Update(vm.Game);
-                    this._uow.Commit();
                     return RedirectToAction("Index", "Admin"); //Redirect to current game details?
                 }
-             
-                vm.Game.UserInt = this._uow.UsersInt.GetById(int.Parse(User.Identity.GetUserId()));
+                
+                vm.Game.UserIntId = User.Identity.GetUserId<int>();
                 vm.Game.StartedAt = DateTime.Now;
-                //vm.Game = this._uow.Games.Add(vm.Game); ToDo: Muuta Add returnima seda objekti koos idga.
+
+                vm.Game = this._uow.Games.AddGameWithReturn(vm.Game); 
 
                 vm.Game.GameRows = this._uow.GameRowTypes.GetRowTypesByGameType(this._uow.GameTypes.GetById(vm.Game.GameTypeId)).Select(x => new GameRow(vm.Game, x)).ToList();
-
-                this._uow.Commit();
 
                 vm.GameTime = true;
             }
 
-            //ToDo: revamp logic
-            vm.UserGameRows = this._uow.UserGameRows.MapUserGameRows(vm.Game.GameRows.ToList(), vm.Game.UserInt);
+
+            //vm.UserGameRows = this._uow.UserGameRows.MapUserGameRows(vm.Game.GameRows.ToList(), vm.Game.UserIntId);
+            //ToDo: hakata lisama siin ridu ja m'ngijaid. atm lisataks üks UserGameRow, mille GameRow on alustatud mängu esimene rida ja mängija on mängu looja. HowDo??
+            vm.UserGameRows = new List<UserGameRow>();
+            vm.UserGameRows.Add(new UserGameRow()
+            {
+                GameRow = vm.Game.GameRows.FirstOrDefault(),
+                UserInt = this._uow.UsersInt.GetById(vm.Game.UserIntId)
+            });
             vm.GameTypeSelectList = new SelectList(this._uow.GameTypes.All, nameof(GameType.GameTypeId), nameof(GameType.Name));
 
             return View(vm);

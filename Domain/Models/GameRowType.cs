@@ -30,7 +30,7 @@ namespace Domain.Models
         public int GameTypeId { get; set; } //ToDo, kas see on mõistlik.
         public virtual GameType GameType { get; set; }
 
-        public virtual ICollection<GameRow> GameRows { get; set; }
+        public virtual ICollection<GameRow> GameRows { get; set; } = new List<GameRow>();
 
         #endregion
     }

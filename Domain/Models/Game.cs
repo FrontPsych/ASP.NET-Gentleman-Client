@@ -35,7 +35,7 @@ namespace Domain.Models
         public int UserIntId { get; set; }
         public virtual UserInt UserInt { get; set; }
 
-        public virtual ICollection<GameRow> GameRows { get; set; }
+        public virtual ICollection<GameRow> GameRows { get; set; } = new List<GameRow>();
 
         #endregion
     }
