@@ -11,4 +11,9 @@ namespace Web.ViewModels
     {
         public UserInt LoggedInUser { get; set; }
     }
+
+    public class AdminAboutViewModel
+    {
+        public Article AboutArticle { get; set; }
+    }
 }

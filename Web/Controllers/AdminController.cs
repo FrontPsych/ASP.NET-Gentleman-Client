@@ -30,5 +30,15 @@ namespace Web.Controllers
 
             return View(vm);
         }
+
+        public ActionResult About()
+        {
+            var vm = new AdminAboutViewModel()
+            {
+                AboutArticle = this._uow.Articles.FindArticleByName("AboutIndex")
+            };
+
+            return View(vm);
+        }
     }
 }
