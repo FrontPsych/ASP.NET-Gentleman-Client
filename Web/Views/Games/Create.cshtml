@@ -93,6 +93,13 @@
                 });
             }
         });
+
+        $('#name_box').keypress(function (event) {
+            if (event.keyCode == 13) {
+                $('#add-person').click();
+                event.preventDefault();
+            }
+        });
     </script>
     @if (Model.GameTime)
     {
