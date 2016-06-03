@@ -19,11 +19,10 @@ namespace Web.ViewModels
 
         public SelectList GameTypeSelectList { get; set; }
 
-        public List<GameRowType> GameRowTypesForGivenGame { get; set; } 
+        public List<GameRowType> GameRowTypesForGivenGame { get; set; }
 
         //public List<GameRow> GameRows { get; set; } 
 
-        public GameRow GameRow { get; set; }
         public List<UserGameRow> UserGameRows { get; set; }
     }
 

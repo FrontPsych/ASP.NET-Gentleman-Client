@@ -90,16 +90,17 @@ namespace Web.Controllers
 
                 vm.GameRowTypesForGivenGame = this._uow.GameRowTypes.GetRowTypesByGameType(vm.Game.GameTypeId);
 
+                vm.Game.GameRows = new List<GameRow>();
+
                 var firstGameRow = new GameRow()
                 {
                     GameId = vm.Game.GameId,
                     GameRowTypeId = vm.GameRowTypesForGivenGame.FirstOrDefault().GameRowTypeId,
                     GameRowType = this._uow.GameRowTypes.GetById(vm.GameRowTypesForGivenGame.FirstOrDefault().GameRowTypeId)
                 };
-
+                
                 vm.Game.GameRows.Add(firstGameRow);
                 //vm.Game.GameRows = this._uow.GameRowTypes.GetRowTypesByGameType(this._uow.GameTypes.GetById(vm.Game.GameTypeId)).Select(x => new GameRow(vm.Game, x)).ToList();
-
                 vm.GameTime = true;
             }
 
