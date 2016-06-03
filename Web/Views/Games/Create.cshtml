@@ -84,11 +84,8 @@
 
                 jQuery.get('/Games/AddUserGameRow').done(function (html) {
                     console.log('got a response');
-                    $('#mtable thead tr').append($("<th>"));
-                    $('#mtable tbody tr').append($("<td>"));
-                    $('#mtable thead tr>th:last').html($('#name_box').val());
-                    $('#mtable tbody tr').children('td:last').append(html);
-
+                    $('#mtable thead tr>th:last').before("<th>" + $('#name_box').val() + "</th>");
+                    $('#mtable tbody tr>td:last').before("<td>" + html + "</td>");
                     $('#name_box').val('');
                 });
             }
