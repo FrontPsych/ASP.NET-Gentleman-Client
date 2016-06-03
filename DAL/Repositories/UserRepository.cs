@@ -24,6 +24,7 @@ namespace DAL.Repositories
         {
             throw new NotImplementedException();
         }
+
     }
 
     public class UserRepository : UserRepository<string, Role, User, UserClaim, UserLogin, UserRole>, IUserRepository
@@ -61,7 +62,7 @@ namespace DAL.Repositories
                 var res = response.Content.ReadAsAsync<TUser>().Result;
                 return res;
             }
-            _logger.Debug("Web API statuscode: " + response.StatusCode.ToString() + " Uri:" + response.RequestMessage.RequestUri);
+            _logger.Debug("Web API statuscode: " + response.StatusCode + " Uri:" + response.RequestMessage.RequestUri);
             return null;
         }
 
@@ -73,7 +74,19 @@ namespace DAL.Repositories
                 var res = response.Content.ReadAsAsync<TUser>().Result;
                 return res;
             }
-            _logger.Debug("Web API statuscode: " + response.StatusCode.ToString() + " Uri:" + response.RequestMessage.RequestUri);
+            _logger.Debug("Web API statuscode: " + response.StatusCode + " Uri:" + response.RequestMessage.RequestUri);
+            return null;
+        }
+
+        public bool? CheckIfUsernameExists(string username)
+        {
+            var response = HttpClient.GetAsync(EndPoint + nameof(CheckIfUsernameExists) + "/" + username).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var res = response.Content.ReadAsAsync<bool>().Result;
+                return res;
+            }
+            _logger.Debug("Web API statuscode: " + response.StatusCode + " Uri:" + response.RequestMessage.RequestUri);
             return null;
         }
 

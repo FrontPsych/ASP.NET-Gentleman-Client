@@ -25,5 +25,7 @@ namespace DAL.Interfaces
         TUser GetUserByEmail(string email);
         bool IsInRole(TKey userId, string roleName);
         void AddUserToRole(TKey userId, string roleName);
+        bool? CheckIfUsernameExists(string username);
+
     }
 }

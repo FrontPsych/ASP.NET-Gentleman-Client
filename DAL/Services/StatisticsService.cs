@@ -57,7 +57,7 @@ namespace DAL.Services
             var position = 1;
             foreach (var tuple in userScoreList)
             {
-                Console.WriteLine("{0}. {1}({2}p)", position, tuple.Item1.PersonName, tuple.Item2 );
+                Console.WriteLine("{0}. {1}({2}p)", position, tuple.Item1.UserName, tuple.Item2 );
                 if (tuple.Item1.Id == userId)
                 {
                     return position;

@@ -126,16 +126,34 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult AddUserGameRow()
         {
+
             var row = new GameRow();
             row.UserGameRows.Add(new UserGameRow());
 
             return View(row);
         }
 
+        [HttpPost]
         public ActionResult AddUser(string username)
         {
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                return Json(new string[0]);
+            }
 
-            return null;
+            var user = this._uow.UsersInt.GetUserByUserName(username);
+
+            if (user == null)
+            {
+                this._uow.UsersInt.Add(new UserInt()
+                {
+                    UserName = username
+                });
+                this._uow.Commit();
+
+                user = this._uow.UsersInt.GetUserByUserName(username);
+            }
+            return Json(new { id = user.Id});
         }
 
         //// GET: Games/Edit/5

@@ -81,13 +81,26 @@
         $('#add-person').on('click', function () {
             console.log('#add-person was clicked');
             if ($('#name_box').val()) {
+                
+                //ToDo: into single call
+                //ToDo: JS viskaks mingi errori kui sisestatav nimi on juba olemas table headis nt
+
+                $.ajax({
+                    url: '@Url.Action("AddUser")',
+                    type: "POST",
+                    data: { username: $('#name_box').val() },
+                    success: function (data) {
+                        console.log($('#name_box').val() + " id: " + data.id);
+                    }
+                });
 
                 jQuery.get('/Games/AddUserGameRow').done(function (html) {
                     console.log('got a response');
                     $('#mtable thead tr>th:last').before("<th>" + $('#name_box').val() + "</th>");
                     $('#mtable tbody tr>td:last').before("<td>" + html + "</td>");
-                    $('#name_box').val('');
+
                 });
+
             }
         });
 

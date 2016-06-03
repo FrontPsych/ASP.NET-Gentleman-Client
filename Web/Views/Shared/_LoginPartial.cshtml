@@ -8,7 +8,7 @@
     if (!string.IsNullOrWhiteSpace(str))
     {
         UserInt user = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(int.Parse(str));
-        personName = user.PersonName;
+        personName = user.UserName;
     }
 
 }

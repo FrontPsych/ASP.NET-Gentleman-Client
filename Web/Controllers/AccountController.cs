@@ -63,14 +63,14 @@ namespace Web.Controllers
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result =
                 await
-                    _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe,
+                    _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe,
                         shouldLockout: false);
             // check for UOW type, if webapi - get token and store it as claim
             var webApiUOW = _uow as IWebApiUOW;
             if (result == SignInStatus.Success && webApiUOW != null)
             {
-                var token = webApiUOW.GetWebApiToken(model.Email, model.Password);
-                var user = _userManager.Find(model.Email, model.Password);
+                var token = webApiUOW.GetWebApiToken(model.Username, model.Password);
+                var user = _userManager.Find(model.Username, model.Password);
                 //remove any previous auth claims
                 var claims = _userManager.GetClaims(user.Id).Where(c => c.Type == ClaimTypes.Authentication).ToList();
                 _logger.Debug($"Claimcount: {claims.Count}");
@@ -161,7 +161,7 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new UserInt { UserName = model.Email, Email = model.Email, PersonName = model.PersonName };
+                var user = new UserInt { UserName = model.Username, Email = model.Email};
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

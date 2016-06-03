@@ -51,12 +51,6 @@ namespace Domain.Identity
 
         //Additional (custom) properties
 
-        //ToDo: What to do with random users
-        [Required(ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Resources.Common))]
-        [MinLength(3, ErrorMessageResourceName = "FieldMinLength", ErrorMessageResourceType = typeof(Resources.Common))]
-        [MaxLength(18, ErrorMessageResourceName = "FieldMaxLength", ErrorMessageResourceType = typeof(Resources.Common))]
-        [Display(Name = nameof(Resources.Domain.PersonName), ResourceType = typeof(Resources.Domain))]
-        public string PersonName { get; set; }
 
         //[Required(ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Resources.Common))]
         [MaxLength(12, ErrorMessageResourceName = "FieldMaxLength", ErrorMessageResourceType = typeof(Resources.Common))]
@@ -142,6 +136,11 @@ namespace Domain.Identity
         public DateTime? LockoutEndDateUtc { get; set; }
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
+
+        [Required(ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Resources.Common))]
+        [MinLength(3, ErrorMessageResourceName = "FieldMinLength", ErrorMessageResourceType = typeof(Resources.Common))]
+        [MaxLength(18, ErrorMessageResourceName = "FieldMaxLength", ErrorMessageResourceType = typeof(Resources.Common))]
+        [Display(Name = nameof(Resources.Domain.UserName), ResourceType = typeof(Resources.Domain))]
         public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

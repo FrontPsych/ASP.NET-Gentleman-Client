@@ -192,4 +192,7 @@
   <data name="StoppedAt" xml:space="preserve">
     <value>Lõpetatud</value>
   </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Kasutajanimi</value>
+  </data>
 </root>

@@ -54,12 +54,16 @@ namespace Web.ViewModels
     public class LoginViewModel
     {
 
-
         [Required(AllowEmptyStrings = false, ErrorMessageResourceType = typeof(Account),
-            ErrorMessageResourceName = "ViewModel_EmailRequired")]
-        [Display(ResourceType = typeof(Account), Name = "ViewModel_Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+            ErrorMessageResourceName = "ViewModel_UserNameRequired")]
+        [Display(ResourceType = typeof(Account), Name = "ViewModel_UserName")]
+        public string Username { get; set; }
+
+        //[Required(AllowEmptyStrings = false, ErrorMessageResourceType = typeof(Account),
+        //    ErrorMessageResourceName = "ViewModel_EmailRequired")]
+        //[Display(ResourceType = typeof(Account), Name = "ViewModel_Email")]
+        //[EmailAddress]
+        //public string Email { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessageResourceType = typeof(Account),
             ErrorMessageResourceName = "ViewModel_PasswordRequired")]
@@ -74,10 +78,15 @@ namespace Web.ViewModels
     public class RegisterViewModel
     {
 
+        // [Required(AllowEmptyStrings = false, ErrorMessageResourceType = typeof(Resources.Domain),
+        //ErrorMessageResourceName = "PersonName")]
+        // [Display(ResourceType = typeof(Resources.Domain), Name = nameof(UserInt.PersonName))]
+        // public string PersonName { get; set; }
+
         [Required(AllowEmptyStrings = false, ErrorMessageResourceType = typeof(Resources.Domain),
        ErrorMessageResourceName = "PersonName")]
-        [Display(ResourceType = typeof(Resources.Domain), Name = nameof(UserInt.PersonName))]
-        public string PersonName { get; set; }
+        [Display(ResourceType = typeof(Resources.Domain), Name = nameof(UserInt.UserName))]
+        public string Username { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessageResourceType = typeof(Account),
             ErrorMessageResourceName = "ViewModel_EmailRequired")]
