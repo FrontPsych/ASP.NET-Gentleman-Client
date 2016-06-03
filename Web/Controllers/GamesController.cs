@@ -74,13 +74,16 @@ namespace Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(GameCreateViewModel vm)
         {
+
             if (ModelState.IsValid)
             {
                 if (vm.GameTime)
                 {
+
                     //vm.Game.StoppedAt = DateTime.Now;
                     //this._uow.Games.Update(vm.Game);
-                    return RedirectToAction("Index", "Admin"); //Redirect to current game details?
+                    //return RedirectToAction("Index", "Admin"); //Redirect to current game details?
+                    View(vm);
                 }
                 
                 vm.Game.UserIntId = User.Identity.GetUserId<int>();
@@ -127,6 +130,12 @@ namespace Web.Controllers
             row.UserGameRows.Add(new UserGameRow());
 
             return View(row);
+        }
+
+        public ActionResult AddUser(string username)
+        {
+
+            return null;
         }
 
         //// GET: Games/Edit/5

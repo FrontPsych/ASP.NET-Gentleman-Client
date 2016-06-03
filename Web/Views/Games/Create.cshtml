@@ -82,17 +82,21 @@
             console.log('#add-person was clicked');
             if ($('#name_box').val()) {
 
-                jQuery.get('/Games/AddUserGameRow').done(function (html) {
+                $.get('/Games/AddUserGameRow').done(function (html) {
                     console.log('got a response');
                     $('#mtable thead tr').append($("<th>"));
                     $('#mtable tbody tr').append($("<td>"));
                     $('#mtable thead tr>th:last').html($('#name_box').val());
                     $('#mtable tbody tr').children('td:last').append(html);
 
+
                     $('#name_box').val('');
                 });
             }
         });
+
+
+     
 
         $('#name_box').keypress(function (event) {
             if (event.keyCode == 13) {

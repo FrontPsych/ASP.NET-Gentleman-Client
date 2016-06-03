@@ -40,7 +40,7 @@
             @Html.HiddenFor(m => m.Game.GameName)
             @Html.HiddenFor(m => m.Game.GameTypeId)
             @Html.HiddenFor(m => m.Game.StartedAt)
-
+            
             @for (var i = 0; i < Model.Game.GameRows.Count; i++)
             {
                 @Html.HiddenFor(model => Model.Game.GameRows[i].GameRowId)
