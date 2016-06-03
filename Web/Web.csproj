@@ -2824,6 +2824,7 @@
     <Content Include="Views\Games\EditorTemplates\GameRow.cshtml" />
     <Content Include="Views\UserVaria\Statistics.cshtml" />
     <Content Include="Views\Shared\_ChooseLanguagePartial.cshtml" />
+    <Content Include="Views\Games\AddUserGameRow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

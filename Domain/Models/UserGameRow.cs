@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace Domain.Models
         [Display(Name = nameof(Resources.Domain.PersonGameRowComment), ResourceType = typeof(Resources.Domain))]
         public string Comment { get; set; }
 
+        [NotMapped]
         public string Index { get; set; } //needed for EditorForMany
 
 

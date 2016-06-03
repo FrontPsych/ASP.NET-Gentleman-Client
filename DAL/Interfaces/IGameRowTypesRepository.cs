@@ -9,6 +9,6 @@ namespace DAL.Interfaces
 {
     public interface IGameRowTypesRepository : IBaseRepository<GameRowType>
     {
-        List<GameRowType> GetRowTypesByGameType(GameType gt);
+        List<GameRowType> GetRowTypesByGameType(int gameTypeId);
     }
 }

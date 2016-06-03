@@ -78,7 +78,6 @@ namespace Web.Controllers
             {
                 if (vm.GameTime)
                 {
-                    vm.UserGameRows.ForEach(x => this._uow.UserGameRows.Add(x));
                     //vm.Game.StoppedAt = DateTime.Now;
                     //this._uow.Games.Update(vm.Game);
                     return RedirectToAction("Index", "Admin"); //Redirect to current game details?
@@ -87,25 +86,46 @@ namespace Web.Controllers
                 vm.Game.UserIntId = User.Identity.GetUserId<int>();
                 vm.Game.StartedAt = DateTime.Now;
 
-                vm.Game = this._uow.Games.AddGameWithReturn(vm.Game); 
+                vm.Game = this._uow.Games.AddGameWithReturn(vm.Game);
 
-                vm.Game.GameRows = this._uow.GameRowTypes.GetRowTypesByGameType(this._uow.GameTypes.GetById(vm.Game.GameTypeId)).Select(x => new GameRow(vm.Game, x)).ToList();
+                vm.GameRowTypesForGivenGame = this._uow.GameRowTypes.GetRowTypesByGameType(vm.Game.GameTypeId);
+
+                var firstGameRow = new GameRow()
+                {
+                    GameId = vm.Game.GameId,
+                    GameRowTypeId = vm.GameRowTypesForGivenGame.FirstOrDefault().GameRowTypeId,
+                    GameRowType = this._uow.GameRowTypes.GetById(vm.GameRowTypesForGivenGame.FirstOrDefault().GameRowTypeId)
+                };
+
+                vm.Game.GameRows.Add(firstGameRow);
+                //vm.Game.GameRows = this._uow.GameRowTypes.GetRowTypesByGameType(this._uow.GameTypes.GetById(vm.Game.GameTypeId)).Select(x => new GameRow(vm.Game, x)).ToList();
 
                 vm.GameTime = true;
             }
 
-
-            //vm.UserGameRows = this._uow.UserGameRows.MapUserGameRows(vm.Game.GameRows.ToList(), vm.Game.UserIntId);
             //ToDo: hakata lisama siin ridu ja m'ngijaid. atm lisataks üks UserGameRow, mille GameRow on alustatud mängu esimene rida ja mängija on mängu looja. HowDo??
-            vm.UserGameRows = new List<UserGameRow>();
-            vm.UserGameRows.Add(new UserGameRow()
+            //vm.UserGameRows = this._uow.UserGameRows.MapUserGameRows(vm.Game.GameRows.ToList(), vm.Game.UserIntId);
+            //vm.UserGameRows = new List<UserGameRow>();
+
+            vm.Game.GameRows.FirstOrDefault()?.UserGameRows.Add(new UserGameRow()
             {
                 GameRow = vm.Game.GameRows.FirstOrDefault(),
                 UserInt = this._uow.UsersInt.GetById(vm.Game.UserIntId)
             });
+
             vm.GameTypeSelectList = new SelectList(this._uow.GameTypes.All, nameof(GameType.GameTypeId), nameof(GameType.Name));
 
             return View(vm);
+        }
+
+        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
+        [HttpGet]
+        public ActionResult AddUserGameRow()
+        {
+            var row = new GameRow();
+            row.UserGameRows.Add(new UserGameRow());
+
+            return View(row);
         }
 
         //// GET: Games/Edit/5
@@ -142,6 +162,8 @@ namespace Web.Controllers
         //    ViewBag.UserIntId = new SelectList(db.UsersInt, "Id", "PersonName", game.UserIntId);
         //    return View(game);
         //}
+
+
 
         // GET: Games/Delete/5
         public ActionResult Delete(int? id)

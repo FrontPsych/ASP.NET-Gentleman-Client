@@ -1,0 +1,8 @@
+﻿
+@using HtmlHelpers
+@model Domain.Models.GameRow
+@{
+    Layout = null;
+}
+
+@Html.EditorForMany(x => x.UserGameRows, x => x.Index)

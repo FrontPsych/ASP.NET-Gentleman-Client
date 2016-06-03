@@ -10,7 +10,7 @@
                 <input type="text" id="name_box" class="form-control pull-right" placeholder="@Resources.Common.NewPlayerPlaceholder">
 
                 <div class="input-group-btn">
-                    <button type="button" id="icol" class="btn btn-default"><i class="fa fa-hand-pointer-o"></i></button>
+                    <button type="button" id="add-person" class="btn btn-default"><i class="fa fa-hand-pointer-o"></i></button>
                 </div>
             </div>
         </div>
@@ -23,38 +23,41 @@
             <thead>
                 <tr>
                     <th style="width: 10px" >#</th>
-                    <th>@Model.UserGameRows.FirstOrDefault()?.UserInt.PersonName</th>
+                    @foreach(var row in Model.Game.GameRows) 
+                    {
+                        foreach (var userrow in row.UserGameRows)
+                        {
+                            <th>@userrow.UserInt.PersonName</th> 
+                        }
+                    }
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="rows-list">
+
             @Html.HiddenFor(m => m.GameTime)
-            @*@Html.HiddenFor(m => m.Game.GameId)*@
+            @Html.HiddenFor(m => m.Game.GameId)
+            @Html.HiddenFor(m => m.Game.GameName)
+            @Html.HiddenFor(m => m.Game.GameTypeId)
+            @Html.HiddenFor(m => m.Game.StartedAt)
 
-            @for (var i = 0; i < Model.UserGameRows.Count; i++)
+            @for (var i = 0; i < Model.Game.GameRows.Count; i++)
             {
-                var userGameRow = Model.UserGameRows.ElementAt(i);
-                <tr>
-                    <td>@userGameRow.GameRow.GameRowType.Description</td>
-                    <td>
-                        <div class="form-group form-inline">
-                            @* Validation errors location? Color the box ?*@
-                            @Html.HiddenFor(m => m.UserGameRows[i].GameRowId)
-                            @Html.HiddenFor(m => m.UserGameRows[i].UserIntId)
+                @Html.HiddenFor(model => Model.Game.GameRows.ElementAt(i).GameRowId, new { @Name = string.Format("GameRows[{0}].GameRowId", i), id = string.Format("GameRows_{0}__GameRowId", i) })
+            }
 
-                            @Html.EditorFor(m => m.UserGameRows[i].StartBet, new {htmlAttributes = new {@class = "form-control"}})
-                            @Html.EditorFor(m => m.UserGameRows[i].EndBet, new {htmlAttributes = new {@class = "form-control"}})
-                        </div>
-                    </td>
-                    @*@Html.EditorForMany(row => row.UserGameRows, x => x.Index)*@
-                </tr>
+            @for (var i = 0; i < Model.Game.GameRows.Count; i++)
+            {
+                
+                var i1 = i;
+                if (Model.Game.GameRows.ElementAt(i).UserGameRows.Count != 0)
+                {
+                    <tr>
+                        <td>@Model.Game.GameRows.ElementAt(i).GameRowType.Description</td>
+                        <td>@Html.EditorForMany(x => Model.Game.GameRows.ElementAt(i1).UserGameRows, x => x.Index)</td>
+                    </tr>
+                }
             }
             </tbody>
-
-
-
-
-
-
 
             @*<tr>
                 <td>1.</td>

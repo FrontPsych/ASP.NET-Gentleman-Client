@@ -1,9 +1,10 @@
 ﻿@model Domain.Models.UserGameRow
 
 <div class="form-group form-inline">
-    @Html.EditorFor(model => model.StartBet, new { htmlAttributes = new { @class = "form-control pull-center", @id = "table_tb"} })
-    @Html.EditorFor(model => model.EndBet, new { htmlAttributes = new { @class = "form-control pull-center", @id = "table_tb"} })
-    @Html.ValidationMessageFor(model => model.StartBet, "", new { @class = "text-danger" })
-    @*<input id="table_tb" type="text" class="form-control pull-center">
-    <input id="table_tb" type="text" class="form-control pull-center">*@
+    @Html.HiddenFor(model => model.GameRowId)
+    @Html.HiddenFor(model => model.UserIntId)
+
+    @Html.EditorFor(model => model.StartBet, new {htmlAttributes = new {@class = "form-control pull-center", @id = "table_tb"}})
+    @Html.EditorFor(model => model.EndBet, new {htmlAttributes = new {@class = "form-control pull-center", @id = "table_tb"}})
+    @Html.ValidationMessageFor(model => model.StartBet, "", new {@class = "text-danger"})
 </div>

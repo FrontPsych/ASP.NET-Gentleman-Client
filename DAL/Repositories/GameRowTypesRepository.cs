@@ -19,9 +19,9 @@ namespace DAL.Repositories
         {
         }
 
-        public List<GameRowType> GetRowTypesByGameType(GameType gt)
+        public List<GameRowType> GetRowTypesByGameType(int gameTypeId)
         {
-            var response = HttpClient.GetAsync(EndPoint + nameof(GetRowTypesByGameType) + "/" + gt.GameTypeId).Result;
+            var response = HttpClient.GetAsync(EndPoint + nameof(GetRowTypesByGameType) + "/" + gameTypeId).Result;
             if (response.IsSuccessStatusCode)
             {
                 var res = response.Content.ReadAsAsync<List<GameRowType>>().Result;

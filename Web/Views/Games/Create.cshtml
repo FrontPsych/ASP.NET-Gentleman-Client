@@ -63,7 +63,7 @@
         });
     </script>*@
     <script>
-        $('#icol').click(function () {
+        @*$('#icol').click(function () {
             if ($('#name_box').val()) {
                 $('#mtable thead tr').append($("<th>"));
                 $('#mtable tbody tr').append($("<td>"));
@@ -76,14 +76,22 @@
             } else {
                 alert("@Resources.Common.FieldEmpty");
             }
-        });
+        });*@
 
-        $(document).ready(function ($) {
-            $('#add-room').on('click', function () {
-                jQuery.get('/Building/AddRoom').done(function (html) {
-                    $('#rooms-list').append(html);
+        $('#add-person').on('click', function () {
+            console.log('#add-person was clicked');
+            if ($('#name_box').val()) {
+
+                jQuery.get('/Games/AddUserGameRow').done(function (html) {
+                    console.log('got a response');
+                    $('#mtable thead tr').append($("<th>"));
+                    $('#mtable tbody tr').append($("<td>"));
+                    $('#mtable thead tr>th:last').html($('#name_box').val());
+                    $('#mtable tbody tr').children('td:last').append(html);
+
+                    $('#name_box').val('');
                 });
-            });
+            }
         });
     </script>
     @if (Model.GameTime)
@@ -97,6 +105,4 @@
             $('#NumberOfPlayers').addClass('input-disabled');
         </script>
     }
-
-
 }
