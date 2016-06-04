@@ -1,4 +1,6 @@
 ﻿@using HtmlHelpers
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
 @model Web.ViewModels.GameCreateViewModel
 
 @{
@@ -54,22 +56,46 @@
 </div>
 
 
-@section AdminScripts {
+
+    @section AdminScripts {
     <script>
-        
+
+        @if (@Model.GameRowTypesForGivenGame != null) {
+            <text>
+                var gameData = {
+                    'gameid': @Model.Game.GameId,
+                    'currentgamerow': @Model.Game.GameRows.FirstOrDefault().GameRowTypeId,
+                    'gamerrows': [
+                            @foreach (var gameRowType in @Model.GameRowTypesForGivenGame)
+                            {
+                                <text>
+                                {'id':  "@gameRowType.GameRowTypeId", 'desc': "@gameRowType.Description"},
+                                </text>
+                           }
+                    ],
+                    'users': [
+                        { 'id': "@User.Identity.GetUserId()", 'name': "@User.Identity.GetUserName()", }
+                    ]
+                };
+                </text>
+        }
+
+
         $('#add-person').on('click', function () {
             console.log('#add-person was clicked');
-            if ($('#name_box').val()) {
-                
+            var newusername = $('#name_box').val()
+            if (newusername) {
+
                 //ToDo: into single call
                 //ToDo: JS viskaks mingi errori kui sisestatav nimi on juba olemas table headis nt
 
                 $.ajax({
                     url: '@Url.Action("AddUser")',
                     type: "POST",
-                    data: { username: $('#name_box').val() },
+                    data: { username: newusername },
                     success: function (data) {
-                        console.log($('#name_box').val() + " id: " + data.id);
+                        console.log(newusername + " id: " + data.id);
+                        gameData.users.push({ 'id': data.id, 'name': newusername });
                     }
                 });
 
@@ -80,8 +106,16 @@
 
                 });
 
+                console.log(gameData);
+                $('#name_box').val("");
             }
         });
+
+        $('.save-row').on('click', function () {
+            console.log('add button is clicked');
+
+        });
+
 
         $('#name_box').keypress(function (event) {
             if (event.keyCode == 13) {
