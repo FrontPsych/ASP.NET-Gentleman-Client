@@ -46,16 +46,20 @@
                 @Html.HiddenFor(model => Model.Game.GameRows[i].GameRowId)
             }
 
- 
-            <tr>
-                <td>x</td>
-                <td>
-                    @Html.EditorForMany(x => Model.Game.GameRows, x => x.Index)
-                </td>
-                <td><button type="button" id="add-row">ADD</button></td>
-            </tr>
-            
-            
+
+            @for (var i = 0; i < Model.Game.GameRows.Count; i++)
+            {
+                
+                var i1 = i;
+                if (Model.Game.GameRows.ElementAt(i).UserGameRows.Count != 0)
+                {
+                    <tr data-gamerowtypeid="@Model.Game.GameRows.ElementAt(i).GameRowType.GameRowTypeId">
+                        <td>@Model.Game.GameRows.ElementAt(i).GameRowType.Description</td>
+                        <td>@Html.EditorForMany(x => Model.Game.GameRows.ElementAt(i1).UserGameRows, x => x.Index)</td>
+                        <td><button type="button" class="save-row">SAVE</button></td>
+                    </tr>
+                }
+            }
             </tbody>
 
             @*<tr>
