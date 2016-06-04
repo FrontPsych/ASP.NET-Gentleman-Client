@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace Domain.Models
 
         public int GameRowId { get; set; }
 
+        [NotMapped]
         public string Index { get; set; } //needed for EditorForMany
 
         //ToDo: Mis väljad veel?

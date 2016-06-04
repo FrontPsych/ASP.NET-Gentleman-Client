@@ -3,6 +3,7 @@
 @using Microsoft.AspNet.Identity.Owin
 @{
     var str = User.Identity.GetUserId();
+
     var personName = "";
 
     if (!string.IsNullOrWhiteSpace(str))

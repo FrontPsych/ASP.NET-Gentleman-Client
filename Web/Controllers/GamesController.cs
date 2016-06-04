@@ -156,6 +156,19 @@ namespace Web.Controllers
             return Json(new { id = user.Id});
         }
 
+        [HttpGet]
+        public ActionResult AddRow()
+        {
+
+            var game = new Game();
+            var row = new GameRow();
+            row.UserGameRows.Add(new UserGameRow());
+            game.GameRows.Add(row);
+
+            return View(game);
+        }
+
+
         //// GET: Games/Edit/5
         //public ActionResult Edit(int? id)
         //{

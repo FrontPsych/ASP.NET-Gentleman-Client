@@ -29,14 +29,13 @@ namespace DAL.Repositories
 
     public class UserRepository : UserRepository<string, Role, User, UserClaim, UserLogin, UserRole>, IUserRepository
     {
+        private readonly ILogger _logger = NLog.LogManager.GetCurrentClassLogger();
+
         public UserRepository(HttpClient httpClient, string endPoint, IAuthenticationManager authenticationManager) : base(httpClient, endPoint, authenticationManager)
         {
         }
 
-        public List<Game> GetGivenTypeGamesUserHasPlayed(int gameTypeId, int userId)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 
     public class UserRepository<TKey, TRole, TUser, TUserClaim, TUserLogin, TUserRole> : WebApiRepository<TUser>

@@ -56,11 +56,13 @@
 
 @section AdminScripts {
     <script>
-        
-        $('#add-person').on('click', function () {
+
+        var userIds = [];
+       
+        $('#add-person').on('click', function() {
             console.log('#add-person was clicked');
             if ($('#name_box').val()) {
-                
+
                 //ToDo: into single call
                 //ToDo: JS viskaks mingi errori kui sisestatav nimi on juba olemas table headis nt
 
@@ -68,22 +70,32 @@
                     url: '@Url.Action("AddUser")',
                     type: "POST",
                     data: { username: $('#name_box').val() },
-                    success: function (data) {
+                    success: function(data) {
                         console.log($('#name_box').val() + " id: " + data.id);
+                        userIds.add
                     }
                 });
 
-                jQuery.get('/Games/AddUserGameRow').done(function (html) {
-                    console.log('got a response');
+                jQuery.get('/Games/AddUserGameRow').done(function(html) {
+                    console.log('AddUserGameRow');
                     $('#mtable thead tr>th:last').before("<th>" + $('#name_box').val() + "</th>");
                     $('#mtable tbody tr>td:last').before("<td>" + html + "</td>");
 
                 });
 
+
             }
         });
+        $('#add-row').on('click', function() {
 
-        $('#name_box').keypress(function (event) {
+            jQuery.get('/Games/AddRow').done(function(html) {
+                console.log('AddRow');
+                var table = $('#mtable tbody');
+                table.append('<tr><td><td><td>'+ html + '</td></tr>');
+            });
+        });
+
+        $('#name_box').keypress(function(event) {
             if (event.keyCode == 13) {
                 $('#add-person').click();
                 event.preventDefault();
