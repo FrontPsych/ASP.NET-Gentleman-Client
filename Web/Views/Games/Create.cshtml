@@ -55,29 +55,8 @@
 
 
 @section AdminScripts {
-    @*<script src="~/Scripts/AdminTheme/plugins/select2/select2.full.js"></script>
     <script>
-        $(function() {
-            //Initialize Select2 Elements
-            $(".select2").select2();
-        });
-    </script>*@
-    <script>
-        @*$('#icol').click(function () {
-            if ($('#name_box').val()) {
-                $('#mtable thead tr').append($("<th>"));
-                $('#mtable tbody tr').append($("<td>"));
-                $('#mtable thead tr>th:last').html($('#name_box').val());
-                $('#mtable tbody tr').each(function() {
-                    $(this).children('td:last').append(
-                        $('<div class="form-group form-inline"><input id="table_tb" type="text" class="form-control pull-center"><input id="table_tb" type="text" class="form-control pull-center" ></div>'));
-                });
-                $('#name_box').val('');
-            } else {
-                alert("@Resources.Common.FieldEmpty");
-            }
-        });*@
-
+        
         $('#add-person').on('click', function () {
             console.log('#add-person was clicked');
             if ($('#name_box').val()) {

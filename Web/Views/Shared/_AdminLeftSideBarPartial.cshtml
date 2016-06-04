@@ -42,6 +42,12 @@
             <li><a href="#"><i class="fa fa-history"></i> <span>@Resources.Common.UserHistory</span></a></li>
             <li><a href="#"><i class="fa fa-cog"></i> <span>@Resources.Common.UserSettings</span></a></li>
 
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="header text-uppercase">@Resources.Common.AdminNavigation</li>
+                <li><a href="@Url.Action("SystemLogs", "Admin")"><i class="fa fa-bars"></i> <span>@Resources.Common.SystemLogs</span></a></li>
+            }
+
         </ul>
     </section>
     <!-- /.sidebar -->

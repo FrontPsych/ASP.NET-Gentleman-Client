@@ -288,4 +288,10 @@
   <data name="YourScore" xml:space="preserve">
     <value>End score</value>
   </data>
+  <data name="AdminNavigation" xml:space="preserve">
+    <value>Admin </value>
+  </data>
+  <data name="SystemLogs" xml:space="preserve">
+    <value>System logs</value>
+  </data>
 </root>
