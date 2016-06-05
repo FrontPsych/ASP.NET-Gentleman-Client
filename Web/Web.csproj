@@ -2826,6 +2826,7 @@
     <Content Include="Views\Shared\_ChooseLanguagePartial.cshtml" />
     <Content Include="Views\Games\AddUserGameRow.cshtml" />
     <Content Include="Views\Admin\About.cshtml" />
+    <Content Include="Views\Admin\UserList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2885,7 +2886,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>15826</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

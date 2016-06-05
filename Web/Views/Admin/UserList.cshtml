@@ -1,0 +1,94 @@
+﻿@using HtmlHelpers
+@using PagedList.Mvc
+@model Web.ViewModels.AdminUserListViewModel
+
+@{
+    ViewBag.Title = "Userlist";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    //Move them to some html helper class?
+    // https://msdn.microsoft.com/en-us/library/bb549151(v=vs.110).aspx
+    // 2 parameter types and result type
+    Func<string, string, string> getSortProperty = (propertyName, currentSortProperty) => currentSortProperty == propertyName ? "_" + propertyName : propertyName;
+
+    Func<string, string, string> getSortIcon = (propertyName, currentSortProperty) => currentSortProperty == propertyName ? "fa-sort-up" : currentSortProperty == "_" + propertyName ? "fa-sort-down" : "fa-sort";
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("UserList", "Admin", FormMethod.Get, new { id = "dateTimeForm" }))
+        {
+            @Html.HiddenFor(model => model.SortProperty)
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Filter, new { @class = "control-label col-md-1" })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.Filter, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" value="Filter" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+        @Html.PagedListPager(Model.Users, page => Url.Action("UserList", new { PageNumber = page, filter = Model.Filter }))
+        <p>
+            Total: @Model.Users.TotalItemCount
+        </p>
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            <a href="@Url.Action("UserList", new {SortProperty = getSortProperty("firstname", Model.SortProperty),  Model.Filter})">
+                @Html.DisplayNameFor(model => model.Users.FirstOrDefault().FirstName)
+                <i class="fa @getSortIcon("firstname", Model.SortProperty)"></i>
+            </a>
+        </th>
+        <th>
+            <a href="@Url.Action("UserList", new {SortProperty = getSortProperty("lastname", Model.SortProperty),  Model.Filter})">
+                @Html.DisplayNameFor(model => model.Users.FirstOrDefault().LastName)
+                <i class="fa @getSortIcon("lastname", Model.SortProperty)"></i>
+            </a>
+        </th>
+        <th>@Html.DisplayNameFor(model => model.Users.FirstOrDefault().Email)</th>
+        @*<th>@Html.DisplayNameFor(model => model.Persons.FirstOrDefault().Date)</th>
+        <th>@Html.DisplayNameFor(model => model.Persons.FirstOrDefault().Time)</th>
+        <th>@Html.DisplayNameFor(model => model.Persons.FirstOrDefault().Contacts)</th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Users)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @item.Contacts.Count
+            </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Index", "Manage", new { id = item.Id }) |
+                @Html.ActionLink("Edit", "Index", "Manage", new { id = item.Id}) |
+                @Html.ActionLink("Edit", "Index", "Manage", new { id = item.Id})
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model.Users, page => Url.Action("UserList", new { PageNumber = page }))

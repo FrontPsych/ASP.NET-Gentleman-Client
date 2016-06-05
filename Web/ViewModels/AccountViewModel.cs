@@ -57,6 +57,8 @@ namespace Web.ViewModels
         [Required(AllowEmptyStrings = false, ErrorMessageResourceType = typeof(Account),
             ErrorMessageResourceName = "ViewModel_UserNameRequired")]
         [Display(ResourceType = typeof(Account), Name = "ViewModel_UserName")]
+        [MinLength(3, ErrorMessageResourceName = "FieldMinLength", ErrorMessageResourceType = typeof(Resources.Common))]
+        [MaxLength(12, ErrorMessageResourceName = "FieldMaxLength", ErrorMessageResourceType = typeof(Resources.Common))]
         public string Username { get; set; }
 
         //[Required(AllowEmptyStrings = false, ErrorMessageResourceType = typeof(Account),
@@ -69,6 +71,9 @@ namespace Web.ViewModels
             ErrorMessageResourceName = "ViewModel_PasswordRequired")]
         [DataType(DataType.Password)]
         [Display(ResourceType = typeof(Account), Name = "ViewModel_Password")]
+        [MinLength(3, ErrorMessageResourceName = "FieldMinLength", ErrorMessageResourceType = typeof(Resources.Common))]
+        [MaxLength(12, ErrorMessageResourceName = "FieldMaxLength", ErrorMessageResourceType = typeof(Resources.Common))]
+
         public string Password { get; set; }
 
         [Display(ResourceType = typeof(Account), Name = "ViewModel_RememberMe")]

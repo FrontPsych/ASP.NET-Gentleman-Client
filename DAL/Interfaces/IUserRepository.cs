@@ -11,6 +11,8 @@ namespace DAL.Interfaces
 {
     public interface IUserIntRepository : IUserRepository<int, UserInt>
     {
+        List<UserInt> GetAllForUser(int userId, string filter, string sortProperty, int pageNumber, int pageSize);
+        Tuple<List<UserInt>,int, string> GetAllForUser(int userId, string filter, DateTime? filterFromDT, DateTime? filterToDt, string sortProperty, int pageNumber, int pageSize);
     }
 
     public interface IUserRepository : IUserRepository<string, User>

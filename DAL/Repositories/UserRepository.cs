@@ -16,6 +16,8 @@ namespace DAL.Repositories
     public class UserIntRepository : UserRepository<int, RoleInt, UserInt, UserClaimInt, UserLoginInt, UserRoleInt>,
         IUserIntRepository
     {
+        private readonly ILogger _logger = NLog.LogManager.GetCurrentClassLogger();
+
         public UserIntRepository(HttpClient httpClient, string endPoint, IAuthenticationManager authenticationManager) : base(httpClient, endPoint, authenticationManager)
         {
         }
@@ -25,6 +27,48 @@ namespace DAL.Repositories
             throw new NotImplementedException();
         }
 
+        public List<UserInt> GetAllForUser(int userId, string filter, string sortProperty, int pageNumber, int pageSize)
+        {
+            filter = filter ?? "_";
+            sortProperty = sortProperty ?? "_";
+            var response = HttpClient.GetAsync(EndPoint + nameof(GetAllForUser) + "/" + userId + "/" + filter + "/" + sortProperty + "/" + pageNumber + "/" + pageSize).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var res = response.Content.ReadAsAsync<List<UserInt>>().Result;
+                return res;
+            }
+
+            return null;
+        }
+
+        //public List<UserInt> GetUsersInt()
+        //{
+        //    var response = HttpClient.GetAsync(EndPoint).Result;
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        var res = response.Content.ReadAsAsync<List<UserInt>>().Result;
+        //        return res;
+        //    }
+        //    _logger.Debug("Web API statuscode: " + response.StatusCode + " Uri:" + response.RequestMessage.RequestUri);
+
+        //    return null;
+        //} 
+        public Tuple<List<UserInt>,int, string> GetAllForUser(int userId, string filter, DateTime? filterFromDT, DateTime? filterToDt, string sortProperty,
+            int pageNumber, int pageSize)
+        {
+            filter = filter ?? "_";
+            sortProperty = sortProperty ?? "lastname";
+            var x = Tuple.Create(filterFromDT, filterToDt);
+
+            var response = HttpClient.PostAsJsonAsync(EndPoint + nameof(GetAllForUser) + "/" + userId + "/" + filter + "/"+ sortProperty + "/"+ pageNumber + "/" + pageSize, x).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var res = response.Content.ReadAsAsync<Tuple<List<UserInt>, int, string>>().Result;
+                return res;
+            }
+            _logger.Debug("Web API statuscode: " + response.StatusCode + " Uri:" + response.RequestMessage.RequestUri);
+            return null;
+        }
     }
 
     public class UserRepository : UserRepository<string, Role, User, UserClaim, UserLogin, UserRole>, IUserRepository
