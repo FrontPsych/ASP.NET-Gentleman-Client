@@ -279,4 +279,10 @@
   <data name="GameStatistics" xml:space="preserve">
     <value>Mängu statistika</value>
   </data>
+  <data name="AdminNavigation" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="SystemLogs" xml:space="preserve">
+    <value>Süsteemi logid</value>
+  </data>
 </root>

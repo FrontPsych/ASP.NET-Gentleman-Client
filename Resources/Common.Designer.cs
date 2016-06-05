@@ -88,6 +88,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Admin .
+        /// </summary>
+        public static string AdminNavigation {
+            get {
+                return ResourceManager.GetString("AdminNavigation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GENTLEMAN.
         /// </summary>
         public static string ApplicationName {
@@ -516,6 +525,15 @@ namespace Resources {
         public static string Submit {
             get {
                 return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System logs.
+        /// </summary>
+        public static string SystemLogs {
+            get {
+                return ResourceManager.GetString("SystemLogs", resourceCulture);
             }
         }
         

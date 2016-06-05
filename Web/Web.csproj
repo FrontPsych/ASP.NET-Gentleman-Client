@@ -267,6 +267,7 @@
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModel.cs" />
+    <Compile Include="ViewModels\SystemLogViewModel.cs" />
     <Compile Include="ViewModels\UserVariaViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2826,10 +2827,13 @@
     <Content Include="Views\Shared\_ChooseLanguagePartial.cshtml" />
     <Content Include="Views\Games\AddUserGameRow.cshtml" />
     <Content Include="Views\Admin\About.cshtml" />
-    <Content Include="Views\Admin\UserList.cshtml" />
+    <Content Include="Views\Admin\SystemLogs.cshtml" />
+    <Content Include="Views\Admin\DeleteAllLogFiles.cshtml" />
+    <Content Include="Views\Games\AddRow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="logs\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Language\" />

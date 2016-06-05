@@ -22,7 +22,6 @@ namespace DAL.Interfaces
     public interface IUserRepository<in TKey, TUser> : IBaseRepository<TUser>
         where TUser : class, IUser<TKey>
     {
-        List<Game> GetGivenTypeGamesUserHasPlayed(int gameTypeId, int userId);
         TUser GetUserByUserName(string userName);
         TUser GetUserByEmail(string email);
         bool IsInRole(TKey userId, string roleName);

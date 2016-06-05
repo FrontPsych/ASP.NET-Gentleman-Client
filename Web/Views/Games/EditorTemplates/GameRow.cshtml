@@ -1,4 +1,4 @@
-﻿@model Domain.Models.GameRow
-<div>
-    @Html.LabelFor(x => x.Game.GameType.Name)
-</div>
+﻿@using HtmlHelpers
+@model Domain.Models.GameRow
+
+@Html.EditorForMany(x => Model.UserGameRows, x => x.Index)
