@@ -124,10 +124,12 @@ namespace Web.Controllers
 
         [OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
         [HttpGet]
-        public ActionResult AddUserGameRow()
+        public ActionResult AddUserGameRow(int userid)
         {
 
             var row = new GameRow();
+            var userGameRow = new UserGameRow();
+            userGameRow.UserIntId = userid;
             row.UserGameRows.Add(new UserGameRow());
 
             return View(row);
