@@ -30,4 +30,12 @@ namespace Web.ViewModels
     {
         public Game Game { get; set; }
     }
+
+
+    public class GameAddRowViewModel
+    {
+        public GameRow GameRow { get; set; }
+        public List<UserGameRow> UserGameRows { get; set; }
+    }
+
 }

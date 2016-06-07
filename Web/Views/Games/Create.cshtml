@@ -58,43 +58,43 @@
 
 
 
-    @section AdminScripts {
+@section AdminScripts {
+@if (Model.GameTime)
+{
     <script>
-
-        @if (@Model.GameRowTypesForGivenGame != null) {
+        @if (@Model.GameRowTypesForGivenGame != null)
+        {
             <text>
-                var gameData = {
-                    'gameid': @Model.Game.GameId,
-                    'currentgamerow': 0,
-                    'gamerows': [
-                            @foreach (var gameRowType in @Model.GameRowTypesForGivenGame)
-                            {
-                                <text>
-                                {'id':  "@gameRowType.GameRowTypeId", 'desc': "@gameRowType.Description"},
-                                </text>
-                           }
-                    ],
-                    'users': [
-                        { 'id': "@User.Identity.GetUserId()", 'name': "@User.Identity.GetUserName()", }
-                    ],
-                    'getNextGameRow': function() {
-                        this.currentgamerow++;
-                        if(typeof this.gamerows[this.currentgamerow] === 'undefined') {
-                            return false;
-                        }
-                        else {
-                            return this.gamerows[this.currentgamerow]
-                        }
-                        
-                    }
-                };
+        var gameData = {          
+            'currentgamerow': 0,
+            'gamerows': [
+                @foreach (var gameRowType in @Model.GameRowTypesForGivenGame)
+                {
+                    <text>
+                { 'id': "@gameRowType.GameRowTypeId", 'desc': "@gameRowType.Description" },
                 </text>
+                }
+            ],
+            'users': [
+                { 'id': "@User.Identity.GetUserId()", 'name': "@User.Identity.GetUserName()" }
+            ],
+            'getNextGameRow': function() {
+                this.currentgamerow++;
+                if (typeof this.gamerows[this.currentgamerow] === 'undefined') {
+                    return false;
+                } else {
+                    return this.gamerows[this.currentgamerow];
+                }
+
+            }
+        };
+        </text>
         }
 
 
-        $('#add-person').on('click', function () {
+        $('#add-person').on('click', function() {
             console.log('#add-person was clicked');
-            var newusername = $('#name_box').val()
+            var newusername = $('#name_box').val();
             if (newusername) {
 
                 //ToDo: into single call
@@ -104,11 +104,11 @@
                     url: '@Url.Action("AddUser")',
                     type: "POST",
                     data: { username: newusername },
-                    success: function (data) {
+                    success: function(data) {
                         console.log(newusername + " id: " + data.id);
                         gameData.users.push({ 'id': data.id, 'name': newusername });
 
-                        jQuery.get('/Games/AddUserGameRow?userid='+data.id).done(function (html) {
+                        jQuery.get('/Games/AddUserGameRow?userid=' + data.id).done(function(html) {
                             $('#mtable thead tr>th:last').before("<th>" + newusername + "</th>");
                             $('#mtable tbody tr>td:last').before("<td>" + html + "</td>");
 
@@ -116,131 +116,133 @@
                     }
                 });
 
-               
 
                 console.log(gameData);
                 $('#name_box').val("");
             }
         });
 
-        $('.save-row').on('click', function () {
-           var tr_element=$(this).closest('tr');
-           console.log(tr_element)
-           var obj = {
-               'gamerowtypeid':tr_element.data('gamerowtypeid'),
-               'gamerowid':tr_element.data('gamerowid'), 
-               'userrows': [],
-           }
+        $('.save-row').on('click', function() {
+            var tr_element = $(this).closest('tr');
+            console.log(tr_element);
+            var obj = {
+                GameRow : {
+                    'gamerowid': tr_element.data('gamerowid'),
+                    'gameid': @Model.Game.GameId,
+                    'gamerowtypeid': tr_element.data('gamerowtypeid')
+                },
+                'UserGameRows': []
+            }
 
-           $('#mtable tbody tr td div').each(function() {
-               var el  = $(this);
-               userid = el.data('userid')
-               if(userid>0) {
-                   var start_bet = el.find('.start_bet').first().val();
-                   var end_bet = el.find('.end_bet').first().val();
-                   obj.userrows.push({'userid':userid, 'start_bet':start_bet, 'end_bet': end_bet})
-               }
-           });
-            console.log(obj)
+            $('#mtable tbody tr td div').each(function() {
+                var el = $(this);
+                userid = el.data('userid');
+                if (userid > 0) {
+                    var start_bet = el.find('.start_bet').first().val();
+                    var end_bet = el.find('.end_bet').first().val();
+                    obj.UserGameRows.push({ 'userintid': userid, 'startbet': start_bet, 'endbet': end_bet });
+                }
+            });
+            console.log(obj);
+
             $.ajax({
-                url: '@Url.Action("AddGameRow")',
+                url: '@Url.Action("AddUpdateGameRow")',
                 type: "POST",
                 data: obj,
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
-                   //TODO datalt saame id
+                    //TODO datalt saame id
+                    console.log("Newly added game row id: " + data.GameRowId);
+
                 }
             });
             var last_row = $('#mtable tbody>tr:last');
-            if (last_row.data('gamerowid') == 0) { 
+            if (last_row.data('gamerowid') == 0) {
                 var gamerow = gameData.getNextGameRow();
                 if (gamerow) {
                     row = $('#mtable tbody>tr:last').clone(true)
                     row.find('.start_bet').val('0')
                     row.find('.end_bet').val('');
-                
+
 
                     row.data('gamerowtypeid', gamerow.id);
-                    row.find('td:first').html( gamerow.desc);
+                    row.find('td:first').html(gamerow.desc);
                     row.data('gamerowid', '0')
                     row.insertAfter('#mtable tbody>tr:last')
                     console.log('LISAME UUE REA: ')
                     console.log(row)
                     console.log(row.data('gamerowtypeid'))
                     console.log(row.data('gamerowid'))
-               }
+                }
             }
-          
+
         });
 
 
-        $('#name_box').keypress(function (event) {
+        $('#name_box').keypress(function(event) {
             if (event.keyCode == 13) {
                 $('#add-person').click();
                 event.preventDefault();
             }
         });
 
-    </script>
-    @if (Model.GameTime)
-    {
-        <script>
-            $("#dropdown").prop("disabled", true);
-            $("#new-game-btn").hide();
-            $('#Game_GameName').attr('readonly', true);
-            $('#Game_GameName').addClass('input-disabled');
-            $('#NumberOfPlayers').attr('readonly', true);
-            $('#NumberOfPlayers').addClass('input-disabled');
 
 
-            var $divStart = $(".start_bet");
-            var $div = $(".end_bet");
+        $("#dropdown").prop("disabled", true);
+        $("#new-game-btn").hide();
+        $('#Game_GameName').attr('readonly', true);
+        $('#Game_GameName').addClass('input-disabled');
+        $('#NumberOfPlayers').attr('readonly', true);
+        $('#NumberOfPlayers').addClass('input-disabled');
+
+
+        var $divStart = $(".start_bet");
+        var $div = $(".end_bet");
             
-            var observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    if (mutation.attributeName === "class") {
-                        var attributeValue = $(mutation.target).prop(mutation.attributeName);
-                        console.log("Class attribute changed to:", attributeValue);
-                        if (attributeValue.indexOf("error") > 0) {
-                            $div.parent("span").addClass("has-error");
-                            console.log("adding class endbet");
-                        } else {
-                            $div.parent("span").removeClass();
-                            console.log("removing class endbet");
-                        }
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === "class") {
+                    var attributeValue = $(mutation.target).prop(mutation.attributeName);
+                    console.log("Class attribute changed to:", attributeValue);
+                    if (attributeValue.indexOf("error") > 0) {
+                        $div.parent("span").addClass("has-error");
+                        console.log("adding class endbet");
+                    } else {
+                        $div.parent("span").removeClass();
+                        console.log("removing class endbet");
                     }
-                });
-            });    
+                }
+            });
+        });    
            
-            observer.observe($div[0], {
-                attributes: true
-            });
+        observer.observe($div[0], {
+            attributes: true
+        });
 
-            var observer2 = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    if (mutation.attributeName === "class") {
-                        var attributeValue = $(mutation.target).prop(mutation.attributeName);
-                        console.log("Class attribute changed to:", attributeValue);
-                        if (attributeValue.indexOf("error") > 0) {
+        var observer2 = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === "class") {
+                    var attributeValue = $(mutation.target).prop(mutation.attributeName);
+                    console.log("Class attribute changed to:", attributeValue);
+                    if (attributeValue.indexOf("error") > 0) {
 
-                            $divStart.parent("span").addClass("has-error");
+                        $divStart.parent("span").addClass("has-error");
 
-                            console.log("adding class startbet");
-                        } else {
+                        console.log("adding class startbet");
+                    } else {
 
-                            $divStart.parent("span").removeClass();
-                            console.log("removing class startbet");
-                        }
+                        $divStart.parent("span").removeClass();
+                        console.log("removing class startbet");
                     }
-                });
-            });    
-
-            observer2.observe($divStart[0], {
-                attributes: true
+                }
             });
+        });    
 
+        observer2.observe($divStart[0], {
+            attributes: true
+        });
 
-        </script>
-    }
+    </script>
+}
 
 }
