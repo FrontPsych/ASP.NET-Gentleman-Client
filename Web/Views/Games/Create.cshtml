@@ -64,8 +64,8 @@
             <text>
                 var gameData = {
                     'gameid': @Model.Game.GameId,
-                    'currentgamerow': @Model.Game.GameRows.FirstOrDefault().GameRowTypeId,
-                    'gamerrows': [
+                    'currentgamerow': 0,
+                    'gamerows': [
                             @foreach (var gameRowType in @Model.GameRowTypesForGivenGame)
                             {
                                 <text>
@@ -75,7 +75,17 @@
                     ],
                     'users': [
                         { 'id': "@User.Identity.GetUserId()", 'name': "@User.Identity.GetUserName()", }
-                    ]
+                    ],
+                    'getNextGameRow': function() {
+                        this.currentgamerow++;
+                        if(typeof this.gamerows[this.currentgamerow] === 'undefined') {
+                            return false;
+                        }
+                        else {
+                            return this.gamerows[this.currentgamerow]
+                        }
+                        
+                    }
                 };
                 </text>
         }
@@ -96,15 +106,16 @@
                     success: function (data) {
                         console.log(newusername + " id: " + data.id);
                         gameData.users.push({ 'id': data.id, 'name': newusername });
+
+                        jQuery.get('/Games/AddUserGameRow?userid='+data.id).done(function (html) {
+                            $('#mtable thead tr>th:last').before("<th>" + newusername + "</th>");
+                            $('#mtable tbody tr>td:last').before("<td>" + html + "</td>");
+
+                        });
                     }
                 });
 
-                jQuery.get('/Games/AddUserGameRow?userid=12').done(function (html) {
-                    console.log('got a response');
-                    $('#mtable thead tr>th:last').before("<th>" + newusername + "</th>");
-                    $('#mtable tbody tr>td:last').before("<td>" + html + "</td>");
-
-                });
+               
 
                 console.log(gameData);
                 $('#name_box').val("");
@@ -112,10 +123,53 @@
         });
 
         $('.save-row').on('click', function () {
-            row = $('#mtable tbody>tr:last').clone(true)
-            console.log(row);
-            row.insertAfter('#mtable tbody>tr:last')
-           
+           var tr_element=$(this).closest('tr');
+           console.log(tr_element)
+           var obj = {
+               'gamerowtypeid':tr_element.data('gamerowtypeid'),
+               'gamerowid':tr_element.data('gamerowid'), 
+               'userrows': [],
+           }
+
+           $('#mtable tbody tr td div').each(function() {
+               var el  = $(this);
+               userid = el.data('userid')
+               if(userid>0) {
+                   var start_bet = el.find('.start_bet').first().val();
+                   var end_bet = el.find('.end_bet').first().val();
+                   obj.userrows.push({'userid':userid, 'start_bet':start_bet, 'end_bet': end_bet})
+               }
+           });
+            console.log(obj)
+            $.ajax({
+                url: '@Url.Action("AddGameRow")',
+                type: "POST",
+                data: obj,
+                success: function (data) {
+                    console.log(data);
+                   //TODO datalt saame id
+                }
+            });
+            var last_row = $('#mtable tbody>tr:last');
+            if (last_row.data('gamerowid') == 0) { 
+                var gamerow = gameData.getNextGameRow();
+                if (gamerow) {
+                    row = $('#mtable tbody>tr:last').clone(true)
+                    row.find('.start_bet').val('0')
+                    row.find('.end_bet').val('');
+                
+
+                    row.data('gamerowtypeid', gamerow.id);
+                    row.find('td:first').html( gamerow.desc);
+                    row.data('gamerowid', '0')
+                    row.insertAfter('#mtable tbody>tr:last')
+                    console.log('LISAME UUE REA: ')
+                    console.log(row)
+                    console.log(row.data('gamerowtypeid'))
+                    console.log(row.data('gamerowid'))
+               }
+            }
+          
         });
 
 
