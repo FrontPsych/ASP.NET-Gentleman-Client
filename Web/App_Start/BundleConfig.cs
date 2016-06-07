@@ -61,7 +61,9 @@ namespace Web
                       "~/Scripts/Theme/jquery.fitvids.js",
                       "~/Scripts/Theme/jquery.ajaxchimp.js",
                       "~/Scripts/Theme/jquery.scrollTo.js",
-                      "~/Scripts/Theme/jquery.localScroll.js"));
+                      "~/Scripts/Theme/jquery.localScroll.js",
+                      "~/Scripts/attrchange.js",
+                      "~/Scripts/attrchange_ext.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/Theme").Include(
                       "~/Scripts/Theme/preloader.js",

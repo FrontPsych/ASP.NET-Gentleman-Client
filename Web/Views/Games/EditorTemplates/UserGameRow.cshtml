@@ -1,8 +1,9 @@
 ﻿@model Domain.Models.UserGameRow
-
 <div class="form-group form-inline" data-userid="@Model.UserIntId">
-    @Html.TextBoxFor(model => model.StartBet, new { @class = "form-control pull-center table_tb start_bet"  })
-    @Html.TextBoxFor(model => model.EndBet, new { @class = "form-control pull-center table_tb end_bet"  })
-    @Html.ValidationMessageFor(model => model.StartBet, "", new { @class = "text-danger" })
-    @Html.ValidationMessageFor(model => model.EndBet, "", new { @class = "text-danger" })
+    <span class="">
+        @Html.TextBoxFor(model => model.StartBet, new {@class = "form-control pull-center table_tb start_bet square"})
+    </span>
+    <span class="">
+        @Html.TextBoxFor(model => model.EndBet, new { @class = "form-control pull-center table_tb end_bet square" })
+    </span>
 </div>
