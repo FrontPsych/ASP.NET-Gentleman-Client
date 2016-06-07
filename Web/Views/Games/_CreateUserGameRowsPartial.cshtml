@@ -53,7 +53,7 @@
                 var i1 = i;
                 if (Model.Game.GameRows.ElementAt(i).UserGameRows.Count != 0)
                 {
-                    <tr data-gamerowtypeid="@Model.Game.GameRows.ElementAt(i).GameRowType.GameRowTypeId">
+                    <tr data-gamerowtypeid="@Model.Game.GameRows.ElementAt(i).GameRowType.GameRowTypeId" >
                         <td>@Model.Game.GameRows.ElementAt(i).GameRowType.Description</td>
                         <td>@Html.EditorForMany(x => Model.Game.GameRows.ElementAt(i1).UserGameRows, x => x.Index)</td>
                         <td><button type="button" class="save-row">SAVE</button></td>

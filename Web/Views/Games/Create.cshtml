@@ -11,10 +11,11 @@
 @section AdminStyles {
     @*<link href="~/Scripts/AdminTheme/plugins/select2/select2.css" rel="stylesheet" />*@
     <style>
-        .table_tb {
-            width: 50px;
-            text-align:left;
+         .square {
+            width: 40px !important;
+            height: 40px !important;
         }
+
     </style>
 }
 
@@ -125,6 +126,7 @@
                 event.preventDefault();
             }
         });
+
     </script>
     @if (Model.GameTime)
     {
@@ -135,6 +137,56 @@
             $('#Game_GameName').addClass('input-disabled');
             $('#NumberOfPlayers').attr('readonly', true);
             $('#NumberOfPlayers').addClass('input-disabled');
+
+
+            var $divStart = $(".start_bet");
+            var $div = $(".end_bet");
+            
+            var observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === "class") {
+                        var attributeValue = $(mutation.target).prop(mutation.attributeName);
+                        console.log("Class attribute changed to:", attributeValue);
+                        if (attributeValue.indexOf("error") > 0) {
+                            $div.parent("span").addClass("has-error");
+                            console.log("adding class endbet");
+                        } else {
+                            $div.parent("span").removeClass();
+                            console.log("removing class endbet");
+                        }
+                    }
+                });
+            });    
+           
+            observer.observe($div[0], {
+                attributes: true
+            });
+
+            var observer2 = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === "class") {
+                        var attributeValue = $(mutation.target).prop(mutation.attributeName);
+                        console.log("Class attribute changed to:", attributeValue);
+                        if (attributeValue.indexOf("error") > 0) {
+
+                            $divStart.parent("span").addClass("has-error");
+
+                            console.log("adding class startbet");
+                        } else {
+
+                            $divStart.parent("span").removeClass();
+                            console.log("removing class startbet");
+                        }
+                    }
+                });
+            });    
+
+            observer2.observe($divStart[0], {
+                attributes: true
+            });
+
+
         </script>
     }
+
 }
