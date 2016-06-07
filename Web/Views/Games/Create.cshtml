@@ -99,9 +99,9 @@
                     }
                 });
 
-                jQuery.get('/Games/AddUserGameRow').done(function (html) {
+                jQuery.get('/Games/AddUserGameRow?userid=12').done(function (html) {
                     console.log('got a response');
-                    $('#mtable thead tr>th:last').before("<th>" + $('#name_box').val() + "</th>");
+                    $('#mtable thead tr>th:last').before("<th>" + newusername + "</th>");
                     $('#mtable tbody tr>td:last').before("<td>" + html + "</td>");
 
                 });
@@ -112,8 +112,10 @@
         });
 
         $('.save-row').on('click', function () {
-            console.log('add button is clicked');
-
+            row = $('#mtable tbody>tr:last').clone(true)
+            console.log(row);
+            row.insertAfter('#mtable tbody>tr:last')
+           
         });
 
 
