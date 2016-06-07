@@ -114,7 +114,8 @@ namespace Web.Controllers
             vm.Game.GameRows.FirstOrDefault()?.UserGameRows.Add(new UserGameRow()
             {
                 GameRow = vm.Game.GameRows.FirstOrDefault(),
-                UserInt = this._uow.UsersInt.GetById(vm.Game.UserIntId)
+                UserInt = this._uow.UsersInt.GetById(vm.Game.UserIntId),
+                UserIntId = vm.Game.UserIntId
             });
 
             vm.GameTypeSelectList = new SelectList(this._uow.GameTypes.All, nameof(GameType.GameTypeId), nameof(GameType.Name));
@@ -128,9 +129,10 @@ namespace Web.Controllers
         {
 
             var row = new GameRow();
-            var userGameRow = new UserGameRow();
-            userGameRow.UserIntId = userid;
-            row.UserGameRows.Add(new UserGameRow());
+            row.UserGameRows.Add(new UserGameRow()
+            {
+                UserIntId = userid,
+            });
 
             return View(row);
         }
@@ -159,7 +161,7 @@ namespace Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddRow()
+        public ActionResult AddRow(int gameRowTypeId)
         {
 
             var game = new Game();
