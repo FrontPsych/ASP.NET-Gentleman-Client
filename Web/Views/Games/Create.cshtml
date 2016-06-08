@@ -25,6 +25,9 @@
               -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
                       box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
             }
+           .row-error {
+                background: lightcoral!important;
+           }
 
     </style>
 }
@@ -124,6 +127,9 @@
                             jQuery.get('/Games/AddUserGameRow?userid=' + data.id).done(function(html) {
                                 $('#mtable thead tr>th:last').before("<th>" + newusername + "</th>");
                                 $('#mtable tbody tr>td:last').before("<td>" + html + "</td>");
+                                $('#mtable tfoot tr#score-name-row   >td:last').before("<td>" + newusername + "</td>");
+                                $('#mtable tfoot tr#score-points-row >td:last').before("<td id='score-points-userid-"+data.id+"'>0</td>");
+                                $('#mtable tfoot tr#score-place-row  >td:last').before("<td id='score-place-userid-"+data.id+"'>1</td>");
                                 $("#mtable tbody tr td").updateValidation();
                             });
                         }
@@ -159,16 +165,19 @@
                     val = 0;
                     el.val(val);
                 }
-                sum+=val;
+                sum+=parseInt(val);
                 console.log($(this).val());
             });
-            console.log(sum);
-            tr_row.find('td:first');
+            if (sum == tr_row.find('td:first').html()) {
+                return false;
+            }
+
             return true;
         }
 
         $('.save-row').on('click', function() {
             var tr_element = $(this).closest('tr');
+            tr_element.removeClass('row-error');
             if (isValidRow(tr_element)) {
                 console.log(tr_element);
                 var obj = {
@@ -198,7 +207,7 @@
                     success: function(data) {
                         console.log(data);
                         console.log("Newly added game row id: " + data.GameRowId);
-                        if (data.GameRowId > 0) {
+                        if (tr_element.data('gamerowid') == 0) {
                             var last_row = $('#mtable tbody>tr:last');
                             if (last_row.data('gamerowid') == 0) {
                                 var gamerow = gameData.getNextGameRow();
@@ -216,19 +225,20 @@
                                     console.log(row.data('gamerowtypeid'))
                                     console.log(row.data('gamerowid'))
                                 }
-
-                                jQuery.get('@Url.Action("GetGameResults", "Games", new { gameId = Model.Game.GameId })' ).done(function(array) {
-                                    console.log("SKOORI ARR: ");
-                                    console.log(array);
-                                });
-                            }
-                        } else {
-                            //TODO serveripoolne valideerimine.. ja näiteks siis data.errormsg välga kuvamine kliendis
-                        }
-                    } 
+                            }  
+                        } // if (tr_element.data('gamerowid') == 0) { if (tr_element.data('gamerowid') == 0) {
+                        jQuery.get('@Url.Action("GetGameResults", "Games", new { gameId = Model.Game.GameId })' ).done(function(array) {
+                            console.log("SKOORI ARR: ");
+                            jQuery.each(array, function() {
+                                jQuery('#score-place-userid-'+this.UserIntId).html(this.Position);
+                                jQuery('#score-points-userid-'+this.UserIntId).html(this.ScorePoints);
+                            });
+                            console.log(array);
+                        });
+                    } //end success
                 });//end ajax call
             }  else {
-                alert('Rida vigane. TODO teha normaalne error msg')
+                tr_element.addClass('row-error');
             }
 
            
