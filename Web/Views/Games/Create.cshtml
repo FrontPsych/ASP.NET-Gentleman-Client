@@ -15,6 +15,16 @@
             width: 40px !important;
             height: 40px !important;
         }
+         .square.input-validation-error {
+              border-color: #a94442;
+              -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+                      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            }
+           .square.input-validation-error.form-control:focus {
+              border-color: #843534;
+              -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+                      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+            }
 
     </style>
 }
@@ -86,105 +96,138 @@
                     return this.gamerows[this.currentgamerow];
                 }
 
+            },
+            'isUniqUser': function(name) {
+                var result = $.grep(this.users, function(e){ return e.name == name; });
+                return (result.length == 0);
             }
+
         };
         </text>
         }
 
 
+        //ToDo: into single call
         $('#add-person').on('click', function() {
             console.log('#add-person was clicked');
             var newusername = $('#name_box').val();
             if (newusername) {
+                if (gameData.isUniqUser(newusername)) {
+                    $.ajax({
+                        url: '@Url.Action("AddUser")',
+                        type: "POST",
+                        data: { username: newusername },
+                        success: function(data) {
+                            console.log(newusername + " id: " + data.id);
+                            gameData.users.push({ 'id': data.id, 'name': newusername });
 
-                //ToDo: into single call
-                //ToDo: JS viskaks mingi errori kui sisestatav nimi on juba olemas table headis nt
-
-                $.ajax({
-                    url: '@Url.Action("AddUser")',
-                    type: "POST",
-                    data: { username: newusername },
-                    success: function(data) {
-                        console.log(newusername + " id: " + data.id);
-                        gameData.users.push({ 'id': data.id, 'name': newusername });
-
-                        jQuery.get('/Games/AddUserGameRow?userid=' + data.id).done(function(html) {
-                            $('#mtable thead tr>th:last').before("<th>" + newusername + "</th>");
-                            $('#mtable tbody tr>td:last').before("<td>" + html + "</td>");
-
-                        });
-
-
-
-                    }
-                });
-
-
-                console.log(gameData);
-                $('#name_box').val("");
+                            jQuery.get('/Games/AddUserGameRow?userid=' + data.id).done(function(html) {
+                                $('#mtable thead tr>th:last').before("<th>" + newusername + "</th>");
+                                $('#mtable tbody tr>td:last').before("<td>" + html + "</td>");
+                                $("#mtable tbody tr td").updateValidation();
+                            });
+                        }
+                    });
+                    console.log(gameData);
+                    $('#name_box').val("");
+                } else {
+                    alert('@Resources.Common.ErrorUsersExists');
+                }
             }
         });
 
+        //function to update form fields validating after adding fileds with js
+        //source http://stackoverflow.com/questions/4406291/jquery-validate-unobtrusive-not-working-with-dynamic-injected-elements
+        (function ($) {
+            $.fn.updateValidation = function () {
+                var $this = $(this);
+                var form = $this.closest("form")
+                    .removeData("validator")
+                    .removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse(form);
+                return $this;
+            };
+        })(jQuery);
+
+
+        function isValidRow(tr_row) {
+            sum = 0;
+            tr_row.find('.start_bet').each(function() {
+                el = $(this);
+                val = el.val();
+                if (val == "" || isNaN(val) || val<0) {
+                    val = 0;
+                    el.val(val);
+                }
+                sum+=val;
+                console.log($(this).val());
+            });
+            console.log(sum);
+            tr_row.find('td:first');
+            return true;
+        }
+
         $('.save-row').on('click', function() {
             var tr_element = $(this).closest('tr');
-            console.log(tr_element);
-            var obj = {
-                GameRow : {
-                    'gamerowid': tr_element.data('gamerowid'),
-                    'gameid': @Model.Game.GameId,
-                    'gamerowtypeid': tr_element.data('gamerowtypeid')
-                },
-                'UserGameRows': []
+            if (isValidRow(tr_element)) {
+                console.log(tr_element);
+                var obj = {
+                    GameRow : {
+                        'gamerowid': tr_element.data('gamerowid'),
+                        'gameid': @Model.Game.GameId,
+                        'gamerowtypeid': tr_element.data('gamerowtypeid')
+                    },
+                    'UserGameRows': []
+                }
+
+                tr_element.find('td div').each(function() {
+                    var el = $(this);
+                    userid = el.data('userid');
+                    if (userid > 0) {
+                        var start_bet = el.find('.start_bet').first().val();
+                        var end_bet = el.find('.end_bet').first().val();
+                        obj.UserGameRows.push({ 'userintid': userid, 'startbet': start_bet, 'endbet': end_bet });
+                    }
+                });
+                console.log(obj);
+
+                $.ajax({
+                    url: '@Url.Action("AddUpdateGameRow")',
+                    type: "POST",
+                    data: obj,
+                    success: function(data) {
+                        console.log(data);
+                        console.log("Newly added game row id: " + data.GameRowId);
+                        if (data.GameRowId > 0) {
+                            var last_row = $('#mtable tbody>tr:last');
+                            if (last_row.data('gamerowid') == 0) {
+                                var gamerow = gameData.getNextGameRow();
+                                row = $('#mtable tbody>tr:last').data('gamerowid',data.GameRowId);
+                                if (gamerow) {
+                                    row = $('#mtable tbody>tr:last').clone(true)
+                                    row.find('.start_bet').val('0')
+                                    row.find('.end_bet').val('');
+                                    row.data('gamerowtypeid', gamerow.id);
+                                    row.find('td:first').html(gamerow.desc);
+                                    row.data('gamerowid', '0')
+                                    row.insertAfter('#mtable tbody>tr:last')
+                                    console.log('LISAME UUE REA: ')
+                                    console.log(row)
+                                    console.log(row.data('gamerowtypeid'))
+                                    console.log(row.data('gamerowid'))
+                                }
+                            }
+                        } else {
+                            //TODO serveripoolne valideerimine.. ja näiteks siis data.errormsg välga kuvamine kliendis
+                        }
+                    } 
+                });//end ajax call
+            }  else {
+                alert('Rida vigane. TODO teha normaalne error msg')
             }
 
-            $('#mtable tbody tr td div').each(function() {
-                var el = $(this);
-                userid = el.data('userid');
-                if (userid > 0) {
-                    var start_bet = el.find('.start_bet').first().val();
-                    var end_bet = el.find('.end_bet').first().val();
-                    obj.UserGameRows.push({ 'userintid': userid, 'startbet': start_bet, 'endbet': end_bet });
-                }
-            });
-            console.log(obj);
+           
 
-            $.ajax({
-                url: '@Url.Action("AddUpdateGameRow")',
-                type: "POST",
-                data: obj,
-                success: function(data) {
-                    console.log(data);
-                    console.log("Newly added game row id: " + data.GameRowId);
-
-                    jQuery.get('@Url.Action("GetGameResults", "Games", new { gameId = Model.Game.GameId })' ).done(function(array) {
-                        console.log("SKOORI ARR: ");
-                        console.log(array);
-                    });
-
-                }
-
-            });
-
-
-            var last_row = $('#mtable tbody>tr:last');
-            if (last_row.data('gamerowid') == 0) {
-                var gamerow = gameData.getNextGameRow();
-                if (gamerow) {
-                    row = $('#mtable tbody>tr:last').clone(true)
-                    row.find('.start_bet').val('0')
-                    row.find('.end_bet').val('');
-
-
-                    row.data('gamerowtypeid', gamerow.id);
-                    row.find('td:first').html(gamerow.desc);
-                    row.data('gamerowid', '0')
-                    row.insertAfter('#mtable tbody>tr:last')
-                    console.log('LISAME UUE REA: ')
-                    console.log(row)
-                    console.log(row.data('gamerowtypeid'))
-                    console.log(row.data('gamerowid'))
-                }
-            }
 
         });
 
@@ -196,62 +239,12 @@
             }
         });
 
-
-
         $("#dropdown").prop("disabled", true);
         $("#new-game-btn").hide();
         $('#Game_GameName').attr('readonly', true);
         $('#Game_GameName').addClass('input-disabled');
         $('#NumberOfPlayers').attr('readonly', true);
         $('#NumberOfPlayers').addClass('input-disabled');
-
-
-        var $divStart = $(".start_bet");
-        var $div = $(".end_bet");
-
-        var observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.attributeName === "class") {
-                    var attributeValue = $(mutation.target).prop(mutation.attributeName);
-                    console.log("Class attribute changed to:", attributeValue);
-                    if (attributeValue.indexOf("error") > 0) {
-                        $div.parent("span").addClass("has-error");
-                        console.log("adding class endbet");
-                    } else {
-                        $div.parent("span").removeClass();
-                        console.log("removing class endbet");
-                    }
-                }
-            });
-        });
-
-        observer.observe($div[0], {
-            attributes: true
-        });
-
-        var observer2 = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.attributeName === "class") {
-                    var attributeValue = $(mutation.target).prop(mutation.attributeName);
-                    console.log("Class attribute changed to:", attributeValue);
-                    if (attributeValue.indexOf("error") > 0) {
-
-                        $divStart.parent("span").addClass("has-error");
-
-                        console.log("adding class startbet");
-                    } else {
-
-                        $divStart.parent("span").removeClass();
-                        console.log("removing class startbet");
-                    }
-                }
-            });
-        });
-
-        observer2.observe($divStart[0], {
-            attributes: true
-        });
-
     </script>
 }
 
