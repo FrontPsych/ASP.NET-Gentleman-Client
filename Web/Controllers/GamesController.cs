@@ -5,6 +5,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.UI;
 using DAL;
@@ -16,7 +18,7 @@ using Web.ViewModels;
 
 namespace Web.Controllers
 {
-    [Authorize]
+    [System.Web.Mvc.Authorize]
     public class GamesController : BaseController
     {
         private readonly IUOW _uow;
@@ -70,7 +72,7 @@ namespace Web.Controllers
         // POST: Games/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(GameCreateViewModel vm)
         {
@@ -114,7 +116,8 @@ namespace Web.Controllers
             vm.Game.GameRows.FirstOrDefault()?.UserGameRows.Add(new UserGameRow()
             {
                 GameRow = vm.Game.GameRows.FirstOrDefault(),
-                UserInt = this._uow.UsersInt.GetById(vm.Game.UserIntId)
+                UserInt = this._uow.UsersInt.GetById(vm.Game.UserIntId),
+                UserIntId = vm.Game.UserIntId
             });
 
             vm.GameTypeSelectList = new SelectList(this._uow.GameTypes.All, nameof(GameType.GameTypeId), nameof(GameType.Name));
@@ -123,17 +126,20 @@ namespace Web.Controllers
         }
 
         [OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
-        [HttpGet]
-        public ActionResult AddUserGameRow()
+        [System.Web.Mvc.HttpGet]
+        public ActionResult AddUserGameRow(int userid)
         {
 
             var row = new GameRow();
-            row.UserGameRows.Add(new UserGameRow());
+            row.UserGameRows.Add(new UserGameRow()
+            {
+                UserIntId = userid,
+            });
 
             return View(row);
         }
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         public ActionResult AddUser(string username)
         {
             if (string.IsNullOrWhiteSpace(username))
@@ -156,16 +162,33 @@ namespace Web.Controllers
             return Json(new { id = user.Id});
         }
 
-        [HttpGet]
-        public ActionResult AddRow()
+        //[HttpGet]
+        //public ActionResult AddRow(int gameRowTypeId)
+        //{
+
+        //    var game = new Game();
+        //    var row = new GameRow();
+        //    row.UserGameRows.Add(new UserGameRow());
+        //    game.GameRows.Add(row);
+
+        //    return View(game);
+        //}
+
+        [System.Web.Mvc.HttpPost]
+        public ActionResult AddUpdateGameRow([FromBody] GameAddRowViewModel vm)
         {
 
-            var game = new Game();
-            var row = new GameRow();
-            row.UserGameRows.Add(new UserGameRow());
-            game.GameRows.Add(row);
+            //ToDo: Check input
 
-            return View(game);
+            vm.GameRow.UserGameRows = vm.UserGameRows;
+
+            if (vm.GameRow.GameRowId != 0) 
+                this._uow.GameRows.Update(vm.GameRow);
+
+            var gameRow = this._uow.GameRows.AddGameRowWithReturn(vm.GameRow);
+
+
+            return Json(new { GameRowId = gameRow.GameRowId });
         }
 
 
@@ -222,7 +245,7 @@ namespace Web.Controllers
         }
 
         // POST: Games/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [System.Web.Mvc.HttpPost, System.Web.Mvc.ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

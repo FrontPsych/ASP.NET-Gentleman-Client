@@ -13,5 +13,6 @@ namespace DAL.Interfaces
         int GetNumberOfPlayersInGame(Game game);
         int GetNumberOfPlayersInGame(int gameId);
         List<UserInt> GetAllPlayersInGame(int gameId);
+        GameRow AddGameRowWithReturn(GameRow gameRow);
     }
 }

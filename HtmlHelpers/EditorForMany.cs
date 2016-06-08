@@ -63,7 +63,7 @@ namespace HtmlHelpers
 
                 if (includeIndexField)
                 {
-                    htmlBuilder.Append(_EditorForManyIndexField<TValue>(htmlFieldNameWithPrefix, guid, indexResolverExpression));
+                    htmlBuilder.Append(_EditorForManyIndexField(htmlFieldNameWithPrefix, guid, indexResolverExpression));
                 }
 
                 htmlBuilder.Append(html.EditorFor(singleItemExp, null, String.Format("{0}[{1}]", htmlFieldName, guid)));
@@ -93,7 +93,7 @@ namespace HtmlHelpers
             var htmlFieldNameWithPrefix = htmlPrefix.Substring(0, first);
             var guid = htmlPrefix.Substring(first + 1, last - first - 1);
 
-            return _EditorForManyIndexField<TModel>(htmlFieldNameWithPrefix, guid, indexResolverExpression);
+            return _EditorForManyIndexField(htmlFieldNameWithPrefix, guid, indexResolverExpression);
         }
 
         private static MvcHtmlString _EditorForManyIndexField<TModel>(string htmlFieldNameWithPrefix, string guid, Expression<Func<TModel, string>> indexResolverExpression)
@@ -107,6 +107,28 @@ namespace HtmlHelpers
             }
 
             return new MvcHtmlString(htmlBuilder.ToString());
+        }
+
+        public static MvcHtmlString AddClassIfPropertyInError<TModel, TProperty>(
+            this HtmlHelper<TModel> htmlHelper,
+            Expression<Func<TModel, TProperty>> expression,
+            string errorClassName)
+        {
+            var expressionText = ExpressionHelper.GetExpressionText(expression);
+            var fullHtmlFieldName = htmlHelper.ViewContext.ViewData
+                .TemplateInfo.GetFullHtmlFieldName(expressionText);
+            var state = htmlHelper.ViewData.ModelState[fullHtmlFieldName];
+            if (state == null)
+            {
+                return MvcHtmlString.Empty;
+            }
+
+            if (state.Errors.Count == 0)
+            {
+                return MvcHtmlString.Empty;
+            }
+
+            return new MvcHtmlString(errorClassName);
         }
     }
 }
