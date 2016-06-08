@@ -162,6 +162,21 @@ namespace Web.Controllers
             return Json(new { id = user.Id});
         }
 
+        [System.Web.Mvc.HttpGet]
+        public ActionResult GetGameResults(int gameId)
+        {
+
+            if (gameId == 0)
+            {
+                return Json(new string[0]);
+            }
+
+            var statistisArr = this._uow.Games.GetGameResults(gameId);
+
+            return Json(statistisArr.Select(x => new { UserIntId = x.UserIntId, ScorePoints = x.ScorePoints, Position = x.Position}).ToArray());
+
+        }
+
         //[HttpGet]
         //public ActionResult AddRow(int gameRowTypeId)
         //{
@@ -179,6 +194,7 @@ namespace Web.Controllers
         {
 
             //ToDo: Check input
+            //ToDo: Skoor on vale, sest iga kord lisatakse ridu topelt. Tuleks hoida alles ikkagi UserGameRow id'd ka, mis just lisatud saavad.
 
             vm.GameRow.UserGameRows = vm.UserGameRows;
 

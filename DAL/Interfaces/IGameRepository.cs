@@ -12,5 +12,6 @@ namespace DAL.Interfaces
     {
         List<GameStatistic> GetAllGameStatisticsForGameType(int gameTypeId, int userId);
         Game AddGameWithReturn(Game game);
+        List<GameResult> GetGameResults(int gameId);
     }
 }

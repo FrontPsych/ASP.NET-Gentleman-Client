@@ -65,7 +65,7 @@
         @if (@Model.GameRowTypesForGivenGame != null)
         {
             <text>
-        var gameData = {          
+        var gameData = {
             'currentgamerow': 0,
             'gamerows': [
                 @foreach (var gameRowType in @Model.GameRowTypesForGivenGame)
@@ -113,6 +113,9 @@
                             $('#mtable tbody tr>td:last').before("<td>" + html + "</td>");
 
                         });
+
+
+
                     }
                 });
 
@@ -151,11 +154,18 @@
                 data: obj,
                 success: function(data) {
                     console.log(data);
-                    //TODO datalt saame id
                     console.log("Newly added game row id: " + data.GameRowId);
 
+                    jQuery.get('@Url.Action("GetGameResults", "Games", new { gameId = Model.Game.GameId })' ).done(function(array) {
+                        console.log("SKOORI ARR: ");
+                        console.log(array);
+                    });
+
                 }
+
             });
+
+
             var last_row = $('#mtable tbody>tr:last');
             if (last_row.data('gamerowid') == 0) {
                 var gamerow = gameData.getNextGameRow();
@@ -198,7 +208,7 @@
 
         var $divStart = $(".start_bet");
         var $div = $(".end_bet");
-            
+
         var observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
                 if (mutation.attributeName === "class") {
@@ -213,8 +223,8 @@
                     }
                 }
             });
-        });    
-           
+        });
+
         observer.observe($div[0], {
             attributes: true
         });
@@ -236,7 +246,7 @@
                     }
                 }
             });
-        });    
+        });
 
         observer2.observe($divStart[0], {
             attributes: true
