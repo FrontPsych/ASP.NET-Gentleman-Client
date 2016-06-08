@@ -54,7 +54,7 @@
             </a>
         </th>
         <th>@Html.DisplayNameFor(model => model.Users.FirstOrDefault().Email)</th>
-        <th>@Html.DisplayNameFor(model => model.Users.FirstOrDefault().Roles.FirstOrDefault().Role.Name)</th>
+        <th>@Html.DisplayNameFor(model => model.Users.FirstOrDefault().UserRoles.FirstOrDefault().Name)</th>
         @*<th>@Html.DisplayNameFor(model => model.Persons.FirstOrDefault().Date)</th>
         <th>@Html.DisplayNameFor(model => model.Persons.FirstOrDefault().Time)</th>
         <th>@Html.DisplayNameFor(model => model.Persons.FirstOrDefault().Contacts)</th>*@
@@ -74,9 +74,9 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @foreach (var role in item.Roles)
+                @foreach (var role in item.UserRoles)
                 {
-                    Html.DisplayFor(modelItem => role.Role.Name);
+                    @role.Name
                 }
             </td>
             @*<td>
@@ -89,9 +89,9 @@
                 @item.Contacts.Count
             </td>*@
             <td>
-                @Html.ActionLink("Edit", "Index", "Manage", new { id = item.Id }) |
-                @Html.ActionLink("Edit", "Index", "Manage", new { id = item.Id}) |
-                @Html.ActionLink("Edit", "Index", "Manage", new { id = item.Id})
+                @Html.ActionLink("Edit", "Index", "Manage", new { id = item.UserIntId }) |
+                @Html.ActionLink("Edit", "Index", "Manage", new { id = item.UserIntId }) |
+                @Html.ActionLink("Edit", "Index", "Manage", new { id = item.UserIntId })
             </td>
         </tr>
     }

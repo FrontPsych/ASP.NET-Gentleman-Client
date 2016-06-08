@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL.Interfaces;
 using DAL.Repositories;
+using Domain.Aggregates;
 using Domain.Identity;
 using Domain.Models;
 using Microsoft.Owin.Security;
@@ -27,14 +28,14 @@ namespace DAL.Repositories
             throw new NotImplementedException();
         }
 
-        public List<UserInt> GetAllForUser(int userId, string filter, string sortProperty, int pageNumber, int pageSize)
+        public List<UserWithRole> GetAllForUser(int userId, string filter, string sortProperty, int pageNumber, int pageSize)
         {
             filter = filter ?? "_";
             sortProperty = sortProperty ?? "_";
             var response = HttpClient.GetAsync(EndPoint + nameof(GetAllForUser) + "/" + userId + "/" + filter + "/" + sortProperty + "/" + pageNumber + "/" + pageSize).Result;
             if (response.IsSuccessStatusCode)
             {
-                var res = response.Content.ReadAsAsync<List<UserInt>>().Result;
+                var res = response.Content.ReadAsAsync<List<UserWithRole>>().Result;
                 return res;
             }
 

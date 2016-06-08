@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DAL.Interfaces;
+using Domain.Aggregates;
 using Domain.Identity;
 using Microsoft.AspNet.Identity;
 using PagedList;
@@ -105,23 +106,23 @@ namespace Web.Controllers
             vm.SortProperty = vm.SortProperty;
             
             
-            List<UserInt> res = _uow.UsersInt.GetAllForUser(User.Identity.GetUserId<int>(), vm.Filter, vm.SortProperty,
+            List<UserWithRole> res = _uow.UsersInt.GetAllForUser(User.Identity.GetUserId<int>(), vm.Filter, vm.SortProperty,
                 vm.PageNumber.Value - 1, vm.PageSize.Value);
 
-            foreach (var userInt in res)
-            {
+            //foreach (var userInt in res)
+            //{
 
-                var listOfRoles = new List<UserRoleInt>();
-                foreach (var role in userInt.Roles)
-                {
-                    var role2 = _uow.RolesInt.GetById(role.RoleId);
+            //    var listOfRoles = new List<UserRoleInt>();
+            //    foreach (var role in userInt.Roles)
+            //    {
+            //        var role2 = _uow.RolesInt.GetById(role.RoleId);
 
-                }
-            }
+            //    }
+            //}
 
 
 
-            vm.Users = new StaticPagedList<UserInt>(res, vm.PageNumber.Value, vm.PageSize.Value, _uow.UsersInt.All.Count);
+            vm.Users = new StaticPagedList<UserWithRole>(res, vm.PageNumber.Value, vm.PageSize.Value, _uow.UsersInt.All.Count);
             //vm.Users.Where(a => a.UserName == "lebo@lebo.ee").FirstOrDefault();
             var x = vm;
             return View(vm);

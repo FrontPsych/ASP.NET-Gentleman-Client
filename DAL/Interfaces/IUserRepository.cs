@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Aggregates;
 using Domain.Identity;
 using Domain.Models;
 using Microsoft.AspNet.Identity;
@@ -11,7 +12,7 @@ namespace DAL.Interfaces
 {
     public interface IUserIntRepository : IUserRepository<int, UserInt>
     {
-        List<UserInt> GetAllForUser(int userId, string filter, string sortProperty, int pageNumber, int pageSize);
+        List<UserWithRole> GetAllForUser(int userId, string filter, string sortProperty, int pageNumber, int pageSize);
         Tuple<List<UserInt>,int, string> GetAllForUser(int userId, string filter, DateTime? filterFromDT, DateTime? filterToDt, string sortProperty, int pageNumber, int pageSize);
     }
 
