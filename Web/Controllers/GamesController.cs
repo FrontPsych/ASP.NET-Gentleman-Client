@@ -198,13 +198,15 @@ namespace Web.Controllers
 
             vm.GameRow.UserGameRows = vm.UserGameRows;
 
-            if (vm.GameRow.GameRowId != 0) 
+            if (vm.GameRow.GameRowId != 0) { 
                 this._uow.GameRows.Update(vm.GameRow);
+            }
+            else
+            { 
+                vm.GameRow = this._uow.GameRows.AddGameRowWithReturn(vm.GameRow);
+            }
 
-            var gameRow = this._uow.GameRows.AddGameRowWithReturn(vm.GameRow);
-
-
-            return Json(new { GameRowId = gameRow.GameRowId });
+            return Json(new { GameRowId = vm.GameRow.GameRowId });
         }
 
 
