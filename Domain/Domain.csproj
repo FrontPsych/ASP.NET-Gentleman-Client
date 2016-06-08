@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aggregates\GameResult.cs" />
     <Compile Include="Aggregates\GameStatistic.cs" />
     <Compile Include="Aggregates\UserWithRole.cs" />
     <Compile Include="Identity\Role.cs" />

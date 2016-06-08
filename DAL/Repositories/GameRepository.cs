@@ -45,5 +45,17 @@ namespace DAL.Repositories
 
             return response.Content.ReadAsAsync<Game>().Result;
         }
+
+        public List<GameResult> GetGameResults(int gameId)
+        {
+            var response = HttpClient.GetAsync(EndPoint + nameof(GetGameResults) + "/" + gameId).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var res = response.Content.ReadAsAsync<List<GameResult>>().Result;
+                return res;
+            }
+            _logger.Debug("Web API statuscode: " + response.StatusCode + " Uri:" + response.RequestMessage.RequestUri);
+            return null;
+        }
     }
 }

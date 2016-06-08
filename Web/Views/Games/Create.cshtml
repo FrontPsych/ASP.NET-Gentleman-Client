@@ -149,64 +149,89 @@
             };
         })(jQuery);
 
+
+        function isValidRow(tr_row) {
+            sum = 0;
+            tr_row.find('.start_bet').each(function() {
+                el = $(this);
+                val = el.val();
+                if (val == "" || isNaN(val) || val<0) {
+                    val = 0;
+                    el.val(val);
+                }
+                sum+=val;
+                console.log($(this).val());
+            });
+            console.log(sum);
+            tr_row.find('td:first');
+            return true;
+        }
+
         $('.save-row').on('click', function() {
             var tr_element = $(this).closest('tr');
-            console.log(tr_element);
-            var obj = {
-                GameRow : {
-                    'gamerowid': tr_element.data('gamerowid'),
-                    'gameid': @Model.Game.GameId,
-                    'gamerowtypeid': tr_element.data('gamerowtypeid')
-                },
-                'UserGameRows': []
+            if (isValidRow(tr_element)) {
+                console.log(tr_element);
+                var obj = {
+                    GameRow : {
+                        'gamerowid': tr_element.data('gamerowid'),
+                        'gameid': @Model.Game.GameId,
+                        'gamerowtypeid': tr_element.data('gamerowtypeid')
+                    },
+                    'UserGameRows': []
+                }
+
+                tr_element.find('td div').each(function() {
+                    var el = $(this);
+                    userid = el.data('userid');
+                    if (userid > 0) {
+                        var start_bet = el.find('.start_bet').first().val();
+                        var end_bet = el.find('.end_bet').first().val();
+                        obj.UserGameRows.push({ 'userintid': userid, 'startbet': start_bet, 'endbet': end_bet });
+                    }
+                });
+                console.log(obj);
+
+                $.ajax({
+                    url: '@Url.Action("AddUpdateGameRow")',
+                    type: "POST",
+                    data: obj,
+                    success: function(data) {
+                        console.log(data);
+                        console.log("Newly added game row id: " + data.GameRowId);
+                        if (data.GameRowId > 0) {
+                            var last_row = $('#mtable tbody>tr:last');
+                            if (last_row.data('gamerowid') == 0) {
+                                var gamerow = gameData.getNextGameRow();
+                                row = $('#mtable tbody>tr:last').data('gamerowid',data.GameRowId);
+                                if (gamerow) {
+                                    row = $('#mtable tbody>tr:last').clone(true)
+                                    row.find('.start_bet').val('0')
+                                    row.find('.end_bet').val('');
+                                    row.data('gamerowtypeid', gamerow.id);
+                                    row.find('td:first').html(gamerow.desc);
+                                    row.data('gamerowid', '0')
+                                    row.insertAfter('#mtable tbody>tr:last')
+                                    console.log('LISAME UUE REA: ')
+                                    console.log(row)
+                                    console.log(row.data('gamerowtypeid'))
+                                    console.log(row.data('gamerowid'))
+                                }
+
+                                jQuery.get('@Url.Action("GetGameResults", "Games", new { gameId = Model.Game.GameId })' ).done(function(array) {
+                                    console.log("SKOORI ARR: ");
+                                    console.log(array);
+                                });
+                            }
+                        } else {
+                            //TODO serveripoolne valideerimine.. ja näiteks siis data.errormsg välga kuvamine kliendis
+                        }
+                    } 
+                });//end ajax call
+            }  else {
+                alert('Rida vigane. TODO teha normaalne error msg')
             }
 
-            $('#mtable tbody tr td div').each(function() {
-                var el = $(this);
-                userid = el.data('userid');
-                if (userid > 0) {
-                    var start_bet = el.find('.start_bet').first().val();
-                    var end_bet = el.find('.end_bet').first().val();
-                    obj.UserGameRows.push({ 'userintid': userid, 'startbet': start_bet, 'endbet': end_bet });
-                }
-            });
-            console.log(obj);
-
-            $.ajax({
-                url: '@Url.Action("AddUpdateGameRow")',
-                type: "POST",
-                data: obj,
-                success: function(data) {
-                    console.log(data);
-                    console.log("Newly added game row id: " + data.GameRowId);
-                    if (data.GameRowId > 0) {
-                        var last_row = $('#mtable tbody>tr:last');
-                        if (last_row.data('gamerowid') == 0) {
-                            var gamerow = gameData.getNextGameRow();
-                            row = $('#mtable tbody>tr:last').data('gamerowid',data.GameRowId);
-                            if (gamerow) {
-                                row = $('#mtable tbody>tr:last').clone(true)
-                                row.find('.start_bet').val('0')
-                                row.find('.end_bet').val('');
-
-
-                                row.data('gamerowtypeid', gamerow.id);
-                                row.find('td:first').html(gamerow.desc);
-                                row.data('gamerowid', '0')
-                                row.insertAfter('#mtable tbody>tr:last')
-                                console.log('LISAME UUE REA: ')
-                                console.log(row)
-                                console.log(row.data('gamerowtypeid'))
-                                console.log(row.data('gamerowid'))
-                            }
-                        }
-                    } else {
-                        //TODO serveripoolne valideerimine.. ja näiteks siis data.errormsg välga kuvamine kliendis
-                    }
-
-
-                }
-            });
+           
 
 
         });
