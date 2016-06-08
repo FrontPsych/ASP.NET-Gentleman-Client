@@ -294,4 +294,7 @@
   <data name="SystemLogs" xml:space="preserve">
     <value>System logs</value>
   </data>
+  <data name="ErrorUsersExists" xml:space="preserve">
+    <value>This user has already been added</value>
+  </data>
 </root>

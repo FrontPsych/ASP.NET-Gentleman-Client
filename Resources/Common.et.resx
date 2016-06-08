@@ -285,4 +285,7 @@
   <data name="SystemLogs" xml:space="preserve">
     <value>Süsteemi logid</value>
   </data>
+  <data name="ErrorUsersExists" xml:space="preserve">
+    <value>See kasutaja on juba  lisatud</value>
+  </data>
 </root>

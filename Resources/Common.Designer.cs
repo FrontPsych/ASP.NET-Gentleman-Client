@@ -160,6 +160,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This user has already been added.
+        /// </summary>
+        public static string ErrorUsersExists {
+            get {
+                return ResourceManager.GetString("ErrorUsersExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Estonian.
         /// </summary>
         public static string Estonian {

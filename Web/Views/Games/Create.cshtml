@@ -75,7 +75,7 @@
         @if (@Model.GameRowTypesForGivenGame != null)
         {
             <text>
-        var gameData = {          
+        var gameData = {
             'currentgamerow': 0,
             'gamerows': [
                 @foreach (var gameRowType in @Model.GameRowTypesForGivenGame)
@@ -96,42 +96,47 @@
                     return this.gamerows[this.currentgamerow];
                 }
 
+            },
+            'isUniqUser': function(name) {
+                var result = $.grep(this.users, function(e){ return e.name == name; });
+                return (result.length == 0);
             }
+
         };
         </text>
         }
 
 
+        //ToDo: into single call
         $('#add-person').on('click', function() {
             console.log('#add-person was clicked');
             var newusername = $('#name_box').val();
             if (newusername) {
+                if (gameData.isUniqUser(newusername)) {
+                    $.ajax({
+                        url: '@Url.Action("AddUser")',
+                        type: "POST",
+                        data: { username: newusername },
+                        success: function(data) {
+                            console.log(newusername + " id: " + data.id);
+                            gameData.users.push({ 'id': data.id, 'name': newusername });
 
-                //ToDo: into single call
-                //ToDo: JS viskaks mingi errori kui sisestatav nimi on juba olemas table headis nt
-
-                $.ajax({
-                    url: '@Url.Action("AddUser")',
-                    type: "POST",
-                    data: { username: newusername },
-                    success: function(data) {
-                        console.log(newusername + " id: " + data.id);
-                        gameData.users.push({ 'id': data.id, 'name': newusername });
-
-                        jQuery.get('/Games/AddUserGameRow?userid=' + data.id).done(function(html) {
-                            $('#mtable thead tr>th:last').before("<th>" + newusername + "</th>");
-                            $('#mtable tbody tr>td:last').before("<td>" + html + "</td>");
-                            $("#mtable tbody tr td").updateValidation();
-                        });
-                    }
-                });
-
-                console.log(gameData);
-                $('#name_box').val("");
+                            jQuery.get('/Games/AddUserGameRow?userid=' + data.id).done(function(html) {
+                                $('#mtable thead tr>th:last').before("<th>" + newusername + "</th>");
+                                $('#mtable tbody tr>td:last').before("<td>" + html + "</td>");
+                                $("#mtable tbody tr td").updateValidation();
+                            });
+                        }
+                    });
+                    console.log(gameData);
+                    $('#name_box').val("");
+                } else {
+                    alert('@Resources.Common.ErrorUsersExists');
+                }
             }
         });
 
-        //to update form fields validating after adding fileds with js
+        //function to update form fields validating after adding fileds with js
         //source http://stackoverflow.com/questions/4406291/jquery-validate-unobtrusive-not-working-with-dynamic-injected-elements
         (function ($) {
             $.fn.updateValidation = function () {
@@ -198,11 +203,11 @@
                     } else {
                         //TODO serveripoolne valideerimine.. ja näiteks siis data.errormsg välga kuvamine kliendis
                     }
-                    
+
 
                 }
             });
-           
+
 
         });
 
