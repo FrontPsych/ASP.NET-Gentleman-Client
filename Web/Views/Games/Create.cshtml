@@ -216,6 +216,11 @@
                                     console.log(row.data('gamerowtypeid'))
                                     console.log(row.data('gamerowid'))
                                 }
+
+                                jQuery.get('@Url.Action("GetGameResults", "Games", new { gameId = Model.Game.GameId })' ).done(function(array) {
+                                    console.log("SKOORI ARR: ");
+                                    console.log(array);
+                                });
                             }
                         } else {
                             //TODO serveripoolne valideerimine.. ja näiteks siis data.errormsg välga kuvamine kliendis
