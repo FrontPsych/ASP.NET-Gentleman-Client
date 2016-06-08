@@ -38,6 +38,15 @@ namespace Web.Controllers
             _logger.Debug("InstanceId: " + _instanceId);
         }
 
+
+        [AllowAnonymous]
+        public async Task<JsonResult> UserAlreadyExistsAsync(string username)
+        {
+            var result =
+                await _userManager.FindByNameAsync(username);
+            return Json(result == null, JsonRequestBehavior.AllowGet);
+        }
+
         //
         // GET: /Account/Login
         [AllowAnonymous]

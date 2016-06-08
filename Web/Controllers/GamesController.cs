@@ -173,7 +173,7 @@ namespace Web.Controllers
 
             var statistisArr = this._uow.Games.GetGameResults(gameId);
 
-            return Json(statistisArr.Select(x => new { UserIntId = x.UserIntId, ScorePoints = x.ScorePoints, Position = x.Position}).ToArray());
+            return Json(statistisArr.Select(x => new { UserIntId = x.UserIntId, ScorePoints = x.ScorePoints, Position = x.Position}).ToArray(), JsonRequestBehavior.AllowGet);
 
         }
 
