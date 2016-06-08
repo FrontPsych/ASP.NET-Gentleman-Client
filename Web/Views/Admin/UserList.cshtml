@@ -14,7 +14,6 @@
     Func<string, string, string> getSortIcon = (propertyName, currentSortProperty) => currentSortProperty == propertyName ? "fa-sort-up" : currentSortProperty == "_" + propertyName ? "fa-sort-down" : "fa-sort";
 }
 
-<h2>Index</h2>
 
 <div class="row">
     <div class="col-md-12">
@@ -55,6 +54,7 @@
             </a>
         </th>
         <th>@Html.DisplayNameFor(model => model.Users.FirstOrDefault().Email)</th>
+        <th>@Html.DisplayNameFor(model => model.Users.FirstOrDefault().Roles.FirstOrDefault().Role.Name)</th>
         @*<th>@Html.DisplayNameFor(model => model.Persons.FirstOrDefault().Date)</th>
         <th>@Html.DisplayNameFor(model => model.Persons.FirstOrDefault().Time)</th>
         <th>@Html.DisplayNameFor(model => model.Persons.FirstOrDefault().Contacts)</th>*@
@@ -72,6 +72,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @foreach (var role in item.Roles)
+                {
+                    Html.DisplayFor(modelItem => role.Role.Name);
+                }
             </td>
             @*<td>
                 @Html.DisplayFor(modelItem => item.Date)

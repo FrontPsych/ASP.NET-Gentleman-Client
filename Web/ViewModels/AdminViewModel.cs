@@ -22,6 +22,7 @@ namespace Web.ViewModels
     public class AdminUserListViewModel
     {
         public IPagedList<UserInt> Users  { get; set; }
+        public List<RoleInt> Roles { get; set; }
         public int? PageNumber { get; set; }
         public int? PageSize { get; set; }
         public string SortProperty { get; set; }

@@ -95,38 +95,34 @@ namespace Web.Controllers
 
             return View(vm);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult UserList(AdminUserListViewModel vm)
         {
 
             if (vm == null) vm = new AdminUserListViewModel(){};
             vm.PageNumber = vm.PageNumber ?? 1;
-            vm.PageSize = vm.PageSize ?? 1;
-            vm.SortProperty = "firstname";
-            //Tuple<List<UserInt>, int, string> res = new Tuple<List<UserInt>, int, string>(new List<UserInt>(),2,"TereMari");
-            //if (vm.FilterByDTBoolean)
-            //{
-            //    res = _uow.UsersInt.GetAllForUser(User.Identity.GetUserId<int>(), vm.Filter, vm.FilterFromDT,
-            //        vm.FilterToDT, vm.SortProperty, vm.PageNumber.Value - 1, vm.PageSize.Value);
-            //}
-            //else
-            //{
-            //    res = _uow.UsersInt.GetAllForUser(User.Identity.GetUserId<int>(), vm.Filter, vm.SortProperty,
-            //        vm.PageNumber.Value - 1, vm.PageSize.Value);
-
-            //    vm.FilterFromDT = vm.FilterFromDT ?? DateTime.Now.Subtract(TimeSpan.FromDays(5 * 365));
-            //    vm.FilterToDT = vm.FilterToDT ?? DateTime.Now;
-            //}
+            vm.PageSize = vm.PageSize ?? 5;
+            vm.SortProperty = vm.SortProperty;
+            
+            
             List<UserInt> res = _uow.UsersInt.GetAllForUser(User.Identity.GetUserId<int>(), vm.Filter, vm.SortProperty,
                 vm.PageNumber.Value - 1, vm.PageSize.Value);
 
-            //vm.FilterFromDT = vm.FilterFromDT ?? DateTime.Now.Subtract(TimeSpan.FromDays(5 * 365));
-            //vm.FilterToDT = vm.FilterToDT ?? DateTime.Now;
+            foreach (var userInt in res)
+            {
+
+                var listOfRoles = new List<UserRoleInt>();
+                foreach (var role in userInt.Roles)
+                {
+                    var role2 = _uow.RolesInt.GetById(role.RoleId);
+
+                }
+            }
 
 
-            
+
             vm.Users = new StaticPagedList<UserInt>(res, vm.PageNumber.Value, vm.PageSize.Value, _uow.UsersInt.All.Count);
-
+            //vm.Users.Where(a => a.UserName == "lebo@lebo.ee").FirstOrDefault();
             var x = vm;
             return View(vm);
         }
