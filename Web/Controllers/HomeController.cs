@@ -25,6 +25,7 @@ namespace Web.Controllers
                 AboutArticle = _uow.Articles.FindArticleByName("HomeIndexAbout"),
                 AboutArticleColumnOne = _uow.Articles.FindArticleByName("HomeIndexAboutColumnOne")
             };
+
             return View(vm);
         }
 

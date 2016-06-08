@@ -14,7 +14,6 @@
     Func<string, string, string> getSortIcon = (propertyName, currentSortProperty) => currentSortProperty == propertyName ? "fa-sort-up" : currentSortProperty == "_" + propertyName ? "fa-sort-down" : "fa-sort";
 }
 
-<h2>Index</h2>
 
 <div class="row">
     <div class="col-md-12">
@@ -55,6 +54,7 @@
             </a>
         </th>
         <th>@Html.DisplayNameFor(model => model.Users.FirstOrDefault().Email)</th>
+        <th>@Html.DisplayNameFor(model => model.Users.FirstOrDefault().UserRoles.FirstOrDefault().Name)</th>
         @*<th>@Html.DisplayNameFor(model => model.Persons.FirstOrDefault().Date)</th>
         <th>@Html.DisplayNameFor(model => model.Persons.FirstOrDefault().Time)</th>
         <th>@Html.DisplayNameFor(model => model.Persons.FirstOrDefault().Contacts)</th>*@
@@ -73,6 +73,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
+            <td>
+                @foreach (var role in item.UserRoles)
+                {
+                    @role.Name
+                }
+            </td>
             @*<td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
@@ -83,9 +89,9 @@
                 @item.Contacts.Count
             </td>*@
             <td>
-                @Html.ActionLink("Edit", "Index", "Manage", new { id = item.Id }) |
-                @Html.ActionLink("Edit", "Index", "Manage", new { id = item.Id}) |
-                @Html.ActionLink("Edit", "Index", "Manage", new { id = item.Id})
+                @Html.ActionLink("Edit", "Index", "Manage", new { id = item.UserIntId }) |
+                @Html.ActionLink("Edit", "Index", "Manage", new { id = item.UserIntId }) |
+                @Html.ActionLink("Edit", "Index", "Manage", new { id = item.UserIntId })
             </td>
         </tr>
     }
