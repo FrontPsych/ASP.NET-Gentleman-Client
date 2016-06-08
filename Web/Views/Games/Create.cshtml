@@ -127,6 +127,9 @@
                             jQuery.get('/Games/AddUserGameRow?userid=' + data.id).done(function(html) {
                                 $('#mtable thead tr>th:last').before("<th>" + newusername + "</th>");
                                 $('#mtable tbody tr>td:last').before("<td>" + html + "</td>");
+                                $('#mtable tfoot tr#score-name-row   >td:last').before("<td>" + newusername + "</td>");
+                                $('#mtable tfoot tr#score-points-row >td:last').before("<td id='score-points-userid-"+data.id+"'>0</td>");
+                                $('#mtable tfoot tr#score-place-row  >td:last').before("<td id='score-place-userid-"+data.id+"'>1</td>");
                                 $("#mtable tbody tr td").updateValidation();
                             });
                         }
@@ -222,16 +225,17 @@
                                     console.log(row.data('gamerowtypeid'))
                                     console.log(row.data('gamerowid'))
                                 }
-
-                                jQuery.get('@Url.Action("GetGameResults", "Games", new { gameId = Model.Game.GameId })' ).done(function(array) {
-                                    console.log("SKOORI ARR: ");
-                                    console.log(array);
-                                });
-                            }
-                        } else {
-                            //TODO serveripoolne valideerimine.. ja näiteks siis data.errormsg välga kuvamine kliendis
-                        }
-                    } 
+                            }  
+                        } // if (tr_element.data('gamerowid') == 0) { if (tr_element.data('gamerowid') == 0) {
+                        jQuery.get('@Url.Action("GetGameResults", "Games", new { gameId = Model.Game.GameId })' ).done(function(array) {
+                            console.log("SKOORI ARR: ");
+                            jQuery.each(array, function() {
+                                jQuery('#score-place-userid-'+this.UserIntId).html(this.Position);
+                                jQuery('#score-points-userid-'+this.UserIntId).html(this.ScorePoints);
+                            });
+                            console.log(array);
+                        });
+                    } //end success
                 });//end ajax call
             }  else {
                 tr_element.addClass('row-error');
