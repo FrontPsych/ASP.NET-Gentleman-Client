@@ -15,6 +15,16 @@
             width: 40px !important;
             height: 40px !important;
         }
+         .square.input-validation-error {
+              border-color: #a94442;
+              -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+                      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            }
+           .square.input-validation-error.form-control:focus {
+              border-color: #843534;
+              -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+                      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+            }
 
     </style>
 }
@@ -111,16 +121,26 @@
                         jQuery.get('/Games/AddUserGameRow?userid=' + data.id).done(function(html) {
                             $('#mtable thead tr>th:last').before("<th>" + newusername + "</th>");
                             $('#mtable tbody tr>td:last').before("<td>" + html + "</td>");
-
+                            $("#mtable tbody tr td").updateValidation();
                         });
                     }
                 });
-
 
                 console.log(gameData);
                 $('#name_box').val("");
             }
         });
+
+        (function ($) {
+            $.fn.updateValidation = function () {
+                var $this = $(this);
+                var form = $this.closest("form")
+                    .removeData("validator")
+                    .removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse(form);
+                return $this;
+            };
+        })(jQuery);
 
         $('.save-row').on('click', function() {
             var tr_element = $(this).closest('tr');
@@ -151,30 +171,36 @@
                 data: obj,
                 success: function(data) {
                     console.log(data);
-                    //TODO datalt saame id
                     console.log("Newly added game row id: " + data.GameRowId);
+                    if (data.GameRowId > 0) {
+                        var last_row = $('#mtable tbody>tr:last');
+                        if (last_row.data('gamerowid') == 0) {
+                            var gamerow = gameData.getNextGameRow();
+                            row = $('#mtable tbody>tr:last').data('gamerowid',data.GameRowId);
+                            if (gamerow) {
+                                row = $('#mtable tbody>tr:last').clone(true)
+                                row.find('.start_bet').val('0')
+                                row.find('.end_bet').val('');
+
+
+                                row.data('gamerowtypeid', gamerow.id);
+                                row.find('td:first').html(gamerow.desc);
+                                row.data('gamerowid', '0')
+                                row.insertAfter('#mtable tbody>tr:last')
+                                console.log('LISAME UUE REA: ')
+                                console.log(row)
+                                console.log(row.data('gamerowtypeid'))
+                                console.log(row.data('gamerowid'))
+                            }
+                        }
+                    } else {
+                        //TODO serveripoolne valideerimine.. ja näiteks siis data.errormsg välga kuvamine kliendis
+                    }
+                    
 
                 }
             });
-            var last_row = $('#mtable tbody>tr:last');
-            if (last_row.data('gamerowid') == 0) {
-                var gamerow = gameData.getNextGameRow();
-                if (gamerow) {
-                    row = $('#mtable tbody>tr:last').clone(true)
-                    row.find('.start_bet').val('0')
-                    row.find('.end_bet').val('');
-
-
-                    row.data('gamerowtypeid', gamerow.id);
-                    row.find('td:first').html(gamerow.desc);
-                    row.data('gamerowid', '0')
-                    row.insertAfter('#mtable tbody>tr:last')
-                    console.log('LISAME UUE REA: ')
-                    console.log(row)
-                    console.log(row.data('gamerowtypeid'))
-                    console.log(row.data('gamerowid'))
-                }
-            }
+           
 
         });
 
@@ -186,62 +212,12 @@
             }
         });
 
-
-
         $("#dropdown").prop("disabled", true);
         $("#new-game-btn").hide();
         $('#Game_GameName').attr('readonly', true);
         $('#Game_GameName').addClass('input-disabled');
         $('#NumberOfPlayers').attr('readonly', true);
         $('#NumberOfPlayers').addClass('input-disabled');
-
-
-        var $divStart = $(".start_bet");
-        var $div = $(".end_bet");
-            
-        var observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.attributeName === "class") {
-                    var attributeValue = $(mutation.target).prop(mutation.attributeName);
-                    console.log("Class attribute changed to:", attributeValue);
-                    if (attributeValue.indexOf("error") > 0) {
-                        $div.parent("span").addClass("has-error");
-                        console.log("adding class endbet");
-                    } else {
-                        $div.parent("span").removeClass();
-                        console.log("removing class endbet");
-                    }
-                }
-            });
-        });    
-           
-        observer.observe($div[0], {
-            attributes: true
-        });
-
-        var observer2 = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.attributeName === "class") {
-                    var attributeValue = $(mutation.target).prop(mutation.attributeName);
-                    console.log("Class attribute changed to:", attributeValue);
-                    if (attributeValue.indexOf("error") > 0) {
-
-                        $divStart.parent("span").addClass("has-error");
-
-                        console.log("adding class startbet");
-                    } else {
-
-                        $divStart.parent("span").removeClass();
-                        console.log("removing class startbet");
-                    }
-                }
-            });
-        });    
-
-        observer2.observe($divStart[0], {
-            attributes: true
-        });
-
     </script>
 }
 
