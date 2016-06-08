@@ -288,4 +288,10 @@
   <data name="ErrorUsersExists" xml:space="preserve">
     <value>See kasutaja on juba  lisatud</value>
   </data>
+  <data name="UserNameExists" xml:space="preserve">
+    <value>Kasutajanimi on juba olemas</value>
+  </data>
+  <data name="ChooseAnotherName" xml:space="preserve">
+    <value>Kui sa ei ole meie süsteemis varem mänginud, siis sa pead uue nime valima. See nimi on reserveeritud.</value>
+  </data>
 </root>

@@ -61,6 +61,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Have you played with others?.
+        /// </summary>
+        public static string HaveYouPlayedBefore {
+            get {
+                return ResourceManager.GetString("HaveYouPlayedBefore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log in.
         /// </summary>
         public static string Login_ButtonLogin {

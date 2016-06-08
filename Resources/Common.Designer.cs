@@ -124,6 +124,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If you haven&apos;t played before in our system then you must choose a different username. This one is reserved..
+        /// </summary>
+        public static string ChooseAnotherName {
+            get {
+                return ResourceManager.GetString("ChooseAnotherName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact.
         /// </summary>
         public static string Contact {
@@ -552,6 +561,15 @@ namespace Resources {
         public static string UserHistory {
             get {
                 return ResourceManager.GetString("UserHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username already exists.
+        /// </summary>
+        public static string UserNameExists {
+            get {
+                return ResourceManager.GetString("UserNameExists", resourceCulture);
             }
         }
         

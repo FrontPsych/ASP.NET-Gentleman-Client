@@ -297,4 +297,10 @@
   <data name="ErrorUsersExists" xml:space="preserve">
     <value>This user has already been added</value>
   </data>
+  <data name="UserNameExists" xml:space="preserve">
+    <value>Username already exists</value>
+  </data>
+  <data name="ChooseAnotherName" xml:space="preserve">
+    <value>If you haven't played before in our system then you must choose a different username. This one is reserved.</value>
+  </data>
 </root>

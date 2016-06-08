@@ -7,9 +7,11 @@ using System.Web;
 using System.Web.Mvc;
 using DAL.Interfaces;
 using Domain.Identity;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Newtonsoft.Json;
 using NLog;
 using Web.ViewModels;
 
@@ -44,7 +46,34 @@ namespace Web.Controllers
         {
             var result =
                 await _userManager.FindByNameAsync(username);
-            return Json(result == null, JsonRequestBehavior.AllowGet);
+
+            if (result == null)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+
+            if (result.Email.IsNullOrWhiteSpace())
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        public async Task<JsonResult> HasUserPlayedBefore(string username)
+        {
+            bool hasPlayed = false;
+
+            var result =
+                await _userManager.FindByNameAsync(username);
+
+            if (result != null)
+            {
+                hasPlayed = result.Email.IsNullOrWhiteSpace();
+            }
+
+            return Json(hasPlayed, JsonRequestBehavior.AllowGet);
         }
 
         //
@@ -168,6 +197,38 @@ namespace Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            var pwdHasher = new PasswordHasher();
+
+
+            if (!model.HaveYouPlayedBefore)
+            {
+                var result = await HasUserPlayedBefore(model.Username);
+                if (result.Data is bool)
+                {
+                    bool check = (bool) result.Data;
+                    if(check)
+                        ModelState.AddModelError("", Resources.Common.ChooseAnotherName);
+
+                    
+                }
+            }
+
+            if (ModelState.IsValid && model.HaveYouPlayedBefore)
+            {
+
+                var user = this._uow.UsersInt.GetUserByUserName(model.Username);
+                user.RegisterDate = DateTime.Now;
+                user.Email = model.Email;
+                user.PasswordHash = pwdHasher.HashPassword(model.Password);
+                user.SecurityStamp = Guid.NewGuid().ToString();
+                this._uow.UsersInt.Update(user);
+                //user = this._uow.UsersInt.GetById(user.Id);
+                await _signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                return RedirectToAction("Index", "Home");
+
+            }
+
+
             if (ModelState.IsValid)
             {
                 var user = new UserInt { UserName = model.Username, Email = model.Email};

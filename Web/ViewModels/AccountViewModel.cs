@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Security.AccessControl;
+using System.Web.Mvc;
 using Domain.Identity;
 using Resources;
 
@@ -88,8 +90,8 @@ namespace Web.ViewModels
         // [Display(ResourceType = typeof(Resources.Domain), Name = nameof(UserInt.PersonName))]
         // public string PersonName { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessageResourceType = typeof(Resources.Domain),
-       ErrorMessageResourceName = "PersonName")]
+        [Remote("UserAlreadyExistsAsync", "Account", ErrorMessageResourceName = "UserNameExists", ErrorMessageResourceType = typeof(Resources.Common))]
+        [Required(AllowEmptyStrings = false, ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Resources.Common))]
         [Display(ResourceType = typeof(Resources.Domain), Name = nameof(UserInt.UserName))]
         public string Username { get; set; }
 
@@ -109,9 +111,11 @@ namespace Web.ViewModels
 
         [DataType(DataType.Password)]
         [Display(ResourceType = typeof(Account), Name = "ViewModel_ConfirmPassword")]
-        [Compare("Password", ErrorMessageResourceType = typeof(Account),
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessageResourceType = typeof(Account),
             ErrorMessageResourceName = "ViewModel_ConfirmPasswordNoMatch")]
         public string ConfirmPassword { get; set; }
+        [Display(ResourceType = typeof(Account), Name = "HaveYouPlayedBefore")]
+        public bool HaveYouPlayedBefore { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -132,7 +136,7 @@ namespace Web.ViewModels
 
         [DataType(DataType.Password)]
         [Display(ResourceType = typeof(Account), Name = "ViewModel_ConfirmPassword")]
-        [Compare("Password", ErrorMessageResourceType = typeof(Account),
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessageResourceType = typeof(Account),
             ErrorMessageResourceName = "ViewModel_ConfirmPasswordNoMatch")]
         public string ConfirmPassword { get; set; }
 
