@@ -511,6 +511,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selection is required.
         /// </summary>
         public static string SelectionIsRequired {
@@ -570,6 +579,15 @@ namespace Resources {
         public static string UserHistory {
             get {
                 return ResourceManager.GetString("UserHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of registered users.
+        /// </summary>
+        public static string UserlistTitle {
+            get {
+                return ResourceManager.GetString("UserlistTitle", resourceCulture);
             }
         }
         

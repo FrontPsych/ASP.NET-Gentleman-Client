@@ -186,6 +186,9 @@
   <data name="RegisterDate" xml:space="preserve">
     <value>Register date</value>
   </data>
+  <data name="RoleName" xml:space="preserve">
+    <value>User role</value>
+  </data>
   <data name="SortOrder" xml:space="preserve">
     <value>Sort order</value>
   </data>
