@@ -294,4 +294,10 @@
   <data name="ChooseAnotherName" xml:space="preserve">
     <value>Kui sa ei ole meie süsteemis varem mänginud, siis sa pead uue nime valima. See nimi on reserveeritud.</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Otsi</value>
+  </data>
+  <data name="UserlistTitle" xml:space="preserve">
+    <value>Registreeritud kasutajad</value>
+  </data>
 </root>

@@ -177,6 +177,9 @@
   <data name="RegisterDate" xml:space="preserve">
     <value>Registreerimise kuupäev</value>
   </data>
+  <data name="RoleName" xml:space="preserve">
+    <value>Kasutaja roll</value>
+  </data>
   <data name="SelectOptionLabel" xml:space="preserve">
     <value>--- Vali! ---</value>
   </data>

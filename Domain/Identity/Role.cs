@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 
 namespace Domain.Identity
@@ -58,7 +59,7 @@ namespace Domain.Identity
 
         public TKey Id { get; set; }
 
-        [DisplayName("Role name")]
+        [Display(Name = nameof(Resources.Domain.RoleName), ResourceType = typeof(Resources.Domain))]
         public string Name { get; set; }
 
         public virtual ICollection<TUserRole> Users { get; set; }
