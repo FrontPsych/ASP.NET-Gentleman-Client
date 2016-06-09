@@ -105,6 +105,7 @@ namespace Web.Controllers
                         shouldLockout: false);
             // check for UOW type, if webapi - get token and store it as claim
             var webApiUOW = _uow as IWebApiUOW;
+
             if (result == SignInStatus.Success && webApiUOW != null)
             {
                 var token = webApiUOW.GetWebApiToken(model.Username, model.Password);
@@ -117,6 +118,9 @@ namespace Web.Controllers
                     _userManager.RemoveClaim(user.Id, claim);
                 }
                 _userManager.AddClaim(user.Id, new Claim(ClaimTypes.Authentication, token));
+
+                _authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
                 _signInManager.SignIn(user, true, true);
             }
 
@@ -222,8 +226,17 @@ namespace Web.Controllers
                 user.PasswordHash = pwdHasher.HashPassword(model.Password);
                 user.SecurityStamp = Guid.NewGuid().ToString();
                 this._uow.UsersInt.Update(user);
+                //ToDo: still bugged.
                 //user = this._uow.UsersInt.GetById(user.Id);
-                await _signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                //await _signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                //return RedirectToAction("Index", "Home");
+
+                var vm = new LoginViewModel()
+                {
+                    Username = user.UserName,
+                    Password = model.Password
+                };
+                await Login(vm, null);
                 return RedirectToAction("Index", "Home");
 
             }
@@ -403,7 +416,7 @@ namespace Web.Controllers
         }
 
         //
-        // GET: /Account/ExternalLoginCallback
+        // GET: /Account/External   Callback
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {

@@ -43,7 +43,7 @@ namespace Web.Controllers
 
             var stats = this._uow.Games.GetAllGameStatisticsForGameType(gTypeId, userId);
 
-            return Json(stats.Select(x => new { GameName = x.Game.GameName, NumberOfPlayers = x.NumberOfPlayers, YourScore = x.Score, YourPosition = x.Position, Duration = x.DurationTimeSpan.TotalMinutes}).ToArray());
+            return Json(stats.Select(x => new { GameName = x.Game.GameName, NumberOfPlayers = x.NumberOfPlayers, YourScore = x.Score, YourPosition = x.Position, Duration = x.DurationTimeSpan.Duration().ToString(@"mm\:ss") }).ToArray());
         }
     }
 }

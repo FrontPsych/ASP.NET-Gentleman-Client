@@ -286,6 +286,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Game over.
+        /// </summary>
+        public static string GameOver {
+            get {
+                return ResourceManager.GetString("GameOver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Game statistics.
         /// </summary>
         public static string GameStatistics {

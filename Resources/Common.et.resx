@@ -294,4 +294,7 @@
   <data name="ChooseAnotherName" xml:space="preserve">
     <value>Kui sa ei ole meie süsteemis varem mänginud, siis sa pead uue nime valima. See nimi on reserveeritud.</value>
   </data>
+  <data name="GameOver" xml:space="preserve">
+    <value>Mäng läbi</value>
+  </data>
 </root>

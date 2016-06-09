@@ -81,11 +81,11 @@ namespace Web.Controllers
             {
                 if (vm.GameTime)
                 {
+                    var game = this._uow.Games.GetById(vm.Game.GameId);
+                    game.StoppedAt = DateTime.Now;
+                    this._uow.Games.Update(game);
 
-                    //vm.Game.StoppedAt = DateTime.Now;
-                    //this._uow.Games.Update(vm.Game);
-                    //return RedirectToAction("Index", "Admin"); //Redirect to current game details?
-                    View(vm);
+                    return RedirectToAction("Index", "Admin"); //Redirect to current game details?
                 }
                 
                 vm.Game.UserIntId = User.Identity.GetUserId<int>();
@@ -194,7 +194,6 @@ namespace Web.Controllers
         {
 
             //ToDo: Check input
-            //ToDo: Skoor on vale, sest iga kord lisatakse ridu topelt. Tuleks hoida alles ikkagi UserGameRow id'd ka, mis just lisatud saavad.
 
             vm.GameRow.UserGameRows = vm.UserGameRows;
 
