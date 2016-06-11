@@ -300,4 +300,49 @@
   <data name="UserlistTitle" xml:space="preserve">
     <value>Registreeritud kasutajad</value>
   </data>
+  <data name="Place" xml:space="preserve">
+    <value>Koht</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Skoor</value>
+  </data>
+  <data name="FriendsList" xml:space="preserve">
+    <value>Sõbrad</value>
+  </data>
+  <data name="GameOver" xml:space="preserve">
+    <value>Mäng läbi</value>
+  </data>
+  <data name="LatestGames" xml:space="preserve">
+    <value>Viimati mängitud mängud</value>
+  </data>
+  <data name="FriendCount" xml:space="preserve">
+    <value>Sõprade arv:</value>
+  </data>
+  <data name="SearchNewFriends" xml:space="preserve">
+    <value>Otsi uusi sõpru ...</value>
+  </data>
+  <data name="ViewAllFriends" xml:space="preserve">
+    <value>Vaata Kõiki Sõpru</value>
+  </data>
+  <data name="ViewGameStatistics" xml:space="preserve">
+    <value>Vaata Mängude Statistikat</value>
+  </data>
+  <data name="YourFriends" xml:space="preserve">
+    <value>Sinu sõbrad</value>
+  </data>
+  <data name="AddFriend" xml:space="preserve">
+    <value>Lisa sõber</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Nõustun</value>
+  </data>
+  <data name="Decline" xml:space="preserve">
+    <value>Keeldun</value>
+  </data>
+  <data name="FriendRequestFrom" xml:space="preserve">
+    <value>Sõbrakutse kasutajalt</value>
+  </data>
+  <data name="FriendRequests" xml:space="preserve">
+    <value>Sõbrakutsed</value>
+  </data>
 </root>

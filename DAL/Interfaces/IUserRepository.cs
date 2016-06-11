@@ -12,8 +12,13 @@ namespace DAL.Interfaces
 {
     public interface IUserIntRepository : IUserRepository<int, UserInt>
     {
+        void AddFriend(string username);
+        Task<List<UserInt>> SearchUserInts(string searchTxt);
+        List<Friend> GetAllFriends();
+        List<Friend> GetFriends();
         List<UserWithRole> GetAllForUser(int userId, string filter, string sortProperty, int pageNumber, int pageSize);
         Tuple<List<UserInt>,int, string> GetAllForUser(int userId, string filter, DateTime? filterFromDT, DateTime? filterToDt, string sortProperty, int pageNumber, int pageSize);
+        List<Friend> GetUserFriendRequest();
     }
 
     public interface IUserRepository : IUserRepository<string, User>

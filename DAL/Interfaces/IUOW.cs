@@ -20,6 +20,7 @@ namespace DAL.Interfaces
 
         //repos
         IArticleRepository Articles { get; }
+        IFriendRepository Friends { get; }
         IGameRepository Games { get; }
         IGameTypeRepository GameTypes { get; }
         IGameRowTypesRepository GameRowTypes { get; }

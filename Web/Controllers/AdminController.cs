@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using DAL.Interfaces;
 using Domain.Aggregates;
 using Domain.Identity;
+using Domain.Models;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using PagedList;
 using Web.ViewModels;
@@ -29,10 +32,55 @@ namespace Web.Controllers
         {
             var vm = new AdminIndexViewModel()
             {
-
+                Friends = this._uow.UsersInt.GetFriends(),
+                FriendRequests = this._uow.UsersInt.GetUserFriendRequest(),
+                Games = new List<Game>()
             };
 
             return View(vm);
+        }
+
+        // POST: Admin
+        [HttpPost]
+        public ActionResult Index(AdminIndexViewModel vm)
+        {
+            if (!vm.SearchTxt.IsNullOrWhiteSpace())
+            {
+                this._uow.UsersInt.AddFriend(vm.SearchTxt);
+                return RedirectToAction("Index", "Admin");
+            }
+
+            vm.Friends = this._uow.UsersInt.GetFriends();
+            vm.Games = new List<Game>();
+            return View(vm);
+        }
+
+
+        [AllowAnonymous]
+        public async Task<JsonResult> SearchUsersAsync(string searchTxt)
+        {
+            if (searchTxt.IsNullOrWhiteSpace())
+            {
+                return Json(new string[0], JsonRequestBehavior.AllowGet);
+            }
+
+            var result = await this._uow.UsersInt.SearchUserInts(searchTxt);
+
+            return Json(result.ToArray(), JsonRequestBehavior.AllowGet);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult FriendRequestAction(bool accept, int friendId)
+        {
+            if (!accept) { 
+                this._uow.Friends.Delete(friendId);
+            }
+            else { 
+                this._uow.Friends.UpdateFriendStatus(accept, friendId);
+            }
+
+            return RedirectToAction("Index", "Admin");
         }
 
         [Authorize(Roles = "Admin")]
@@ -96,6 +144,7 @@ namespace Web.Controllers
 
             return View(vm);
         }
+
         [Authorize(Roles = "Admin")]
         public ActionResult UserList(AdminUserListViewModel vm)
         {
@@ -127,5 +176,7 @@ namespace Web.Controllers
             var x = vm;
             return View(vm);
         }
+
+
     }
 }

@@ -21,6 +21,15 @@ namespace Web.Controllers
         }
 
 
+        public ActionResult Friends()
+        {
+            var vm = new AllFriendsUserVariaViewModel()
+            {
+                AllFriends = this._uow.UsersInt.GetAllFriends()
+            };
+            return View(vm);
+        }
+
         public ActionResult Index()
         {
             var vm = new StatisticsUserVariaViewModel()

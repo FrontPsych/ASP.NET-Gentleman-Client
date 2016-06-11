@@ -71,7 +71,7 @@
                     <td>#</td>
                 </tr>
                 <tr id="score-points-row">
-                    <td>Skoor</td>
+                    <td>@Resources.Common.Score</td>
                     @foreach (var userrow in Model.Game.GameRows.FirstOrDefault().UserGameRows)
                     {
                     <td id="score-points-userid-@userrow.UserIntId"></td>
@@ -79,7 +79,7 @@
                     <td></td>
                 </tr>
                 <tr id="score-place-row">
-                    <td>Koht</td>
+                    <td>@Resources.Common.Place</td>
                     @foreach (var userrow in  Model.Game.GameRows.FirstOrDefault().UserGameRows)
                     {
                     <td id="score-place-userid-@userrow.UserIntId"></td>

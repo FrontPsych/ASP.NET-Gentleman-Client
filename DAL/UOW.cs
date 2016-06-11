@@ -102,6 +102,8 @@ namespace DAL
                     {typeof(IGameRowTypesRepository), (httpClient, authenticationManager) => new GameRowTypesRepository(httpClient, ConfigurationManager.AppSettings["WebApi_EndPoint_GameRowTypes"], authenticationManager)},
                     {typeof(IUserGameRowRepository), (httpClient, authenticationManager) => new UserGameRowRepository(httpClient, ConfigurationManager.AppSettings["WebApi_EndPoint_UserGameRows"], authenticationManager)},
                     {typeof(IGameRowRepository), (httpClient, authenticationManager) => new GameRowRepository(httpClient, ConfigurationManager.AppSettings["WebApi_EndPoint_GameRows"], authenticationManager)},
+                    {typeof(IFriendRepository), (httpClient, authenticationManager) => new FriendRepository(httpClient, ConfigurationManager.AppSettings["WebApi_EndPoint_Friends"], authenticationManager)},
+
 
             };
         }
@@ -175,6 +177,7 @@ namespace DAL
         public IMultiLangStringRepository MultiLangStrings => GetWebApiRepo<IMultiLangStringRepository>();
         public ITranslationRepository Translations => GetWebApiRepo<ITranslationRepository>();
         public IArticleRepository Articles => GetWebApiRepo<IArticleRepository>();
+        public IFriendRepository Friends => GetWebApiRepo<IFriendRepository>();
         public IGameRepository Games => GetWebApiRepo<IGameRepository>();
         public IGameTypeRepository GameTypes => GetWebApiRepo<IGameTypeRepository>();
         public IGameRowTypesRepository GameRowTypes => GetWebApiRepo<IGameRowTypesRepository>();

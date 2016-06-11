@@ -79,6 +79,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accept.
+        /// </summary>
+        public static string Accept {
+            get {
+                return ResourceManager.GetString("Accept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add friend.
+        /// </summary>
+        public static string AddFriend {
+            get {
+                return ResourceManager.GetString("AddFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dashboard.
         /// </summary>
         public static string AdminLandingPage {
@@ -147,6 +165,15 @@ namespace Resources {
         public static string Create {
             get {
                 return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Decline.
+        /// </summary>
+        public static string Decline {
+            get {
+                return ResourceManager.GetString("Decline", resourceCulture);
             }
         }
         
@@ -268,6 +295,42 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Friend count.
+        /// </summary>
+        public static string FriendCount {
+            get {
+                return ResourceManager.GetString("FriendCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friend request from.
+        /// </summary>
+        public static string FriendRequestFrom {
+            get {
+                return ResourceManager.GetString("FriendRequestFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friend requests.
+        /// </summary>
+        public static string FriendRequests {
+            get {
+                return ResourceManager.GetString("FriendRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friends.
+        /// </summary>
+        public static string FriendsList {
+            get {
+                return ResourceManager.GetString("FriendsList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to G.
         /// </summary>
         public static string G {
@@ -345,6 +408,15 @@ namespace Resources {
         public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latest games.
+        /// </summary>
+        public static string LatestGames {
+            get {
+                return ResourceManager.GetString("LatestGames", resourceCulture);
             }
         }
         
@@ -466,6 +538,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Position.
+        /// </summary>
+        public static string Place {
+            get {
+                return ResourceManager.GetString("Place", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Insert game name ....
         /// </summary>
         public static string PlaceholderInsertGameName {
@@ -511,11 +592,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Score.
+        /// </summary>
+        public static string Score {
+            get {
+                return ResourceManager.GetString("Score", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search.
         /// </summary>
         public static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search for  new friends ...
+        /// </summary>
+        public static string SearchNewFriends {
+            get {
+                return ResourceManager.GetString("SearchNewFriends", resourceCulture);
             }
         }
         
@@ -624,6 +723,33 @@ namespace Resources {
         public static string UserStatistics {
             get {
                 return ResourceManager.GetString("UserStatistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View All Fiends.
+        /// </summary>
+        public static string ViewAllFriends {
+            get {
+                return ResourceManager.GetString("ViewAllFriends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Game Statistics.
+        /// </summary>
+        public static string ViewGameStatistics {
+            get {
+                return ResourceManager.GetString("ViewGameStatistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your friends.
+        /// </summary>
+        public static string YourFriends {
+            get {
+                return ResourceManager.GetString("YourFriends", resourceCulture);
             }
         }
         

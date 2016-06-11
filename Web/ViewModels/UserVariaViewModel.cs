@@ -7,6 +7,11 @@ using Domain.Models;
 
 namespace Web.ViewModels
 {
+    public class AllFriendsUserVariaViewModel
+    {
+        public List<Friend> AllFriends { get; set; } 
+    }
+
     public class StatisticsUserVariaViewModel
     {
         public int AllGameTypeSelectListId { get; set; }

@@ -309,4 +309,49 @@
   <data name="UserlistTitle" xml:space="preserve">
     <value>List of registered users</value>
   </data>
+  <data name="Place" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Score</value>
+  </data>
+  <data name="GameOver" xml:space="preserve">
+    <value>Game over</value>
+  </data>
+  <data name="LatestGames" xml:space="preserve">
+    <value>Latest games</value>
+  </data>
+  <data name="FriendCount" xml:space="preserve">
+    <value>Friend count</value>
+  </data>
+  <data name="FriendsList" xml:space="preserve">
+    <value>Friends</value>
+  </data>
+  <data name="SearchNewFriends" xml:space="preserve">
+    <value>Search for  new friends ..</value>
+  </data>
+  <data name="ViewAllFriends" xml:space="preserve">
+    <value>View All Fiends</value>
+  </data>
+  <data name="ViewGameStatistics" xml:space="preserve">
+    <value>View Game Statistics</value>
+  </data>
+  <data name="YourFriends" xml:space="preserve">
+    <value>Your friends</value>
+  </data>
+  <data name="AddFriend" xml:space="preserve">
+    <value>Add friend</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="Decline" xml:space="preserve">
+    <value>Decline</value>
+  </data>
+  <data name="FriendRequestFrom" xml:space="preserve">
+    <value>Friend request from</value>
+  </data>
+  <data name="FriendRequests" xml:space="preserve">
+    <value>Friend requests</value>
+  </data>
 </root>

@@ -17,7 +17,7 @@ namespace DAL.Repositories
     public class UserIntRepository : UserRepository<int, RoleInt, UserInt, UserClaimInt, UserLoginInt, UserRoleInt>,
         IUserIntRepository
     {
-        private readonly ILogger _logger = NLog.LogManager.GetCurrentClassLogger();
+        private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
 
         public UserIntRepository(HttpClient httpClient, string endPoint, IAuthenticationManager authenticationManager) : base(httpClient, endPoint, authenticationManager)
         {
@@ -26,6 +26,74 @@ namespace DAL.Repositories
         public List<Game> GetGivenTypeGamesUserHasPlayed(int gameTypeId, int userId)
         {
             throw new NotImplementedException();
+        }
+
+        public void AddFriend(string username)
+        {
+            var response = HttpClient.GetAsync(EndPoint + nameof(AddFriend) + "/" + username).Result;
+
+            if (!response.IsSuccessStatusCode)
+            {
+                _logger.Error(response.RequestMessage.RequestUri + " - " + response.StatusCode + " - " + response.ReasonPhrase);
+                throw new Exception(response.RequestMessage.RequestUri + " - " + response.StatusCode + " - " + response.ReasonPhrase);
+            }
+        }
+
+        public List<Friend> GetUserFriendRequest()
+        {
+            var response = HttpClient.GetAsync(EndPoint + nameof(GetUserFriendRequest)).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                var res = response.Content.ReadAsAsync<List<Friend>>().Result;
+                return res;
+            }
+            _logger.Debug(response.RequestMessage.RequestUri + " - " + response.StatusCode + " - " + response.ReasonPhrase);
+
+            return new List<Friend>();
+        }
+
+        public Task<List<UserInt>> SearchUserInts(string searchTxt)
+        {
+            var response = HttpClient.GetAsync(EndPoint + nameof(SearchUserInts) + "/" + searchTxt).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                var res = response.Content.ReadAsAsync<List<UserInt>>().Result;
+                return Task.FromResult(res);
+            }
+            _logger.Debug(response.RequestMessage.RequestUri + " - " + response.StatusCode + " - " + response.ReasonPhrase);
+
+            return Task.FromResult<List<UserInt>>(null);
+        }
+
+
+        public List<Friend> GetAllFriends()
+        {
+            var response = HttpClient.GetAsync(EndPoint + nameof(GetAllFriends)).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                var res = response.Content.ReadAsAsync<List<Friend>>().Result;
+                return res;
+            }
+            _logger.Debug(response.RequestMessage.RequestUri + " - " + response.StatusCode + " - " + response.ReasonPhrase);
+
+            return new List<Friend>();
+        }
+
+        public List<Friend> GetFriends()
+        {
+            var response = HttpClient.GetAsync(EndPoint + nameof(GetFriends)).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                var res = response.Content.ReadAsAsync<List<Friend>>().Result;
+                return res;
+            }
+            _logger.Debug(response.RequestMessage.RequestUri + " - " + response.StatusCode + " - " + response.ReasonPhrase);
+
+            return new List<Friend>();
         }
 
         public List<UserWithRole> GetAllForUser(int userId, string filter, string sortProperty, int pageNumber, int pageSize)
@@ -70,6 +138,8 @@ namespace DAL.Repositories
             _logger.Debug("Web API statuscode: " + response.StatusCode + " Uri:" + response.RequestMessage.RequestUri);
             return null;
         }
+
+       
     }
 
     public class UserRepository : UserRepository<string, Role, User, UserClaim, UserLogin, UserRole>, IUserRepository

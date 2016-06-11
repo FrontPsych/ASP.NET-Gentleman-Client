@@ -2833,12 +2833,14 @@
     <Content Include="Views\Admin\DeleteAllLogFiles.cshtml" />
     <Content Include="Views\Games\AddRow.cshtml" />
     <Content Include="Views\Admin\UserList.cshtml" />
+    <Content Include="Views\UserVaria\Friends.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="logs\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Friends\" />
     <Folder Include="Views\Language\" />
   </ItemGroup>
   <ItemGroup>

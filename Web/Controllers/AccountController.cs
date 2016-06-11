@@ -76,6 +76,8 @@ namespace Web.Controllers
             return Json(hasPlayed, JsonRequestBehavior.AllowGet);
         }
 
+        
+
         //
         // GET: /Account/Login
         [AllowAnonymous]

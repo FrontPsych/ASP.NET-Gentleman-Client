@@ -59,6 +59,7 @@
     <Compile Include="Identity\UserRole.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GameRow.cs" />
     <Compile Include="Models\GameRowType.cs" />
