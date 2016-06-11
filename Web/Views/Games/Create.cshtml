@@ -113,8 +113,6 @@
         </text>
         }
 
-
-        //ToDo: into single call
         $('#add-person').on('click', function() {
             console.log('#add-person was clicked');
             var newusername = $('#name_box').val();
@@ -125,20 +123,17 @@
                         type: "POST",
                         data: { username: newusername },
                         success: function(data) {
-                            console.log(newusername + " id: " + data.id);
                             gameData.users.push({ 'id': data.id, 'name': newusername });
-
                             jQuery.get('/Games/AddUserGameRow?userid=' + data.id).done(function(html) {
                                 $('#mtable thead tr>th:last').before("<th>" + newusername + "</th>");
                                 $('#mtable tbody tr>td:last').before("<td>" + html + "</td>");
                                 $('#mtable tfoot tr#score-name-row   >td:last').before("<td>" + newusername + "</td>");
-                                $('#mtable tfoot tr#score-points-row >td:last').before("<td id='score-points-userid-"+data.id+"'>0</td>");
-                                $('#mtable tfoot tr#score-place-row  >td:last').before("<td id='score-place-userid-"+data.id+"'>1</td>");
+                                $('#mtable tfoot tr#score-points-row >td:last').before("<td id='score-points-userid-"+data.id+"'></td>");
+                                $('#mtable tfoot tr#score-place-row  >td:last').before("<td id='score-place-userid-"+data.id+"'></td>");
                                 $("#mtable tbody tr td").updateValidation();
                             });
                         }
                     });
-                    console.log(gameData);
                     $('#name_box').val("");
                 } else {
                     alert('@Resources.Common.ErrorUsersExists');
@@ -158,7 +153,6 @@
                 return $this;
             };
         })(jQuery);
-
 
         function isValidRow(tr_row) {
             sum = 0;
@@ -202,15 +196,11 @@
                         obj.UserGameRows.push({ 'userintid': userid, 'startbet': start_bet, 'endbet': end_bet });
                     }
                 });
-                console.log(obj);
-
                 $.ajax({
                     url: '@Url.Action("AddUpdateGameRow")',
                     type: "POST",
                     data: obj,
                     success: function(data) {
-                        console.log(data);
-                        console.log("Newly added game row id: " + data.GameRowId);
                         if (tr_element.data('gamerowid') == 0) {
                             var last_row = $('#mtable tbody>tr:last');
                             if (last_row.data('gamerowid') == 0) {
@@ -224,30 +214,21 @@
                                     row.find('td:first').html(gamerow.desc);
                                     row.data('gamerowid', '0')
                                     row.insertAfter('#mtable tbody>tr:last')
-                                    console.log('LISAME UUE REA: ')
-                                    console.log(row)
-                                    console.log(row.data('gamerowtypeid'))
-                                    console.log(row.data('gamerowid'))
                                 }
                             }  
-                        } // if (tr_element.data('gamerowid') == 0) { if (tr_element.data('gamerowid') == 0) {
+                        } // if (tr_element.data('gamerowid') == 0)
                         jQuery.get('@Url.Action("GetGameResults", "Games", new { gameId = Model.Game.GameId })' ).done(function(array) {
                             console.log("SKOORI ARR: ");
                             jQuery.each(array, function() {
                                 jQuery('#score-place-userid-'+this.UserIntId).html(this.Position);
                                 jQuery('#score-points-userid-'+this.UserIntId).html(this.ScorePoints);
                             });
-                            console.log(array);
                         });
                     } //end success
                 });//end ajax call
             }  else {
                 tr_element.addClass('row-error');
             }
-
-           
-
-
         });
 
 
@@ -266,5 +247,4 @@
         $('#NumberOfPlayers').addClass('input-disabled');
     </script>
 }
-
 }
