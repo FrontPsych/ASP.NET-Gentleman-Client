@@ -1,25 +1,6 @@
 ﻿@using System.Threading
 @{
     var titleTag = (string.IsNullOrWhiteSpace(ViewBag.Title) ? "" : ViewBag.Title + " - ") + Resources.Common.ApplicationName;
-
-
-    var asd = ViewBag.asd;
-
-    // set up global js variable, to hold culture code
-    // it is later used for globalize, cldr and moment
-    var currentCultureCode = "root";
-    switch (Thread.CurrentThread.CurrentCulture.ToString())
-    {
-        case "et-EE":
-            currentCultureCode = "et";
-            break;
-        case "en-US":
-            currentCultureCode = "en";
-            break;
-        default:
-            currentCultureCode = Thread.CurrentThread.CurrentCulture.ToString();
-            break;
-    }
 }
 <!DOCTYPE html>
 <html>
@@ -111,8 +92,6 @@
 
     </div>
     <!-- ./wrapper -->
-    <!-- jQuery 2.2.0 -->
-    <script src="/Scripts/AdminTheme/plugins/jQuery/jQuery-2.2.0.min.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/cldr")
     @Scripts.Render("~/bundles/globalize")
@@ -127,9 +106,6 @@
     </script>
     <!-- Bootstrap 3.3.6 -->
     <script src="/Scripts/bootstrap.js"></script>
-    <!-- Morris.js charts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="/Scripts/AdminTheme/plugins/morris/morris.min.js"></script>
     <!-- Sparkline -->
     <script src="/Scripts/AdminTheme/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!-- jvectormap -->
@@ -150,10 +126,6 @@
     <script src="/Scripts/AdminTheme/plugins/fastclick/fastclick.js"></script>
     <!-- AdminLTE App -->
     <script src="/Scripts/AdminTheme/js/app.min.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="/Scripts/AdminTheme/js/pages/dashboard.js"></script>
-    <!-- AdminLTE for demo purposes -->
-<script src="/Scripts/AdminTheme/js/demo.js"></script>
     <script src="~/Scripts/AdminTheme/plugins/select2/select2.full.js"></script>
 <script>
     $(function() {
