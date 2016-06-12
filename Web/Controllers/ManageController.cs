@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using DAL.Interfaces;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using NLog;
@@ -12,26 +13,29 @@ namespace Web.Controllers
     [Authorize]
     public class ManageController : BaseController
     {
-        private readonly NLog.ILogger _logger;
+        private readonly ILogger _logger;
         private readonly string _instanceId = Guid.NewGuid().ToString();
         private readonly ApplicationSignInManager _signInManager;
         private readonly ApplicationUserManager _userManager;
         private readonly IAuthenticationManager _authenticationManager;
+        private readonly IUOW _uow;
 
-        public ManageController(ILogger logger)
+        public ManageController(IUOW uow, ILogger logger)
         {
+            _uow = uow;
             _logger = logger;
             _logger.Debug("InstanceId: " + _instanceId);
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,
+        public ManageController(IUOW uow, ApplicationUserManager userManager, ApplicationSignInManager signInManager,
             IAuthenticationManager authenticationManager, ILogger logger)
         {
+            _uow = uow;
+            _logger = logger;
             _logger.Info("");
             _userManager = userManager;
             _signInManager = signInManager;
             _authenticationManager = authenticationManager;
-            _logger = logger;
         }
 
         //
@@ -275,6 +279,68 @@ namespace Web.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        //
+        // GET: /Manage/ChangeFirstname
+        public ActionResult ChangeFirstname()
+        {
+            var vm = new ChangeFirstnameViewModel()
+            {
+                Firstname = this._uow.UsersInt.GetById(User.Identity.GetUserId<int>()).FirstName
+            };
+            return View(vm);
+        }
+
+        //
+        // POST: /Manage/ChangeFirstname
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeFirstname(ChangeFirstnameViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var userInt = this._uow.UsersInt.GetById(User.Identity.GetUserId<int>());
+                userInt.FirstName = model.Firstname;
+                this._uow.UsersInt.Update(userInt);
+
+                return RedirectToAction("Index", new {  });
+
+            }
+
+            return View(model);
+        }
+
+
+        //
+        // GET: /Manage/ChangeLastname
+        public ActionResult ChangeLastname()
+        {
+            var vm = new ChangeLastnameViewModel()
+            {
+                Lastname = this._uow.UsersInt.GetById(User.Identity.GetUserId<int>()).LastName
+            };
+            return View(vm);
+        }
+
+        //
+        // POST: /Manage/ChangeFirstname
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeLastname(ChangeLastnameViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var userInt = this._uow.UsersInt.GetById(User.Identity.GetUserId<int>());
+                userInt.LastName = model.Lastname;
+                this._uow.UsersInt.Update(userInt);
+
+                return RedirectToAction("Index", new { });
+
+            }
+
+            return View(model);
+        }
+
 
         //
         // GET: /Manage/ManageLogins

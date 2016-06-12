@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChangeFirstname_title" xml:space="preserve">
+    <value>Change Firstname</value>
+  </data>
+  <data name="ChangeLastname_title" xml:space="preserve">
+    <value>Change Lastname</value>
+  </data>
   <data name="ChangePassword_ButtonChangePassword" xml:space="preserve">
     <value>Change Password</value>
   </data>
@@ -125,6 +131,12 @@
   </data>
   <data name="ChangePassword_Title" xml:space="preserve">
     <value>Change Password</value>
+  </data>
+  <data name="Index_ChangeFirstname" xml:space="preserve">
+    <value>Change Firstname</value>
+  </data>
+  <data name="Index_ChangeLastname" xml:space="preserve">
+    <value>Change Lastname</value>
   </data>
   <data name="Index_ChangeYourAccountSettings" xml:space="preserve">
     <value>Change your account settings</value>
@@ -137,6 +149,12 @@
   </data>
   <data name="Index_ExternalLogins" xml:space="preserve">
     <value>External Logins:</value>
+  </data>
+  <data name="Index_Firstname" xml:space="preserve">
+    <value>Firstname:</value>
+  </data>
+  <data name="Index_Lastname" xml:space="preserve">
+    <value>Lastname:</value>
   </data>
   <data name="Index_Manage" xml:space="preserve">
     <value>Manage</value>
@@ -209,5 +227,11 @@
   </data>
   <data name="ViewModel_PhoneNumberRequired" xml:space="preserve">
     <value>Phone number is required.</value>
+  </data>
+  <data name="YourFirstname" xml:space="preserve">
+    <value>Change Firstname Form</value>
+  </data>
+  <data name="YourLastname" xml:space="preserve">
+    <value>Change Lastname Form</value>
   </data>
 </root>

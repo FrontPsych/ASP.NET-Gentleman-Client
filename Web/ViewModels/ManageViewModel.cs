@@ -66,6 +66,24 @@ namespace Web.ViewModels
         public string ConfirmPassword { get; set; }
     }
 
+    public class ChangeFirstnameViewModel
+    {
+        [Required(AllowEmptyStrings = false, ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Resources.Common))]
+        [MaxLength(18, ErrorMessageResourceName = "FieldMaxLength", ErrorMessageResourceType = typeof(Resources.Common))]
+        [Display(Name = nameof(Resources.Domain.Firstname), ResourceType = typeof(Resources.Domain))]
+        public string Firstname { get; set; }
+
+    }
+
+    public class ChangeLastnameViewModel
+    {
+        [Required(AllowEmptyStrings = false, ErrorMessageResourceName = "FieldIsRequired", ErrorMessageResourceType = typeof(Resources.Common))]
+        [MaxLength(18, ErrorMessageResourceName = "FieldMaxLength", ErrorMessageResourceType = typeof(Resources.Common))]
+        [Display(Name = nameof(Resources.Domain.Lastname), ResourceType = typeof(Resources.Domain))]
+        public string Lastname { get; set; }
+
+    }
+
     public class AddPhoneNumberViewModel
     {
         [Required(AllowEmptyStrings = false, ErrorMessageResourceType = typeof(Manage),

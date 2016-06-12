@@ -295,6 +295,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to For.
+        /// </summary>
+        public static string For {
+            get {
+                return ResourceManager.GetString("For", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to for.
+        /// </summary>
+        public static string ForYou {
+            get {
+                return ResourceManager.GetString("ForYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Friend count.
         /// </summary>
         public static string FriendCount {
@@ -552,6 +570,15 @@ namespace Resources {
         public static string PlaceholderInsertGameName {
             get {
                 return ResourceManager.GetString("PlaceholderInsertGameName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position.
+        /// </summary>
+        public static string Postion {
+            get {
+                return ResourceManager.GetString("Postion", resourceCulture);
             }
         }
         

@@ -28,21 +28,21 @@
                 <ul class="products-list product-list-in-box">
                     @foreach (var game in Model.Games)
                     {
-                    @*<li class="item">
-                        <div class="product-img">
+                    <li class="item">
+                        @*<div class="product-img">
                             <img src="dist/img/default-50x50.gif" alt="Product Image">
-                        </div>
+                        </div>*@
                         <div class="product-info">
-                            <a href="javascript:void(0)" class="product-title">
-                                Samsung TV
-                                <span class="label label-warning pull-right">$1800</span>
-                            </a>
+                            <div  class="product-title">
+                                @game.Game.GameName
+                                <span class="label label-default pull-right">@game.Created.Date.ToShortDateString()</span>
+                            </div>
                             <span class="product-description">
-                                Samsung 32" 1080p 60Hz LED Smart HDTV.
+                                @Resources.Common.Postion @game.Position, @Resources.Common.Score: @game.Score
                             </span>
                         </div>
-                    </li>*@
-                        <!-- /.item -->
+                    </li>
+                    <!-- /.item -->
                     }
                 </ul>
             </div>
@@ -77,22 +77,23 @@
             <!-- /.box-header -->
             <div class="box-body" style="display: block;">
                 <div class="direct-chat-messages">
-                    <ul class="users-list clearfix">
+                    <ul class="">
                         @foreach (var friend in Model.Friends)
                         {
                             <li >
+                                <span>
                                     @*<img src="dist/img/user1-128x128.jpg" alt="User Image">*@
                                     @if (friend.UserIntSenderId == User.Identity.GetUserId<int>())
                                     {
-                                        <a style="float:left;" class="users-list-name" href="#">@friend.UserIntReceiver.UserName</a>
+                                        <a class="users-list-name" href='@Url.Action("Index", "UserVaria", new {userId = friend.UserIntReceiverId})'>@friend.UserIntReceiver.UserName</a>
                                     }
                                     else
                                     {
-                                        <a style="float:left;" class="users-list-name" href="#">@friend.UserIntSender.UserName</a>
+                                        <a class="users-list-name" href='@Url.Action("Index", "UserVaria", new {userId = friend.UserIntSenderId})'>@friend.UserIntSender.UserName</a>
                                     }
                                     @*<span class="users-list-date">Today</span>*@
-                                    <button style="float:right;" type="button" id="decline_friend" value="@friend.FriendId" class="btn btn-danger btn-xs"><i class="fa fa-trash" aria-hidden="true"></i></button>
-
+                                    <button type="button" id="decline_friend" value="@friend.FriendId" class="btn btn-danger btn-xs"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                </span>
                             </li>
                         }
                     </ul>
@@ -149,7 +150,6 @@
                         <datalist id="json-datalist"></datalist>
                     </div>
                 }
-                @Html.ActionLink(Resources.Common.ViewAllFriends, "Friends", "UserVaria", new { }, new { @class = "uppercase" })
             </div>
             <!-- /.box-footer -->
         </div>

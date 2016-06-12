@@ -13,6 +13,7 @@ namespace Domain.Aggregates
         public int NumberOfPlayers { get; set; } 
         public int Position { get; set; } 
         public int Score { get; set; } 
+        public DateTime Created { get; set; }
         public TimeSpan DurationTimeSpan { get; set; } 
     }
 }

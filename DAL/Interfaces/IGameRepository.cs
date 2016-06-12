@@ -10,6 +10,7 @@ namespace DAL.Interfaces
 {
     public interface IGameRepository : IBaseRepository<Game>
     {
+        List<GameStatistic> GetLatestPlayedGames();
         List<GameStatistic> GetAllGameStatisticsForGameType(int gameTypeId, int userId);
         Game AddGameWithReturn(Game game);
         List<GameResult> GetGameResults(int gameId);

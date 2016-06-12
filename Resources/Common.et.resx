@@ -345,4 +345,10 @@
   <data name="FriendRequests" xml:space="preserve">
     <value>Sõbrakutsed</value>
   </data>
+  <data name="Postion" xml:space="preserve">
+    <value>Positsioon</value>
+  </data>
+  <data name="ForYou" xml:space="preserve">
+    <value>mängijale</value>
+  </data>
 </root>

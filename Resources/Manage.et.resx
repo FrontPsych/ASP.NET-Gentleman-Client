@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChangeFirstname_title" xml:space="preserve">
+    <value>Muuda eesnime</value>
+  </data>
+  <data name="ChangeLastname_title" xml:space="preserve">
+    <value>Muuda perenime</value>
+  </data>
   <data name="ChangePassword_ButtonChangePassword" xml:space="preserve">
     <value>Muuda parool</value>
   </data>
@@ -125,6 +131,12 @@
   </data>
   <data name="ChangePassword_Title" xml:space="preserve">
     <value>Parooli muutmine</value>
+  </data>
+  <data name="Index_ChangeFirstname" xml:space="preserve">
+    <value>Muuda eesnime</value>
+  </data>
+  <data name="Index_ChangeLastname" xml:space="preserve">
+    <value>Muuda perenime</value>
   </data>
   <data name="Index_ChangeYourAccountSettings" xml:space="preserve">
     <value>Muuda oma konto seadeid.</value>
@@ -137,6 +149,12 @@
   </data>
   <data name="Index_ExternalLogins" xml:space="preserve">
     <value>Seotud välised kontod:</value>
+  </data>
+  <data name="Index_Firstname" xml:space="preserve">
+    <value>Eesnimi:</value>
+  </data>
+  <data name="Index_Lastname" xml:space="preserve">
+    <value>Perenimi:</value>
   </data>
   <data name="Index_Manage" xml:space="preserve">
     <value>Halda</value>
@@ -209,5 +227,11 @@
   </data>
   <data name="ViewModel_PhoneNumberRequired" xml:space="preserve">
     <value>Telefoninumber on kohustuslik</value>
+  </data>
+  <data name="YourFirstname" xml:space="preserve">
+    <value>Eesnime muutmise vorm</value>
+  </data>
+  <data name="YourLastname" xml:space="preserve">
+    <value>Perenime muutmise vorm</value>
   </data>
 </root>

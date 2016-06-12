@@ -34,7 +34,7 @@ namespace Web.Controllers
             {
                 Friends = this._uow.UsersInt.GetFriends(),
                 FriendRequests = this._uow.UsersInt.GetUserFriendRequest(),
-                Games = new List<Game>()
+                Games = this._uow.Games.GetLatestPlayedGames()
             };
 
             return View(vm);
@@ -51,7 +51,7 @@ namespace Web.Controllers
             }
 
             vm.Friends = this._uow.UsersInt.GetFriends();
-            vm.Games = new List<Game>();
+            vm.Games = this._uow.Games.GetLatestPlayedGames();
             return View(vm);
         }
 

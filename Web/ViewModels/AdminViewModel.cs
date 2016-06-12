@@ -12,7 +12,7 @@ namespace Web.ViewModels
 {
     public class AdminIndexViewModel
     {
-        public List<Game> Games { get; set; } 
+        public List<GameStatistic> Games { get; set; } 
         public List<Friend> Friends { get; set; } 
         public List<Friend> FriendRequests { get; set; } 
         public string SearchTxt { get; set; }

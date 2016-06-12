@@ -61,6 +61,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Firstname.
+        /// </summary>
+        public static string ChangeFirstname_title {
+            get {
+                return ResourceManager.GetString("ChangeFirstname_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Lastname.
+        /// </summary>
+        public static string ChangeLastname_title {
+            get {
+                return ResourceManager.GetString("ChangeLastname_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change Password.
         /// </summary>
         public static string ChangePassword_ButtonChangePassword {
@@ -84,6 +102,24 @@ namespace Resources {
         public static string ChangePassword_Title {
             get {
                 return ResourceManager.GetString("ChangePassword_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Firstname.
+        /// </summary>
+        public static string Index_ChangeFirstname {
+            get {
+                return ResourceManager.GetString("Index_ChangeFirstname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Lastname.
+        /// </summary>
+        public static string Index_ChangeLastname {
+            get {
+                return ResourceManager.GetString("Index_ChangeLastname", resourceCulture);
             }
         }
         
@@ -120,6 +156,24 @@ namespace Resources {
         public static string Index_ExternalLogins {
             get {
                 return ResourceManager.GetString("Index_ExternalLogins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Firstname:.
+        /// </summary>
+        public static string Index_Firstname {
+            get {
+                return ResourceManager.GetString("Index_Firstname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lastname:.
+        /// </summary>
+        public static string Index_Lastname {
+            get {
+                return ResourceManager.GetString("Index_Lastname", resourceCulture);
             }
         }
         
@@ -336,6 +390,24 @@ namespace Resources {
         public static string ViewModel_PhoneNumberRequired {
             get {
                 return ResourceManager.GetString("ViewModel_PhoneNumberRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Firstname Form.
+        /// </summary>
+        public static string YourFirstname {
+            get {
+                return ResourceManager.GetString("YourFirstname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Lastname Form.
+        /// </summary>
+        public static string YourLastname {
+            get {
+                return ResourceManager.GetString("YourLastname", resourceCulture);
             }
         }
     }

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using DAL.Interfaces;
 using Domain.Models;
 using Microsoft.AspNet.Identity;
+using NLog.Web.LayoutRenderers;
 using Web.ViewModels;
 
 namespace Web.Controllers
@@ -21,38 +22,55 @@ namespace Web.Controllers
         }
 
 
-        public ActionResult Friends()
+        public ActionResult Index(int userId = 0)
         {
-            var vm = new AllFriendsUserVariaViewModel()
-            {
-                AllFriends = this._uow.UsersInt.GetAllFriends()
-            };
-            return View(vm);
-        }
 
-        public ActionResult Index()
-        {
-            var vm = new StatisticsUserVariaViewModel()
+            var vm = new StatisticsUserVariaViewModel();
+
+
+            if (userId == 0)
             {
-                AllGameTypeSelectList = new SelectList(this._uow.GameTypes.All, nameof(GameType.GameTypeId), nameof(GameType.Name))
-            };
+                vm = new StatisticsUserVariaViewModel()
+                {
+                    AllGameTypeSelectList =
+                        new SelectList(this._uow.GameTypes.All, nameof(GameType.GameTypeId), nameof(GameType.Name))
+                };
+            }
+            else
+            {
+                vm = new StatisticsUserVariaViewModel()
+                {
+                    AllGameTypeSelectList =
+                        new SelectList(this._uow.GameTypes.All, nameof(GameType.GameTypeId), nameof(GameType.Name)),
+                    FriendUser = this._uow.UsersInt.GetById(userId)
+                };
+            }
+            
 
             return View("Statistics", vm);
         }
 
-        public ActionResult GetStatistics(string gameTypeId)
+
+
+        public ActionResult GetStatistics(string gameTypeId, int userId = 0)
         {
             if (string.IsNullOrWhiteSpace(gameTypeId))
             {
                 return Json(new string[0]);
             }
 
+            if (userId == 0)
+            {
+                userId = User.Identity.GetUserId<int>();
+            }
+
             var gTypeId = int.Parse(gameTypeId);
-            var userId = int.Parse(User.Identity.GetUserId());
 
             var stats = this._uow.Games.GetAllGameStatisticsForGameType(gTypeId, userId);
 
             return Json(stats.Select(x => new { GameName = x.Game.GameName, NumberOfPlayers = x.NumberOfPlayers, YourScore = x.Score, YourPosition = x.Position, Duration = x.DurationTimeSpan.Duration().ToString(@"mm\:ss") }).ToArray());
+
+
         }
     }
 }

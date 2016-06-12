@@ -20,6 +20,18 @@ namespace DAL.Repositories
         {
         }
 
+        public List<GameStatistic> GetLatestPlayedGames()
+        {
+            var response = HttpClient.GetAsync(EndPoint + nameof(GetLatestPlayedGames)).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var res = response.Content.ReadAsAsync<List<GameStatistic>>().Result;
+                return res;
+            }
+            _logger.Debug("Web API statuscode: " + response.StatusCode + " Uri:" + response.RequestMessage.RequestUri);
+            return new List<GameStatistic>();
+        }
+
         public List<GameStatistic> GetAllGameStatisticsForGameType(int gameTypeId, int userId)
         {
             var response = HttpClient.GetAsync(EndPoint + nameof(GetAllGameStatisticsForGameType) + "/" + gameTypeId + "/" + "/" + userId).Result;
@@ -29,7 +41,7 @@ namespace DAL.Repositories
                 return res;
             }
             _logger.Debug("Web API statuscode: " + response.StatusCode + " Uri:" + response.RequestMessage.RequestUri);
-            return null;
+            return new List<GameStatistic>();
         }
 
 

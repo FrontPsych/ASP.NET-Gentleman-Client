@@ -10,7 +10,9 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">@Resources.Common.GameStatistics</h3>
+                <h3 class="box-title">@Resources.Common.GameStatistics @if (Model.FriendUser != null)
+                                                                       {<text> @Resources.Common.ForYou </text>
+                    <i>@Model.FriendUser.UserName</i><span id="friend_id" value="@Model.FriendUser.Id"></span>}</h3>
                 <div class="box-tools">
                     <div class="input-group" style="width: 150px;">
                        @Html.DropDownListFor(model => model.AllGameTypeSelectListId, Model.AllGameTypeSelectList, Resources.Common.SelectOptionLabel, new {@class = "form-control"})
@@ -35,23 +37,36 @@
 </div>
 
 @section AdminScripts {
-    <script>
-        $('#AllGameTypeSelectListId').change(function () {
-            var value = $(this).val();
-            //debugger;
-            $.ajax({
-                url: '@Url.Action("GetStatistics")',
-                type: "POST",
-                data: { gameTypeId: value },
-                success: function(data) {
-                    $("#GameTypeTableInfo tr:gt(0)").remove();
 
-                    $(data).each(function(index, element) {
-                        $('#GameTypeTableInfo').append('<tr><td> ' + element.GameName + ' </td> <td> ' + element.NumberOfPlayers + ' </td><td> ' + element.YourScore + ' </td><td> ' + element.YourPosition + ' </td><td> ' + element.Duration + ' </td></tr>');
-                    });
-                    
-                }
-            });
+        
+<script>
+                
+    var element = document.getElementById("friend_id");
+    console.log(element);
+    var id;
+    if (element != null) {
+        id = $(element).attr('value');
+    } else {
+        id = 0;
+    }
+
+    $('#AllGameTypeSelectListId').change(function() {
+        var value = $(this).val();
+        //debugger;
+        $.ajax({
+            url: '@Url.Action("GetStatistics")',
+            type: "POST",
+            data: { gameTypeId: value, userId: id },
+            success: function(data) {
+                $("#GameTypeTableInfo tr:gt(0)").remove();
+
+                $(data).each(function(index, element) {
+                    $('#GameTypeTableInfo').append('<tr><td> ' + element.GameName + ' </td> <td> ' + element.NumberOfPlayers + ' </td><td> ' + element.YourScore + ' </td><td> ' + element.YourPosition + ' </td><td> ' + element.Duration + ' </td></tr>');
+                });
+
+            }
         });
-    </script>
-}
+    });
+</script>
+      
+        }
