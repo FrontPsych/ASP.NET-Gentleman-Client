@@ -96,11 +96,11 @@ namespace DAL.Repositories
             return new List<Friend>();
         }
 
-        public List<UserWithRole> GetAllForUser(int userId, string filter, string sortProperty, int pageNumber, int pageSize)
+        public List<UserWithRole> GetAllForUser(string filter, string sortProperty, int pageNumber, int pageSize)
         {
             filter = filter ?? "_";
             sortProperty = sortProperty ?? "_";
-            var response = HttpClient.GetAsync(EndPoint + nameof(GetAllForUser) + "/" + userId + "/" + filter + "/" + sortProperty + "/" + pageNumber + "/" + pageSize).Result;
+            var response = HttpClient.GetAsync(EndPoint + nameof(GetAllForUser) + "/" + filter + "/" + sortProperty + "/" + pageNumber + "/" + pageSize).Result;
             if (response.IsSuccessStatusCode)
             {
                 var res = response.Content.ReadAsAsync<List<UserWithRole>>().Result;
@@ -110,26 +110,14 @@ namespace DAL.Repositories
             return null;
         }
 
-        //public List<UserInt> GetUsersInt()
-        //{
-        //    var response = HttpClient.GetAsync(EndPoint).Result;
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        var res = response.Content.ReadAsAsync<List<UserInt>>().Result;
-        //        return res;
-        //    }
-        //    _logger.Debug("Web API statuscode: " + response.StatusCode + " Uri:" + response.RequestMessage.RequestUri);
-
-        //    return null;
-        //} 
-        public Tuple<List<UserInt>,int, string> GetAllForUser(int userId, string filter, DateTime? filterFromDT, DateTime? filterToDt, string sortProperty,
+        public Tuple<List<UserInt>,int, string> GetAllForUser(string filter, DateTime? filterFromDT, DateTime? filterToDt, string sortProperty,
             int pageNumber, int pageSize)
         {
             filter = filter ?? "_";
             sortProperty = sortProperty ?? "lastname";
             var x = Tuple.Create(filterFromDT, filterToDt);
 
-            var response = HttpClient.PostAsJsonAsync(EndPoint + nameof(GetAllForUser) + "/" + userId + "/" + filter + "/"+ sortProperty + "/"+ pageNumber + "/" + pageSize, x).Result;
+            var response = HttpClient.PostAsJsonAsync(EndPoint + nameof(GetAllForUser) + "/" + filter + "/"+ sortProperty + "/"+ pageNumber + "/" + pageSize, x).Result;
             if (response.IsSuccessStatusCode)
             {
                 var res = response.Content.ReadAsAsync<Tuple<List<UserInt>, int, string>>().Result;

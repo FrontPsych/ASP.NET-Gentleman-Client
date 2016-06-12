@@ -91,7 +91,7 @@ namespace Web.Controllers
                 vm.Game.UserIntId = User.Identity.GetUserId<int>();
                 vm.Game.StartedAt = DateTime.Now;
 
-                vm.Game = this._uow.Games.AddGameWithReturn(vm.Game);
+                vm.Game = this._uow.Games.Add(vm.Game);
 
                 vm.GameRowTypesForGivenGame = this._uow.GameRowTypes.GetRowTypesByGameType(vm.Game.GameTypeId);
 

@@ -87,7 +87,7 @@ namespace DAL.Repositories
 
         }
 
-        public void Add(T entity)
+        public T Add(T entity)
         {
             var response = HttpClient.PostAsJsonAsync(EndPoint, entity).Result;
             if (!response.IsSuccessStatusCode)
@@ -95,7 +95,8 @@ namespace DAL.Repositories
                 _logger.Error(response.RequestMessage.RequestUri + " - " + response.StatusCode + " - " + response.ReasonPhrase);
                 throw new Exception(response.RequestMessage.RequestUri + " - " + response.StatusCode + " - " + response.ReasonPhrase);
             }
-            // TODO: update entity key?
+
+            return response.Content.ReadAsAsync<T>().Result;
         }
 
         public void Update(T entity)

@@ -20,7 +20,7 @@ namespace Web.Controllers
     [Authorize]
     public class AccountController : BaseController
     {
-        private readonly NLog.ILogger _logger;
+        private readonly ILogger _logger;
         private readonly string _instanceId = Guid.NewGuid().ToString();
         private readonly ApplicationSignInManager _signInManager;
         private readonly ApplicationUserManager _userManager;

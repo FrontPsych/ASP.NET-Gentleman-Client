@@ -16,8 +16,8 @@ namespace DAL.Interfaces
         Task<List<UserInt>> SearchUserInts(string searchTxt);
         List<Friend> GetAllFriends();
         List<Friend> GetFriends();
-        List<UserWithRole> GetAllForUser(int userId, string filter, string sortProperty, int pageNumber, int pageSize);
-        Tuple<List<UserInt>,int, string> GetAllForUser(int userId, string filter, DateTime? filterFromDT, DateTime? filterToDt, string sortProperty, int pageNumber, int pageSize);
+        List<UserWithRole> GetAllForUser(string filter, string sortProperty, int pageNumber, int pageSize);
+        Tuple<List<UserInt>,int, string> GetAllForUser(string filter, DateTime? filterFromDT, DateTime? filterToDt, string sortProperty, int pageNumber, int pageSize);
         List<Friend> GetUserFriendRequest();
     }
 

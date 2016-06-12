@@ -30,6 +30,17 @@ namespace Web.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            //conflict check
+            //var game = new Game()
+            //{
+            //    GameId = 1,
+            //    GameName = "testLisamine",
+            //    UserIntId = 1,
+            //    GameTypeId = 1
+            //};
+
+            //this._uow.Games.Add(game);
+
             var vm = new AdminIndexViewModel()
             {
                 Friends = this._uow.UsersInt.GetFriends(),
@@ -155,7 +166,7 @@ namespace Web.Controllers
             vm.SortProperty = vm.SortProperty;
             
             
-            List<UserWithRole> res = _uow.UsersInt.GetAllForUser(User.Identity.GetUserId<int>(), vm.Filter, vm.SortProperty,
+            List<UserWithRole> res = _uow.UsersInt.GetAllForUser(vm.Filter, vm.SortProperty,
                 vm.PageNumber.Value - 1, vm.PageSize.Value);
 
             //foreach (var userInt in res)

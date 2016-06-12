@@ -17,7 +17,7 @@ namespace DAL.Interfaces
         List<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties);
 
         T GetById(params object[] id);
-        void Add(T entity);
+        T Add(T entity);
         void Update(T entity);
         //void UpdateOrInsert(T entity);
         void Delete(T entity);

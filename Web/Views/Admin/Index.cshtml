@@ -92,7 +92,7 @@
                                         <a class="users-list-name" href='@Url.Action("Index", "UserVaria", new {userId = friend.UserIntSenderId})'>@friend.UserIntSender.UserName</a>
                                     }
                                     @*<span class="users-list-date">Today</span>*@
-                                    <button type="button" id="decline_friend" value="@friend.FriendId" class="btn btn-danger btn-xs"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                    <button type="button" value="@friend.FriendId" class="btn btn-danger btn-xs decline_friend"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                 </span>
                             </li>
                         }
@@ -195,8 +195,8 @@
             });
         });
 
-        jQuery('#decline_friend').on('click', function () {
-            console.log('#decline_friend was clicked');
+        jQuery('.decline_friend').on('click', function () {
+            console.log('.decline_friend was clicked');
             console.log($(this).attr("value"));
 
 
